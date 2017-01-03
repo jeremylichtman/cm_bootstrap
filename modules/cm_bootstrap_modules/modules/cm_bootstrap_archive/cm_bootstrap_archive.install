@@ -1,0 +1,76 @@
+<?php
+
+module_load_include('inc', 'cm_bootstrap_archive', 'cm_bootstrap_archive.fields');
+
+/**
+ * Implements hook_install().
+ */
+function cm_bootstrap_archive_install() {
+  node_types_rebuild();
+  $types = node_type_get_types();
+  
+  // ** START: archive_node_ref **
+  // Add body field
+  node_add_body_field($types['archive_node_ref']); 
+  // Do we need this?
+  field_cache_clear();
+  // Add fields
+  cm_bootstrap_archive_field_archive_node_ref($bundle = 'archive_node_ref');
+  cm_bootstrap_archive_field_archive_more_copyFCF();
+  cm_bootstrap_archive_field_archive_more_copyFCI($bundle = 'archive_node_ref');
+  // ** END: archive_node_ref **
+  
+  // ** START: archive_content_type **
+  // Add body field
+  node_add_body_field($types['archive_content_type']); 
+  // Do we need this?
+  field_cache_clear();
+  // Add fields
+  //cm_bootstrap_archive_field_archive_content_type($bundle = 'archive_content_type');
+  //cm_bootstrap_archive_field_archive_more_copyFCI($bundle = 'archive_content_type');
+  // ** END: archive_content_type **
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function cm_bootstrap_archive_uninstall() {
+  $node_types = array(
+    'archive_node_ref',
+    'archive_content_type',
+  );
+  foreach($node_types as $node_type) {
+    $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+    $result = db_query($sql, array(':type' => $node_type));
+    $nids = array();
+    foreach ($result as $row) {
+      $nids[] = $row->nid;
+    }
+    // Delete node type nodes
+    node_delete_multiple($nids);
+    // Delete node type
+    node_type_delete($node_type);
+  
+    // Delete field config
+    $fields = array(
+      'field_archive_node_ref',
+      'field_archive_more_copy',
+    );
+    foreach($fields as $field) {
+      $instance = array(
+        'field_name' => $field,
+        'entity_type' => 'node',
+        'bundle' => $node_type,
+      );
+      // Delete field instance
+      field_delete_instance($instance);
+      // Delete field
+      field_delete_field($instance['field_name']);
+    }
+  }
+     
+  // Delete Reservations module config
+  db_delete('reservations_node_type')
+    ->condition('type', 'archive_node_ref')
+    ->execute();
+}

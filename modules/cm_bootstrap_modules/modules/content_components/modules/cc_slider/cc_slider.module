@@ -1,0 +1,93 @@
+<?php
+
+/**
+ * Implements hook_theme($existing, $type, $theme, $path).
+ */
+function cc_slider_theme($existing, $type, $theme, $path) {
+  $theme = array();
+
+  $theme['paragraphs_item__slider'] = array(
+    'template' => 'paragraphs-item--slider',
+    'path' => drupal_get_path('module', 'cc_slider') . '/templates',
+  );
+
+  $theme['paragraphs_item__slider__paragraphs_editor_preview'] = array(
+    'template' => 'paragraphs-item--slider--paragraphs_editor_preview',
+    'path' => drupal_get_path('module', 'cc_slider') . '/templates',
+  );
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_entity(&$variables).
+ */
+function cc_slider_preprocess_entity(&$variables) {
+	if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'slider') {
+    $paragraph = $variables['paragraphs_item'];
+
+    switch($variables['view_mode']) {
+    	case 'paragraphs_editor_preview':
+    	  $data = array(
+          'placeholder' => '/' . drupal_get_path('module', 'cc_slider') . '/images/cc-slider.png',
+        );
+    	  break;
+
+      case 'full':
+        // @todo will this get aggregated properly?
+        drupal_add_css(drupal_get_path('module', 'cc_slider') . '/css/cc_slider.css');
+        // @todo move flexloader to a library
+        drupal_add_js(drupal_get_path('module', 'cc_slider') . '/js/jquery.flexloader.js');
+        drupal_add_js(drupal_get_path('module', 'cc_slider') . '/js/cc_slider.js');
+
+        // Get content list items
+        foreach ($paragraph->field_cc_s_items[LANGUAGE_NONE] as $item) {
+          $s_item_id = $item['value'];
+          $s_item_array[] = entity_load('paragraphs_item', array($s_item_id));
+        }
+
+        // Get first item
+        $first_item = array_shift($s_item_array);
+        // Paragraphs is weird, so reduce array to just paragraph object.
+        $first_item = array_shift($first_item);
+
+        $placeholder_img = FALSE;
+        if (isset($first_item->field_cc_s_item_image[LANGUAGE_NONE])) {
+          $placeholder_img = image_style_url('cc_slider_image', $first_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
+        }
+
+        // Rebuild first item to be added to array later
+        $first_item_array_element = array(
+          'placeholder_img' => $placeholder_img,
+          'data_original' => $placeholder_img,
+        );
+
+        foreach($s_item_array as $s_item) {
+          //$s_item = array_shift(array_values($s_item));
+          $s_item = reset($s_item);
+          // Image
+          $img_src = FALSE;
+          if (isset($s_item->field_cc_s_item_image[LANGUAGE_NONE])) {
+            $img_src = image_style_url('cc_slider_image', $s_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
+          }
+
+          $s_items[] = array(
+            'placeholder_img' => $placeholder_img,
+            'data_original' => $img_src,
+          );
+        }
+
+        // Add back first item to array
+        array_unshift($s_items, $first_item_array_element);
+
+        $data = array(
+          'title' => $paragraph->field_cc_s_title[LANGUAGE_NONE][0]['value'],
+          's_items' => $s_items,
+        );
+        //dpm($data);
+
+        break;
+    }
+
+    $variables['slider'] = $data;
+  }
+}

@@ -1,0 +1,6 @@
+name = CM Bootstrap Modules
+description = CM Bootstrap Modules Suite (For use with cm_bootstrap theme).
+package = CM Bootstrap
+core = 7.x
+
+dependencies[] = node_clone_tab

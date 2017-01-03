@@ -1,0 +1,192 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function scss_php_permission() {
+  return array(
+    'compile scss' => array(
+      'title' => t('Compile SCSS into CSS'),
+      'description' => t('Compile SCSS into CSS. Only grant to trusted users'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function scss_php_menu() {
+  $items = array();
+  // Compile generator route
+  $items['admin/config/development/scss-php/compile'] = array(
+    'title' => 'SCSS PHP: Compile CSS',
+    'description' => 'SCSS PHP: Compile CSS',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('scss_php_form'),
+    'access arguments' => array('compile scss'),
+    //'file' => 'forms/site_cp.colors.form.inc',
+    'type' => MENU_NORMAL_ITEM,
+  ); 
+  // Config route
+  $items['admin/config/development/scss-php/config'] = array(
+    'title' => 'SCSS PHP: Configuration',
+    'description' => 'Set default CSS and SCSS directories.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('scss_php_config_form'),
+    'access arguments' => array('compile scss'),
+    //'file' => 'forms/site_cp.colors.form.inc',
+    'type' => MENU_NORMAL_ITEM,
+  ); 
+ 
+  return $items;
+}
+
+/**
+ * Module config form
+ */
+function scss_php_config_form() { 
+  $form = array();
+  $form['scss_php_scss_directory'] = array(
+    '#type' => 'textfield',
+    '#title' => t('SCSS Source File'),
+    '#description' => t('Set the source .scss file. i.e., sites/all/themes/custom/my_theme/scss/compile.scss'),
+    '#default_value' => variable_get('scss_php_scss_directory'),
+  );
+  $form['scss_php_css_directory'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS Destination File'),
+    '#description' => t('Set the destination file to compile all .scss data into. i.e., sites/all/themes/custom/my_theme/css/compiled.css'),
+    '#default_value' => variable_get('scss_php_css_directory'),
+  );
+  $form = system_settings_form($form);
+  return $form;
+}
+
+/**
+ * Form constructor
+ */
+function scss_php_form($form, &$form_state) {  
+  $current_scss_directory = variable_get('scss_php_scss_directory');
+  $current_css_directory = variable_get('scss_php_css_directory');
+  
+  $form['current_scss_directory'] = array(
+    '#markup' => '<p><label>current scss source file path: </label>' . $current_scss_directory . '</p>',
+  );
+  $form['current_css_directory'] = array(
+    '#markup' => '<p><label>current css destination path: </label>' . $current_css_directory . '</p>',
+  );
+    
+  // @todo add better way to handle this.
+  if (empty($current_scss_directory) || empty($current_css_directory)) {
+    $form['current_css_directory'] = array(
+      '#markup' => 'Please configure your scss and css directories @ admin/config/development/scss-php/config',
+    );
+  }
+  else {
+    $form['warning'] = array(
+      '#markup' => '<b style="color:red;">Clicking this button will compile all source .scss files into .css in the specified directories.<br />Password: COMPILE</b><br /><br />'
+    );
+    /*$form['sass_1_file'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Compile Sass into 1 file.',
+    );*/
+    /*$form['password'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Password',
+    );*/
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Compile SCSS into CSS',
+    );
+  }
+  return $form;    
+}
+
+/**
+ * Form validation
+ */
+function scss_php_form_validate($form, &$form_state) {
+  /*if ($form_state['values']['password'] != 'COMPILE') {
+    form_set_error('password', t('Incorrect password. Please try again.'));
+  }*/
+}
+
+/**
+ * Form submit
+ */
+function scss_php_form_submit($form, &$form_state) {     
+  //dpm($form_state);
+  scss_php_compile();
+}
+
+/**
+ * Compiles .scss files into .css files
+ */
+function scss_php_compile() {
+  $sass_file_source = variable_get('scss_php_scss_directory');
+  $css_file_destination = variable_get('scss_php_css_directory');
+  
+  require "scssphp/scss.inc.php";
+  $scss = new scssc();  
+  $scss->setFormatter('scss_formatter');
+  
+  $css_data = $scss->compile('@import "' . $sass_file_source . '"');
+  file_put_contents($css_file_destination, $css_data);
+  // Success output
+  if (file_exists($css_file_destination)) {
+    drupal_set_message('Sass files compiled into 1 CSS file: ' . $css_file_destination);
+  }
+}
+
+/**
+ * Compiles .scss files into .css files
+ */
+function scss_php_compile_old($sass_one_file) {
+  require "scssphp/scss.inc.php";
+
+  $sass_directory = variable_get('scss_php_scss_directory');
+  // Scan sass directory for all .scss files
+  $sass_files = glob($sass_directory . '/*.{scss}', GLOB_BRACE);
+    
+  $scss = new scssc();  
+  $scss->setImportPaths($sass_directory);
+  $scss->setFormatter('scss_formatter');
+  
+  $css_directory = variable_get('scss_php_css_directory');
+  
+  foreach($sass_files as $sass_file) {
+    $sass_directory_to_strip = $sass_directory . '/';
+    $sass_file = str_replace($sass_directory_to_strip, '', $sass_file);
+    $sass_file_names[] = $sass_file;
+  }
+  
+  foreach($sass_file_names as $sass_file_name) {
+    $sass[$sass_file_name] = array(
+      'file_name' => str_replace('.scss', '.css', $sass_file_name),
+      'css_data' => $scss->compile('@import "' . $sass_file_name . '"'),
+    );
+  }
+    
+  // 1 css file
+  if ($sass_one_file) {
+    $sass_1_file = '';
+    foreach($sass as $delta => $item) {
+      $sass_1_file .= $item['css_data'];
+    }
+    file_put_contents($css_directory . '/' . 'compiled.css', $sass_1_file);
+    // Success output
+    if (file_exists($css_directory . '/' . 'compiled.css')) {
+      drupal_set_message('Sass files compiled into 1 file: ' . $css_directory . '/' . 'compiled.css');
+    }
+  }
+  // Multiple css files
+  else {
+    foreach($sass as $item) {
+      file_put_contents($css_directory . '/' . $item['file_name'], $item['css_data']);
+      // Success output
+      if (file_exists($css_directory . '/' . $item['file_name'])) {
+        drupal_set_message('Sass files compiled into multiple CSS files: ' . $css_directory . '/' . $item['file_name']);
+      }
+    }
+  }
+}

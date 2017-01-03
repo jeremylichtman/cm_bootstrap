@@ -1,0 +1,5 @@
+name = wluisi_test
+description = Disposable module for testing php code.
+package = wluisi
+core = 7.x
+dependencies[] = devel

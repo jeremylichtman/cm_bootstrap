@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function wluisi_test_menu() {
+  $items = array();
+  $items['wluisi_test/test1'] = array(
+    'page callback' => 'wluisi_test_test_1',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+function wluisi_test_test_1() {
+  //$users = wluisi_test_get_users_by_role($rolename = 'producer');
+  
+  //dpm($users);
+  
+  /*$query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'user');
+  $query->addTag('rolequery');
+  $query->addMetaData('rolename', 'producer');
+
+  $result = $query->execute();
+  
+  $max_count = $query->count()->execute();
+  
+  dpm($max_count);*/
+  
+  return 'wluisi_test_test_1';
+}
+
+/**
+ * Get users by specific role
+ */
+/*function wluisi_test_get_users_by_role($rolename) {
+  $role = user_role_load_by_name($rolename);
+  $uids = db_select('users_roles', 'ur')
+      ->fields('ur', array('uid'))
+      ->condition('ur.rid', $role->rid, '=')
+      ->execute()
+      ->fetchCol();
+  $users = user_load_multiple($uids);
+  return $users;
+}
+*/

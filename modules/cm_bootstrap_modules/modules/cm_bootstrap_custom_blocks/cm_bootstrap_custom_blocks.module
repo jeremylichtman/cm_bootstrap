@@ -225,6 +225,12 @@ function cm_bootstrap_custom_blocks_block_info() {
     'weight' => '0',
   );
 
+  $blocks['cmb_cb_genre_carousel'] = array(
+    'info' => t('cm_bootstrap_custom_blocks: Genre Detail Pg Genre Block [ cmb_cb_genre_carousel ]'),
+    'cache' => DRUPAL_NO_CACHE,
+    'weight' => '0',
+  );
+
   return $blocks;
 }
 
@@ -362,6 +368,14 @@ function cm_bootstrap_custom_blocks_block_view($delta = '') {
       module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cb_taxonomy_term_participants');
       $block['content'] = _cb_taxonomy_term_participants();
       break;
+
+    case 'cmb_cb_genre_carousel':
+      // Attach Flexloader
+      //libraries_load('flexloader');
+
+      module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cmb_cb_genre_carousel');
+      $block['content'] = _cmb_cb_genre_carousel();
+      break;
   }
   return $block;
 }
@@ -462,6 +476,11 @@ function cm_bootstrap_custom_blocks_theme($existing, $type, $theme, $path) {
 		'template' => 'cb-taxonomy-term-blog',
 		'path' => $path . '/templates',
 	);
+
+  $theme['cmb_cb_genre_carousel'] = array(
+    'template' => 'cmb-cb-genre-carousel',
+    'path' => $path . '/templates',
+  );
 	return $theme;
 }
 

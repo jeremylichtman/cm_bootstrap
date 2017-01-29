@@ -47,27 +47,6 @@
     }
   };
 
-  // Media module and all related "media" modules are garbage. So we're doing this w/ JS
-  // since it seems impossible to do w/ media module.
-  Drupal.behaviors.media_modules_suck = {
-    attach: function (context, settings) {
-      $('.node-type-cm-show iframe.media-youtube-player').each(function() {
-        var src = $(this).attr('src');
-        //console.log(src);
-        // Replace agnostic //www.
-        if (src.indexOf('//') > -1) {
-          src = src.replace('//', 'https:');
-          $(this).attr('src', src);
-        }
-        // Replace http:
-        if (src.indexOf('http:') > -1) {
-          src = src.replace('http:', 'https:');
-          $(this).attr('src', src);
-        }
-      });
-    }
-  };
-
   Drupal.behaviors.bs3_overrides_navigation_menu = {
     attach: function (context, settings) {
       $('.menu.nav li').hover(
@@ -81,7 +60,7 @@
     }
   };
 
-  
+
   //
   Drupal.behaviors.c_flexslider_video_carousel = {
     attach: function (context, settings) {

@@ -64,13 +64,14 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
 
         if ($node = node_load($nid)) {
           // Placeholder image
-          if (module_exists('cm_bootstrap_cp_default_images')) {
+          $placeholder_img = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
+          /*if (module_exists('cm_bootstrap_cp_default_images')) {
             $p_file = cm_bootstrap_cp_default_images_load_image('cm_show');
             if ($p_file) {
               $p_image_uri = $p_file->uri;
               $placeholder_img = image_style_url('500x281', $p_image_uri);
             }
-          }
+          }*/
 
           // Get shows and series nodes.
           if (isset($node->field_videos_to_highlight[LANGUAGE_NONE])) {

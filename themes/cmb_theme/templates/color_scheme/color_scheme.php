@@ -211,6 +211,7 @@ ul.front-pg-slider-items li span.title {
 <?php if (isset($colors['vs_overlay_color_1'])): ?>
 .c-flexslider-video-carousel ul li:nth-child(4n+1) span.overlay,
 .cc--custom-video-list ul li:nth-child(4n+1) span.overlay,
+.cc--custom-video-list-context ul li:nth-child(4n+1) span.overlay,
 .video-grid-column ul.video-grid-shows li:nth-child(1) a span.overlay,
 .taxonomy-term-pg ul.video-grid-shows li a span.overlay,
 ul.video-grid-shows li span.overlay {
@@ -221,6 +222,7 @@ ul.video-grid-shows li span.overlay {
 <?php if (isset($colors['vs_overlay_color_2'])): ?>
 .c-flexslider-video-carousel ul li:nth-child(4n+2) span.overlay,
 .cc--custom-video-list ul li:nth-child(4n+2) span.overlay,
+.cc--custom-video-list-context ul li:nth-child(4n+2) span.overlay,
 .video-grid-column ul.video-grid-shows li:nth-child(2) a span.overlay {
   background-color:<?php print $colors['vs_overlay_color_2']; ?> !important;
 }
@@ -229,6 +231,7 @@ ul.video-grid-shows li span.overlay {
 <?php if (isset($colors['vs_overlay_color_3'])): ?>
 .c-flexslider-video-carousel ul li:nth-child(4n+3) span.overlay,
 .cc--custom-video-list ul li:nth-child(4n+3) span.overlay,
+.cc--custom-video-list-context ul li:nth-child(4n+3) span.overlay,
 .video-grid-column ul.video-grid-shows li:nth-child(3) a span.overlay {
   background-color:<?php print $colors['vs_overlay_color_3']; ?> !important;
 }
@@ -237,6 +240,7 @@ ul.video-grid-shows li span.overlay {
 <?php if (isset($colors['vs_overlay_color_4'])): ?>
 .c-flexslider-video-carousel ul li:nth-child(4n+4) span.overlay,
 .cc--custom-video-list ul li:nth-child(4n+4) span.overlay,
+.cc--custom-video-list-context ul li:nth-child(4n+4) span.overlay,
 .video-grid-column ul.video-grid-shows li:nth-child(4) a span.overlay {
   background-color:<?php print $colors['vs_overlay_color_4']; ?> !important;
 }
@@ -244,19 +248,22 @@ ul.video-grid-shows li span.overlay {
 
 <?php if (isset($colors['vs_arrow_bg_color'])): ?>
 .c-flexslider-video-carousel .flexslider .flex-direction-nav a,
-.cc--custom-video-list .flexslider .flex-direction-nav a {
+.cc--custom-video-list .flexslider .flex-direction-nav a,
+.cc--custom-video-list-context .flexslider .flex-direction-nav a {
   background-color:<?php print $colors['vs_arrow_bg_color']; ?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['vs_arrow_color'])): ?>
 .c-flexslider-video-carousel .flex-direction-nav a:before,
-.cc--custom-video-list .flexslider .flex-direction-nav a:before {
+.cc--custom-video-list .flexslider .flex-direction-nav a:before,
+.cc--custom-video-list-context .flexslider .flex-direction-nav a:before {
   color:<?php print $colors['vs_arrow_color']; ?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['vs_arrow_bg_hover_color'])): ?>
 .c-flexslider-video-carousel .flex-direction-nav a:hover,
-.cc--custom-video-list .flexslider .flex-direction-nav a:hover {
+.cc--custom-video-list .flexslider .flex-direction-nav a:hover,
+.cc--custom-video-list-context .flexslider .flex-direction-nav a:hover {
   background-color:<?php print $colors['vs_arrow_bg_hover_color']; ?>;
 }
 <?php endif; ?>

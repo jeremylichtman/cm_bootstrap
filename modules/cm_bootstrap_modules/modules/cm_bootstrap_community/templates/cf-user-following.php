@@ -15,7 +15,7 @@
 <h1><?php echo $account->name ?></h1>
 <div class="col-lg-3 col-md-3 col-xs-4 user-profile-left-col no-padding">
   <?php //dpm($account); ?>
-  <?php 
+  <?php
     if (isset($account->picture->uri)) {
       $user_img_src = image_style_url('user_avatar_large', $account->picture->uri);
     }
@@ -25,7 +25,7 @@
   ?>
   <img class="user-avatar-large" src="<?php print $user_img_src; ?>"/>
   <div class="user-details">
-    <div class="btn btn-default">        
+    <div class="btn btn-default">
       <?php
       /*if ($account['user']->uid === $user['user']->uid) {
         echo "<a href='/user/{$user->uid}/edit'>Edit Profile</a>";
@@ -48,12 +48,14 @@
   <?php print render($cf_user_statistics_blocks['content']); ?>
   <div class="clearfix"></div>
 </div>
-<div class="col-lg-9 col-md-9 col-xs-12 user-profile-third-col">   
+<div class="col-lg-9 col-md-9 col-xs-12 user-profile-third-col">
   <h2><?php echo $account->name ?> Following</h2>
-  
+
   <ul class="user-grid">
     <?php
-    $flags = flag_get_user_flags('user');
+    //$flags = flag_get_user_flags('user');
+    $flags = flag_get_user_flags('user', null, $account->uid);
+
     if (!empty($flags['cf_follow_user'])) {
       foreach ($flags['cf_follow_user'] as $flag) {
         $flagged_user = user_load($flag->entity_id);

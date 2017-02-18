@@ -39,10 +39,10 @@ function cm_bootstrap_search_features_default_fe_block_settings() {
         'theme' => 'cm_admin',
         'weight' => 0,
       ),
-      'cm_bootstrap' => array(
+      'cmb_theme' => array(
         'region' => 'search_overlay',
         'status' => 1,
-        'theme' => 'cm_bootstrap',
+        'theme' => 'cmb_theme',
         'weight' => -57,
       ),
       'seven' => array(

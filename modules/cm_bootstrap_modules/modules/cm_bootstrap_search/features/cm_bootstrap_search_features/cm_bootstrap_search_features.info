@@ -1,7 +1,7 @@
 name = CM Bootstrap Search Features
 description = CM Bootstrap Search Configuration
 core = 7.x
-package = CM Bootstrap
+package = CM Bootstrap: Solr Search
 version = 7.x-2.0
 project = cm_bootstrap_search_features
 dependencies[] = cm_bootstrap_search

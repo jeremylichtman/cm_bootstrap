@@ -1,7 +1,7 @@
 name = CMB Search Producer Features
 description = Config for CMB Search Producer
 core = 7.x
-package = CM Bootstrap
+package = CM Bootstrap: Solr Search
 version = 7.x-1.0
 project = cmb_search_producer_features
 dependencies[] = entityreference

@@ -103,6 +103,7 @@ function cm_bootstrap_search_features_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'page' => 'page',
     'blog' => 'blog',
+    'cmbs_event' => 'cmbs_event',
     'genre' => 'genre',
     'cmbs_producer' => 'cmbs_producer',
     'cm_project' => 'cm_project',

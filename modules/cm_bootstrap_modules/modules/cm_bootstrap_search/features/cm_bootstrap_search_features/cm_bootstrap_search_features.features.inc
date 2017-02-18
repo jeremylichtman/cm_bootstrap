@@ -31,7 +31,8 @@ function cm_bootstrap_search_features_default_search_api_index() {
           "partner",
           "cm_project",
           "cm_show",
-          "cmbs_producer"
+          "cmbs_producer",
+          "cmbs_event"
         ]
       },
       "index_directly" : 1,

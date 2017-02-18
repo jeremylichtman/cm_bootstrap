@@ -455,6 +455,11 @@
           $('.view-solr-search .views-exposed-form #edit-node-type-cm-show').prop('checked', true);
           $('.view-solr-search .views-exposed-form #edit-node-type-genre').prop('checked', true);
           $('.view-solr-search .views-exposed-form #edit-node-type-cmbs-producer').prop('checked', true);
+
+          // "Events"
+          if ($('.view-solr-search .views-exposed-form #edit-node-type-cmbs-event').length) {
+            $('.view-solr-search .views-exposed-form #edit-node-type-cmbs-event').prop('checked', true);
+          }
         }
       });
     }

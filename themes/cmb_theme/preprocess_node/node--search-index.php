@@ -156,7 +156,7 @@ function _node__search_index(&$variables) {
             );
 
             foreach($paragraphs as $paragraph) {
-              $paragraph = reset($paragraph);             
+              $paragraph = reset($paragraph);
 
               if (in_array($paragraph->bundle, $paragraph_types)) {
                 switch($paragraph->bundle) {
@@ -256,6 +256,37 @@ function _node__search_index(&$variables) {
       );
 
       break;
+
+      case 'cmbs_event':
+        $description = '';
+        if (isset($node->field_cmbs_event_descr[LANGUAGE_NONE][0]['value'])) {
+          $description = $node->field_cmbs_event_descr[LANGUAGE_NONE][0]['value'];
+          $description = strip_tags($description);
+          $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+        }
+        // Start Date
+        $start_date = FALSE;
+        if (isset($node->field_cmbs_event_datetime[LANGUAGE_NONE])) {
+          $start_date = date('D, F n, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value']));
+        }
+        // End Date
+        $end_date = FALSE;
+        if (isset($node->field_cmbs_event_datetime[LANGUAGE_NONE])) {
+          $end_date = date('D, F n, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value2']));
+        }
+        // Civi link
+        $civi_id = $node->field_cmbs_event_civi_id[LANGUAGE_NONE][0]['value'];
+        $civi_link = '/civicrm/event/info?id=' . $civi_id . '&reset=1';
+        $search_result = array(
+          'nid' => $node->nid,
+          'title' => $node->title,
+          'description' => $description,
+          'start_date' => $start_date,
+          'end_date' => $end_date,
+          'civi_link' => $civi_link,
+          'type' => 'Event',
+        );
+        break;
     }
 
     $variables['search_result'] = $search_result;

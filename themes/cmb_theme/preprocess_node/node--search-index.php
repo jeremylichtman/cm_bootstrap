@@ -267,12 +267,12 @@ function _node__search_index(&$variables) {
         // Start Date
         $start_date = FALSE;
         if (isset($node->field_cmbs_event_datetime[LANGUAGE_NONE])) {
-          $start_date = date('D, F n, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value']));
+          $start_date = date('D, F j, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value']));
         }
         // End Date
         $end_date = FALSE;
         if (isset($node->field_cmbs_event_datetime[LANGUAGE_NONE])) {
-          $end_date = date('D, F n, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value2']));
+          $end_date = date('D, F j, Y g:ia', strtotime($node->field_cmbs_event_datetime[LANGUAGE_NONE][0]['value2']));
         }
         // Civi link
         $civi_id = $node->field_cmbs_event_civi_id[LANGUAGE_NONE][0]['value'];

@@ -96,15 +96,15 @@ function cmb_search_event_create_node($event) {
 
   // Start Date: Convert datetime to UTC
   if ($event->start_date != 'null') {
-    $start_date = cmb_search_event_convert_datetime_to_ut($event->start_date);
-    $node->field_cmbs_event_date[$node->language][0]['value'] = $start_date;
+    //$start_date = cmb_search_event_convert_datetime_to_ut($event->start_date);
+    //$node->field_cmbs_event_date[$node->language][0]['value'] = $start_date;
     $node->field_cmbs_event_datetime[$node->language][0]['value'] = $event->start_date;
   }
 
   // End Date: Convert datetime to UTC
   if ($event->end_date != 'null') {
-    $end_date = cmb_search_event_convert_datetime_to_ut($event->end_date);
-    $node->field_cmbs_event_date[$node->language][0]['value2'] = $end_date;
+    //$end_date = cmb_search_event_convert_datetime_to_ut($event->end_date);
+    //$node->field_cmbs_event_date[$node->language][0]['value2'] = $end_date;
     $node->field_cmbs_event_datetime[$node->language][0]['value2'] = $event->end_date;
   }
 

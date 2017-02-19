@@ -127,11 +127,12 @@ function cm_bootstrap_modules_save_and_add($form, &$form_state){
  * On node save, we post to facebook's open graph so it crawls our page.
  * This is good for updating content, as well as creating new content.
  */
-function cm_bootstrap_modules_node_presave($node) {
+/*function cm_bootstrap_modules_node_presave($node) {
   $url = $GLOBALS['base_url'] . '/node/' . $node->nid;
   $fb = new CmFacebookDebugger();
   $fb->reload($url);
 }
+*/
 
 /**
  * Custom class for posting to Facebook open graph.

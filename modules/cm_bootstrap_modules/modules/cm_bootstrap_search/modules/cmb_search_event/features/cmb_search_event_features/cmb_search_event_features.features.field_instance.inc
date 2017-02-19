@@ -251,7 +251,6 @@ function cmb_search_event_features_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Civi Event ID');
-  t('Date');
   t('Datetime');
   t('Description');
   t('Summary');

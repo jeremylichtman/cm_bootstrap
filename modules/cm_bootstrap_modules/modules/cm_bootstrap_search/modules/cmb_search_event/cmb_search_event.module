@@ -69,6 +69,23 @@ function cmb_search_event_civicrm_post($op, $objectName, $objectId, &$objectRef)
   }
 }
 
+/**
+ * Implements hook_cronapi($op, $job = NULL).
+ */
+function cmb_search_event_cronapi($op, $job = NULL) {
+  $items = array();
+
+  $items['cmb_search_event_events_unpublish'] = array(
+    'description' => 'Unpublish old events.',
+    'rule' => '0 */6 * * *',
+    'file' => 'inc/cmb_search_event.events_unpublish.inc',
+    'callback' => '_cmb_search_event_events_unpublish',
+    'weight' => 12,
+  );
+
+  return $items;
+}
+
 // ** START: BATCH **
 
 /**
@@ -79,7 +96,7 @@ function cmb_search_event_form($form, &$form_state) {
 		'#type' => 'item',
 		'#markup' => 'Clicking this button will run a batch that syncs Civi Events to CMBS Event nodes',
 	);
-  
+
   $form['cmb_search_eventr'] = array(
     '#type' => 'submit',
     '#value' => t('Submit'),

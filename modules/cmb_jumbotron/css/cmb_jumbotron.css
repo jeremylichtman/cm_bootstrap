@@ -1,0 +1,92 @@
+@media screen {
+  /* line 2, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  /* line 8, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron .flexslider {
+    margin: 0;
+  }
+  /* line 13, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li {
+    position: relative;
+  }
+  /* line 16, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li .overlay-wrapper {
+    position: absolute;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  /* line 24, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li .overlay-content {
+    max-width: 1140px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  /* line 28, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li .overlay-content h2 {
+    font-size: 4em;
+  }
+  /* line 31, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li .overlay-content .short-description {
+    font-size: 1.5em;
+  }
+  /* line 34, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron ul.slides li .overlay-content h2, .cc-cmb-jumbotron ul.slides li .overlay-content .short-description {
+    color: #FFFFFF;
+  }
+
+  /*.cc-cmb-jumbotron {
+    width:100% !important;
+    max-width:100% !important;
+    padding:0 !important;
+
+    .flexslider {
+      margin:0;
+    }
+    .slide {
+      min-height: 50em;
+      position: relative;
+    }
+
+    .overlay-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0, .3);
+      min-height: 50em;
+      width: 100%;
+    }
+
+    .overlay-content {
+      padding:3em;
+      h2 {
+        color:#FFF;
+      }
+      .short-description {
+        color:#FFF;
+        font-size:1em;
+      }
+    }
+
+    .image-bg {
+      position: relative;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      background-size: cover !important;
+      width: 100%;
+      -webkit-transition: 250ms ease-out;
+      -moz-transition: 250ms ease-out;
+      -o-transition: 250ms ease-out;
+      transition: 250ms ease-out;
+      //height: 100vh;
+      //min-height: 100vh;
+      overflow: hidden;
+    }
+  }*/
+}

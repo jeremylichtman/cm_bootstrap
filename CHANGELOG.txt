@@ -1,3 +1,7 @@
+Tag: tags/2017-02-28
+---------------------
+- p-143: Isolated Video/Show in Paragraphs, i.e., added Video Content Component
+
 Tag: tags/2017-02-19-0
 ---------------------
 - Updated 'tz_handling' => 'date' for field: field_cmbs_event_datetime.

@@ -2,7 +2,7 @@
   Drupal.behaviors.cc_slider__flexslider = {
     attach: function (context, settings) {
       $(window).load(function() {
-        $('.flexslider').flexslider({
+        $('.content-component--slider .flexslider').flexslider({
           animation: "slide",
           controlNav: true,
           slideshow: false,

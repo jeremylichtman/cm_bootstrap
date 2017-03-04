@@ -33,10 +33,13 @@ function cc_slider_preprocess_entity(&$variables) {
     	  break;
 
       case 'full':
-        // @todo will this get aggregated properly?
+        // Attach module CSS
         drupal_add_css(drupal_get_path('module', 'cc_slider') . '/css/cc_slider.css');
-        // @todo move flexloader to a library
-        drupal_add_js(drupal_get_path('module', 'cc_slider') . '/js/jquery.flexloader.js');
+
+        // Attach Flexloader
+        libraries_load('flexloader');
+
+        // Attach module JS
         drupal_add_js(drupal_get_path('module', 'cc_slider') . '/js/cc_slider.js');
 
         // Get content list items

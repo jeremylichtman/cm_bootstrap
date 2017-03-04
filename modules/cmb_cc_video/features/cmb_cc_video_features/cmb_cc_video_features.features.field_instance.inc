@@ -20,7 +20,7 @@ function cmb_cc_video_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'default',
+          'file_view_mode' => 'full',
         ),
         'type' => 'file_rendered',
         'weight' => 0,

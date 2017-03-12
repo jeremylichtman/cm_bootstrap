@@ -1,6 +1,6 @@
 <?php //dpm($node); ?>
 
-<?php  
+<?php
 $content_types = array(
   'cm_show',
   'cm_project',
@@ -15,7 +15,7 @@ $query = new EntityFieldQuery();
 
 $query->fieldCondition('field_partner', 'target_id', $node->nid, '=');
 
-$result = $query->execute();    
+$result = $query->execute();
 if (isset($result['node'])) {
   $nids = array_keys($result['node']);
   $nodes = entity_load('node', $nids);
@@ -23,7 +23,7 @@ if (isset($result['node'])) {
   foreach($nodes as $q_node) {
     if ($q_node->type == 'cm_show') {
       //dpm($q_node);
-      $show_assoc_partner_array[] = $q_node;     
+      $show_assoc_partner_array[] = $q_node;
     }
     // Series
     if ($q_node->type == 'cm_project') {
@@ -37,7 +37,7 @@ if (isset($result['node'])) {
         //$cm_s_query->range(0, 25);
         $cm_s_query->propertyOrderBy('created', 'ASC');
         $cm_s_query->fieldCondition('og_group_ref', 'target_id', $q_node->nid, '=');
-      $cm_s_result = $cm_s_query->execute();    
+      $cm_s_result = $cm_s_query->execute();
       if (isset($cm_s_result['node'])) {
         $cm_s_nids = array_keys($cm_s_result['node']);
         $cm_s_nodes = entity_load('node', $cm_s_nids);
@@ -62,20 +62,20 @@ else if (isset($show_assoc_partner_array) && empty($entire_series_shows_node_arr
 }
 //dpm($show_nodes);
 //
-foreach($show_nodes as $show_node) {  
+foreach($show_nodes as $show_node) {
   // Production date
   if (isset($show_node->field_show_production_date['und'][0]['value'])) {
     $timestamp = strtotime($show_node->field_show_production_date['und'][0]['value']);
   }
   else {
     $timestamp = $show_node->created;
-  }      
-  
+  }
+
   // Build items data array
   $items[$show_node->nid] = array(
     'nid' => $show_node->nid,
     'node' => $show_node,
-    'title' => $show_node->title,      
+    'title' => $show_node->title,
     //'timestamp' => $show_node->created,
     //'timestamp' => strtotime($show_node->field_show_production_date[LANGUAGE_NONE][0]['value']),
     'timestamp' => $timestamp,
@@ -94,14 +94,14 @@ $feature_video = $feature_video['node'];
 // Series meta data
 if (isset($feature_video->og_group_ref['und'])) {
   $series_nid = $feature_video->og_group_ref['und'][0]['target_id'];
-  $series_title = db_query("SELECT title FROM {node} WHERE nid = :nid", array(':nid' => $series_nid))->fetchField();  
+  $series_title = db_query("SELECT title FROM {node} WHERE nid = :nid", array(':nid' => $series_nid))->fetchField();
 }
 else {
   $series_nid = '';
   $series_title = '';
 }
 // Get iframe data
-if (isset($feature_video->field_show_vod['und'])) {        
+if (isset($feature_video->field_show_vod['und'])) {
   switch($feature_video->field_show_vod['und'][0]['filemime']) {
     case 'video/cloudcast':
       $iframe_class = 'media-cloudcast-player';
@@ -125,7 +125,7 @@ if (isset($feature_video->field_show_vod['und'])) {
       // Build iframe src.
       $iframe_src = 'http://player.vimeo.com/video/' . $iframe_src_param_id . '?color=" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""';
       break;
-    case 'video/youtube':  
+    case 'video/youtube':
       $iframe_class = 'media-youtube-player';
       $iframe_src_param_video = $feature_video->field_show_vod['und'][0]['filename'];
       // Get param 'id'.
@@ -140,7 +140,7 @@ if (isset($feature_video->field_show_vod['und'])) {
 }
 /**
  * Custom sort function, sorts by node->created)
- */ 
+ */
 function partner_featured_video_order_by_timestamp($a, $b) {
   //dpm($a);
   return $a['timestamp'] < $b['timestamp'];
@@ -150,7 +150,7 @@ function partner_featured_video_order_by_timestamp($a, $b) {
   <?php if (isset($iframe_src)): ?>
     <?php //dpm($iframe_src); ?>
     <section class="col-sm-8">
-      <div class="video-container">          
+      <div class="cmb--responsive-video-wrapper">          
         <iframe class="<?php print $iframe_class; ?>" width="640" height="390" src="<?php print $iframe_src; ?>" frameborder="0" allowfullscreen=""></iframe>
       </div>
       <div class="show-meta">
@@ -169,7 +169,7 @@ function partner_featured_video_order_by_timestamp($a, $b) {
       </div>
     </section>
   <?php endif; ?>
-  <aside class="col-sm-4" role="complementary">        
+  <aside class="col-sm-4" role="complementary">
     <?php //dpm($node); ?>
     <?php //dpm($content); ?>
     <?php print render($content['field_partner_logo_large']); ?>

@@ -1,3 +1,7 @@
+Tag: tags/2017-03-11
+---------------------
+- p-148: Video on Partner Pages Collapsed
+
 Tag: tags/2017-03-04
 ---------------------
 - Fixed bug where CC Slider would break other flexsliders, if Custom Video List CC was also on the same page.

@@ -1,3 +1,7 @@
+Tag: tags/2017-03-15
+---------------------
+- p-147: RSS Feed Returning Invalid in Mailchimp. Blank space in cmb_blog.module file.
+
 Tag: tags/2017-03-11
 ---------------------
 - p-148: Video on Partner Pages Collapsed

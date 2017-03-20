@@ -1,3 +1,7 @@
+Tag: tags/2017-03-20
+---------------------
+- p-142: Added meetup font icon
+
 Tag: tags/2017-03-15
 ---------------------
 - p-147: RSS Feed Returning Invalid in Mailchimp. Blank space in cmb_blog.module file.

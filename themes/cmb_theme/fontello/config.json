@@ -341,6 +341,12 @@
       "css": "search",
       "code": 59447,
       "src": "fontawesome"
+    },
+    {
+      "uid": "322a3317bf081dd6a78d5d6a620e1dd5",
+      "css": "meetup",
+      "code": 62176,
+      "src": "fontawesome"
     }
   ]
 }

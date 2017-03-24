@@ -11,6 +11,110 @@ function cmb_jumbotron_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron-field_cc_cmbj_button_bg_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron-field_cc_cmbj_button_bg_color'] = array(
+    'bundle' => 'cmb_jumbotron',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => '000000',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbj_button_bg_color',
+    'label' => 'Button Background Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron-field_cc_cmbj_button_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron-field_cc_cmbj_button_color'] = array(
+    'bundle' => 'cmb_jumbotron',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbj_button_color',
+    'label' => 'Button Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-cmb_jumbotron-field_cc_cmbj_items'.
   $field_instances['paragraphs_item-cmb_jumbotron-field_cc_cmbj_items'] = array(
     'bundle' => 'cmb_jumbotron',
@@ -89,7 +193,92 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
-      'weight' => 0,
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_cta_button'.
+  $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_cta_button'] = array(
+    'bundle' => 'cmb_jumbotron_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'link_default',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'link_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbji_cta_button',
+    'label' => 'Call To Action',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'advanced_link',
+      'settings' => array(
+        'default_titles' => '',
+        'urls_allowed' => 'both',
+        'urls_filter' => '',
+        'urls_search' => 'contains',
+      ),
+      'type' => 'advanced_link',
+      'weight' => 5,
     ),
   );
 
@@ -123,9 +312,24 @@ function cmb_jumbotron_features_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'image',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -187,6 +391,140 @@ function cmb_jumbotron_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_overlay_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_overlay_color'] = array(
+    'bundle' => 'cmb_jumbotron_item',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => '000000',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbji_overlay_color',
+    'label' => 'Overlay Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_overlay_opacity'.
+  $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_overlay_opacity'] = array(
+    'bundle' => 'cmb_jumbotron_item',
+    'default_value' => array(
+      0 => array(
+        'value' => '.3',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbji_overlay_opacity',
+    'label' => 'Overlay Opacity',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_short_description'.
   $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_short_description'] = array(
     'bundle' => 'cmb_jumbotron_item',
@@ -215,9 +553,31 @@ function cmb_jumbotron_features_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'smart_trim',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -272,8 +632,30 @@ function cmb_jumbotron_features_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
     ),
@@ -302,8 +684,13 @@ function cmb_jumbotron_features_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Button Background Color');
+  t('Button Color');
+  t('Call To Action');
   t('Image');
   t('Items');
+  t('Overlay Color');
+  t('Overlay Opacity');
   t('Short Description');
   t('Title');
 

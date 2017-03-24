@@ -4,3 +4,4 @@ package = CM Bootstrap: Content Components
 core = 7.x
 dependencies[] = paragraphs
 dependencies[] = cmb_cc_block_reference_features
+dependencies[] = cc_helper

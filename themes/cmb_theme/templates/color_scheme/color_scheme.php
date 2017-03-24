@@ -99,17 +99,20 @@ ul.front-pg-slider-items li span.title {
 <?php endif; ?>
 -->
 <?php if (isset($colors['jumbotron_arrow_color'])): ?>
-#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a {
+#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a,
+.cc-cmb-jumbotron .flex-direction-nav a {
   color: <?php print $colors['jumbotron_arrow_color'];?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['jumbotron_arrow_bg_color'])): ?>
-#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a {
+#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a,
+.cc-cmb-jumbotron .flex-direction-nav a {
   background-color: <?php print $colors['jumbotron_arrow_bg_color'];?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['jumbotron_arrow_hover_color'])): ?>
-#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a:hover {
+#block-cm-bootstrap-jumbotron-cmb-jumbotron .flex-direction-nav a:hover,
+.cc-cmb-jumbotron .flex-direction-nav a:hover {
   background-color: <?php print $colors['jumbotron_arrow_hover_color']; ?>;
 }
 <?php endif; ?>

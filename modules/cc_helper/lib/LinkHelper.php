@@ -12,9 +12,16 @@ class LinkHelper {
         $target = $entity->{$field_name}[LANGUAGE_NONE][0]['attributes']['target'];
       }
 
+      // Get title
+      $title = FALSE;
+      if (isset($entity->{$field_name}[LANGUAGE_NONE][0]['title'])) {
+        $title = $entity->{$field_name}[LANGUAGE_NONE][0]['title'];
+      }
+
       $link = [
         'href' => $entity->{$field_name}[LANGUAGE_NONE][0]['url'],
         'target' => $target,
+        'title' => $title,
       ];
     }
 

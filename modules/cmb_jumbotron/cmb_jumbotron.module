@@ -5,6 +5,7 @@ require_once(drupal_get_path('module', 'cc_helper') . '/lib/ImageHelper.php');
 require_once(drupal_get_path('module', 'cc_helper') . '/lib/FieldHelper.php');
 require_once(drupal_get_path('module', 'cc_helper') . '/lib/ColorHelper.php');
 require_once(drupal_get_path('module', 'cc_helper') . '/lib/ParagraphHelper.php');
+require_once(drupal_get_path('module', 'cc_helper') . '/lib/LinkHelper.php');
 
 /**
  * Implements hook_theme($existing, $type, $theme, $path).
@@ -70,12 +71,11 @@ function cmb_jumbotron_preprocess_entity(&$variables) {
               'id' => $p_item->item_id,
               'title' => \ContentComponents\Helper\FieldHelper::getValue($p_item, 'field_cc_cmbji_title'),
               'short_description' => \ContentComponents\Helper\FieldHelper::getValue($p_item, 'field_cc_cmbji_short_description'),
-              'image' => \ContentComponents\Helper\ImageHelper::getAttributes($p_item, 'field_cc_cmbji_image', 'cmb_jumbotron', 'thumbnail'),
+              'image' => \ContentComponents\Helper\ImageHelper::getAttributes($p_item, 'field_cc_cmbji_image', 'cmb_jumbotron_slide', 'thumbnail'),
               'placeholder_img' => $placeholder_img,
-              /*'hover_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($p_item, 'field_cc_tiles_item_hover_color', 1),
-              'link' => \ContentComponents\Helper\FieldHelper::getPathAlias($p_item, 'field_cc_tiles_item_er', 'node'),
-              'overlay_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($p_item, 'field_cc_tiles_item_overlay_colr', 1),
-              'overlay_opacity' => $overlay_opacity,*/
+              'overlay_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($p_item, 'field_cc_cmbji_overlay_color', 1),
+              'overlay_opacity' => \ContentComponents\Helper\FieldHelper::getValue($p_item, 'field_cc_cmbji_overlay_opacity'),
+              'link' => \ContentComponents\Helper\LinkHelper::getUrl($p_item, 'field_cc_cmbji_cta_button'),
             ];
           }
         }
@@ -83,6 +83,8 @@ function cmb_jumbotron_preprocess_entity(&$variables) {
         $data = [
           'id' => $paragraph->item_id,
           'items' => $field_cc_cmbj_items,
+          'cta_bg_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cc_cmbj_button_bg_color', 0),
+          'cta_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cc_cmbj_button_color', 0),
         ];
         break;
   	}

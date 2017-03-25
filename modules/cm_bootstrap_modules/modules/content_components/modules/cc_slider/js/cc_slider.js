@@ -19,6 +19,7 @@
           animation: "slide",
           controlNav: false,
           slideshow: false,
+          smoothHeight: true,
           sync: '#flexslider-thumbnails',
           start: function(slider) {
             $.flexloader(slider);

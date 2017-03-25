@@ -22,47 +22,66 @@
     width: 100%;
     height: auto;
   }
+  /* line 29, ../scss/cc_slider.scss */
+  .content-component--slider .text-wrapper {
+    padding: 0 1em;
+  }
   /* line 31, ../scss/cc_slider.scss */
+  .content-component--slider .text-wrapper h2, .content-component--slider .text-wrapper h3, .content-component--slider .text-wrapper h4 {
+    padding: 0 0 .5em 0;
+    text-align: inherit;
+  }
+  /* line 39, ../scss/cc_slider.scss */
   .content-component--slider #flexslider-thumbnails ul li {
     border-top: 3px solid #FFFFFF;
     border-right: 3px solid #FFFFFF;
     cursor: pointer;
     cursor: hand;
   }
-  /* line 41, ../scss/cc_slider.scss */
+  /* line 49, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav a {
     padding: 2px 8px;
     right: 0px;
     text-shadow: none !important;
     color: transparent;
   }
-  /* line 47, ../scss/cc_slider.scss */
+  /* line 55, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-prev, .content-component--slider .flex-direction-nav .flex-next {
     opacity: 1 !important;
   }
-  /* line 50, ../scss/cc_slider.scss */
+  /* line 58, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-prev,
   .content-component--slider .flex-direction-nav .flex-prev:hover {
     left: 10px !important;
   }
-  /* line 54, ../scss/cc_slider.scss */
+  /* line 62, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-next {
     right: 10px !important;
   }
-  /* line 58, ../scss/cc_slider.scss */
+  /* line 66, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-prev:before,
   .content-component--slider .flex-direction-nav .flex-next:before {
     color: #FFF;
     font-size: 2em;
   }
-  /* line 63, ../scss/cc_slider.scss */
+  /* line 71, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-prev:before {
     font-family: "fontello";
     content: '\e814';
   }
-  /* line 67, ../scss/cc_slider.scss */
+  /* line 75, ../scss/cc_slider.scss */
   .content-component--slider .flex-direction-nav .flex-next:before {
     font-family: "fontello";
     content: '\e815';
+  }
+}
+@media screen and (min-width: 767px) {
+  /* line 85, ../scss/cc_slider.scss */
+  .content-component--slider .media-column {
+    float: right;
+  }
+  /* line 88, ../scss/cc_slider.scss */
+  .content-component--slider .text-column {
+    float: left;
   }
 }

@@ -26,6 +26,14 @@
       }
     }
 
+    .text-wrapper {
+      padding: 0 1em;
+      h2, h3, h4 {
+        padding: 0 0 .5em 0;
+        text-align: inherit;
+      }
+    }
+
     #flexslider-thumbnails {
       ul {
         li {
@@ -68,6 +76,17 @@
         font-family: "fontello";
         content: '\e815';
       }
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .content-component--slider {
+    .media-column {
+      float:right;
+    }
+    .text-column {
+      float:left;
     }
   }
 }

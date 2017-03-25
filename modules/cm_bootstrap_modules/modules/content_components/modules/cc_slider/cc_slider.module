@@ -52,24 +52,84 @@ function cc_slider_preprocess_entity(&$variables) {
         $placeholder_img = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1140'%20height%3D'544'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
 
         foreach($s_item_array as $s_item) {
-          //$s_item = array_shift(array_values($s_item));
           $s_item = reset($s_item);
-          // Image
-          $img_src = FALSE;
-          if (isset($s_item->field_cc_s_item_image[LANGUAGE_NONE])) {
-            $img_src = image_style_url('cc_slider_image', $s_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
 
-            // Thumbnail
-            $thumbnail = image_style_url('medium', $s_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
+          // Media
+          // Build the URI.
+          $video = FALSE;
+          $img_src = FALSE;
+          if (isset($s_item->field_cc_s_item_media[LANGUAGE_NONE])) {
+            // Image
+            if ($s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['type'] == 'image') {
+              $img_uri = $s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['uri'];
+              $img_src = image_style_url('cc_slider_image', $img_uri);
+
+              $grid_classes_1 = 'col-md-12';
+              $grid_classes_2 = 'col-md-12';
+            }
+
+            // Video only.
+            else if ($s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['type'] == 'video') {
+              $wrapper = file_stream_wrapper_get_instance_by_uri($s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['uri']);
+              $parts = $wrapper->get_parameters();
+              $video_id = check_plain($parts['v']);
+
+              // Make the file object available.
+              $file_object = file_uri_to_object($s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['uri']);
+
+              // Protocol
+              $protocol = '';
+
+              // URL base, @todo make this conditonal based on video type.
+              switch ($s_item->field_cc_s_item_media[LANGUAGE_NONE][0]['filemime']) {
+                case 'video/youtube':
+                  $url_base = 'youtube.com';
+                  break;
+              }
+
+              // Query
+              $query = '';
+
+              // Get thumbnail
+              $video_thumbnail_uri = $wrapper->getLocalThumbnailPath();
+              $video_thumbnail = image_style_url('cc_slider_image_thumbnail', $video_thumbnail_uri);
+
+              $video = array(
+                'url' => url($protocol . '//www.' . $url_base . '/embed/' . $video_id, array('query' => $query, 'external' => TRUE)),
+                'thumbnail' => $video_thumbnail,
+              );
+
+              $grid_classes_1 = 'col-md-12';
+              $grid_classes_2 = 'col-md-12';
+
+              //dpm($video_url);
+            }
+          }
+
+          // Thumbnail
+          if ($video) {
+            $thumbnail = $video['thumbnail'];
+          }
+          else {
+            $thumbnail = image_style_url('cc_slider_image_thumbnail', $img_uri);
+          }
+
+          // Text
+          $text = FALSE;
+          if (isset($s_item->field_cc_s_item_text[LANGUAGE_NONE])) {
+            $text = $s_item->field_cc_s_item_text[LANGUAGE_NONE][0]['value'];
+            $grid_classes_1 = 'col-sm-12 col-md-5';
+            $grid_classes_2 = 'col-sm-12 col-md-7';
           }
 
           $s_items[] = array(
             'placeholder_img' => $placeholder_img,
             'data_original' => $img_src,
-          );
-
-          $s_items_thumbnails[] = array(
             'thumbnail' => $thumbnail,
+            'video' => $video,
+            'text' => $text,
+            'grid_classes_1' => $grid_classes_1,
+            'grid_classes_2' => $grid_classes_2,
           );
         }
 
@@ -89,7 +149,6 @@ function cc_slider_preprocess_entity(&$variables) {
           'title' => $title,
           'thumbnails' => $thumbnails,
           's_items' => $s_items,
-          's_items_thumbnails' => $s_items_thumbnails,
         );
 
         //dpm($data);

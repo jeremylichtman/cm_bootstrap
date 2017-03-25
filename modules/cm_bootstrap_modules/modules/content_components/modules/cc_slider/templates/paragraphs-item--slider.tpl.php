@@ -10,8 +10,28 @@
       <div id="flexslider-slider" class="flexslider">
         <ul class="clean-ul-list slides">
           <?php foreach($slider['s_items'] as $item): ?>
-            <li>
-              <img src="<?php print $item['placeholder_img']; ?>" data-original="<?php print $item['data_original']; ?>"/>
+            <li class="row">
+
+              <div class="<?php print $item['grid_classes_2']; ?> no-padding media-column">
+                <?php if ($item['video']): ?>
+                  <div class="cmb--responsive-video-wrapper">
+                    <iframe src="<?php print $item['video']['url'];?>" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($item['data_original'] && $item['video'] == FALSE): ?>
+                  <img src="<?php print $item['placeholder_img']; ?>" data-original="<?php print $item['data_original']; ?>"/>
+                <?php endif; ?>
+              </div>
+
+              <?php if ($item['text']): ?>
+                <div class="<?php print $item['grid_classes_1']; ?> text-column">
+                  <div class="text-wrapper">
+                    <?php print $item['text']; ?>
+                  </div>
+                </div>
+              <?php endif; ?>
+
             </li>
           <?php endforeach; ?>
         </ul>
@@ -20,7 +40,7 @@
       <?php if ($slider['thumbnails']): ?>
         <div id="flexslider-thumbnails" class="flexslider">
           <ul class="clean-ul-list slides">
-            <?php foreach($slider['s_items_thumbnails'] as $thumbnail_item): ?>
+            <?php foreach($slider['s_items'] as $thumbnail_item): ?>
               <li>
                 <img src="<?php print $thumbnail_item['thumbnail']; ?>"/>
               </li>

@@ -164,56 +164,114 @@ function cc_slider_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'paragraphs_item-slider_item-field_cc_s_item_image'.
-  $field_instances['paragraphs_item-slider_item-field_cc_s_item_image'] = array(
+  // 'paragraphs_item-slider_item-field_cc_s_item_media'.
+  $field_instances['paragraphs_item-slider_item-field_cc_s_item_media'] = array(
     'bundle' => 'slider_item',
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 1,
       ),
       'paragraphs_editor_preview' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'preview',
+          'file_view_mode' => 'file_styles_thumbnail',
         ),
         'type' => 'file_rendered',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'paragraphs_item',
-    'field_name' => 'field_cc_s_item_image',
-    'label' => 'Image',
+    'field_name' => 'field_cc_s_item_media',
+    'label' => 'Media',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
+      'description_field' => 0,
       'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
+      'file_extensions' => '',
       'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
+        'allowed_schemes' => array(
+          'bliptv' => 0,
+          'private' => 0,
+          'public' => 'public',
+          'vimeo' => 'vimeo',
+          'youtube' => 'youtube',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 'video',
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 'media_internet',
+          'upload' => 'upload',
+        ),
       ),
-      'type' => 'image_image',
+      'type' => 'media_generic',
       'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-slider_item-field_cc_s_item_text'.
+  $field_instances['paragraphs_item-slider_item-field_cc_s_item_text'] = array(
+    'bundle' => 'slider_item',
+    'default_value' => array(
+      0 => array(
+        'value' => '<p>Replace this text.</p>
+',
+        'format' => 'cc_text_paragraph',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If left blank, the video or image will go full width.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_s_item_text',
+    'label' => 'Text',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 1,
     ),
   );
 
@@ -221,8 +279,10 @@ function cc_slider_features_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Check this box to display thumbnails below the slider.');
   t('Display Thumbnails');
-  t('Image');
+  t('If left blank, the video or image will go full width.');
+  t('Media');
   t('Slider Items');
+  t('Text');
   t('Title');
 
   return $field_instances;

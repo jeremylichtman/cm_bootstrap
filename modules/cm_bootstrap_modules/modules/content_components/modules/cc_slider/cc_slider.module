@@ -48,21 +48,8 @@ function cc_slider_preprocess_entity(&$variables) {
           $s_item_array[] = entity_load('paragraphs_item', array($s_item_id));
         }
 
-        // Get first item
-        $first_item = array_shift($s_item_array);
-        // Paragraphs is weird, so reduce array to just paragraph object.
-        $first_item = array_shift($first_item);
-
-        $placeholder_img = FALSE;
-        if (isset($first_item->field_cc_s_item_image[LANGUAGE_NONE])) {
-          $placeholder_img = image_style_url('cc_slider_image', $first_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
-        }
-
-        // Rebuild first item to be added to array later
-        $first_item_array_element = array(
-          'placeholder_img' => $placeholder_img,
-          'data_original' => $placeholder_img,
-        );
+        // Placeholder image
+        $placeholder_img = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1140'%20height%3D'544'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
 
         foreach($s_item_array as $s_item) {
           //$s_item = array_shift(array_values($s_item));
@@ -71,21 +58,40 @@ function cc_slider_preprocess_entity(&$variables) {
           $img_src = FALSE;
           if (isset($s_item->field_cc_s_item_image[LANGUAGE_NONE])) {
             $img_src = image_style_url('cc_slider_image', $s_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
+
+            // Thumbnail
+            $thumbnail = image_style_url('medium', $s_item->field_cc_s_item_image[LANGUAGE_NONE][0]['uri']);
           }
 
           $s_items[] = array(
             'placeholder_img' => $placeholder_img,
             'data_original' => $img_src,
           );
+
+          $s_items_thumbnails[] = array(
+            'thumbnail' => $thumbnail,
+          );
         }
 
-        // Add back first item to array
-        array_unshift($s_items, $first_item_array_element);
+        // Title
+        $title = FALSE;
+        if (isset($paragraph->field_cc_s_title[LANGUAGE_NONE])) {
+          $title = $paragraph->field_cc_s_title[LANGUAGE_NONE][0]['value'];
+        }
+
+        // Thumbnail toggle
+        $thumbnails = FALSE;
+        if (isset($paragraph->field_cc_s_thumbnails_toggle[LANGUAGE_NONE])) {
+          $thumbnails = $paragraph->field_cc_s_thumbnails_toggle[LANGUAGE_NONE][0]['value'];
+        }
 
         $data = array(
-          'title' => $paragraph->field_cc_s_title[LANGUAGE_NONE][0]['value'],
+          'title' => $title,
+          'thumbnails' => $thumbnails,
           's_items' => $s_items,
+          's_items_thumbnails' => $s_items_thumbnails,
         );
+
         //dpm($data);
 
         break;

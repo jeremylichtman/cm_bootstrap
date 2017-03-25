@@ -1,11 +1,25 @@
 (function($) {
   Drupal.behaviors.cc_slider__flexslider = {
     attach: function (context, settings) {
+
       $(window).load(function() {
-        $('.content-component--slider .flexslider').flexslider({
+
+        $('#flexslider-thumbnails').flexslider({
           animation: "slide",
-          controlNav: true,
+          controlNav: false,
+          animationLoop: false,
           slideshow: false,
+          itemWidth: $(window).width() / 4 - 24,
+          minItems: 4,
+          maxItems: 4,
+          asNavFor: '#flexslider-slider',
+        });
+
+        $('#flexslider-slider').flexslider({
+          animation: "slide",
+          controlNav: false,
+          slideshow: false,
+          sync: '#flexslider-thumbnails',
           start: function(slider) {
             $.flexloader(slider);
           },
@@ -13,7 +27,9 @@
             $.flexloader(slider);
           }
         });
+
       });
+
     }
   };
 })(jQuery);

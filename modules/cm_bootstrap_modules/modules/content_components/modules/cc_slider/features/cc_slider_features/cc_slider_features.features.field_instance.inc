@@ -10,7 +10,7 @@
 function cc_slider_features_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-slider-field_cc_s_items'
+  // Exported field_instance: 'paragraphs_item-slider-field_cc_s_items'.
   $field_instances['paragraphs_item-slider-field_cc_s_items'] = array(
     'bundle' => 'slider',
     'default_value' => NULL,
@@ -70,11 +70,55 @@ function cc_slider_features_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-slider-field_cc_s_thumbnails_toggle'.
+  $field_instances['paragraphs_item-slider-field_cc_s_thumbnails_toggle'] = array(
+    'bundle' => 'slider',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box to display thumbnails below the slider.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_s_thumbnails_toggle',
+    'label' => 'Display Thumbnails',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 1,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-slider-field_cc_s_title'
+  // Exported field_instance: 'paragraphs_item-slider-field_cc_s_title'.
   $field_instances['paragraphs_item-slider-field_cc_s_title'] = array(
     'bundle' => 'slider',
     'default_value' => NULL,
@@ -119,7 +163,8 @@ function cc_slider_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-slider_item-field_cc_s_item_image'
+  // Exported field_instance:
+  // 'paragraphs_item-slider_item-field_cc_s_item_image'.
   $field_instances['paragraphs_item-slider_item-field_cc_s_item_image'] = array(
     'bundle' => 'slider_item',
     'deleted' => 0,
@@ -174,6 +219,8 @@ function cc_slider_features_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Check this box to display thumbnails below the slider.');
+  t('Display Thumbnails');
   t('Image');
   t('Slider Items');
   t('Title');

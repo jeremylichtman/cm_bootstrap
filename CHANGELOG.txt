@@ -1,3 +1,7 @@
+Tag: tags/2017-03-25-0
+---------------------
+- p-114: Creating Slide Show Feature clean-up
+
 Tag: tags/2017-03-25
 ---------------------
 - p-114: Creating Slide Show Feature

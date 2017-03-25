@@ -10,6 +10,38 @@
 function cc_slider_features_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_cc_s_item_display_mode'.
+  $field_bases['field_cc_s_item_display_mode'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_s_item_display_mode',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'full_width' => 'Full Width',
+        'text_and_media' => 'Text and Media',
+      ),
+      'allowed_values_function' => '',
+      'field_permissions' => array(
+        'create' => 0,
+        'edit' => 0,
+        'edit own' => 0,
+        'view' => 0,
+        'view own' => 0,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_cc_s_item_media'.
   $field_bases['field_cc_s_item_media'] = array(
     'active' => 1,

@@ -164,6 +164,48 @@ function cc_slider_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-slider_item-field_cc_s_item_display_mode'.
+  $field_instances['paragraphs_item-slider_item-field_cc_s_item_display_mode'] = array(
+    'bundle' => 'slider_item',
+    'default_value' => array(
+      0 => array(
+        'value' => 'full_width',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select "Full Width" to have media go full width. Select "Text and Media" to have a text box next to the media.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_s_item_display_mode',
+    'label' => 'Display Mode',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-slider_item-field_cc_s_item_media'.
   $field_instances['paragraphs_item-slider_item-field_cc_s_item_media'] = array(
     'bundle' => 'slider_item',
@@ -223,7 +265,7 @@ function cc_slider_features_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -233,13 +275,13 @@ function cc_slider_features_field_default_field_instances() {
     'bundle' => 'slider_item',
     'default_value' => array(
       0 => array(
-        'value' => '<p>Replace this text.</p>
+        'value' => '<p>If using "Text and Media" display mode, change this text. Otherwise just leave as is.</p>
 ',
         'format' => 'cc_text_paragraph',
       ),
     ),
     'deleted' => 0,
-    'description' => 'If left blank, the video or image will go full width.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -271,16 +313,17 @@ function cc_slider_features_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Check this box to display thumbnails below the slider.');
+  t('Display Mode');
   t('Display Thumbnails');
-  t('If left blank, the video or image will go full width.');
   t('Media');
+  t('Select "Full Width" to have media go full width. Select "Text and Media" to have a text box next to the media.');
   t('Slider Items');
   t('Text');
   t('Title');

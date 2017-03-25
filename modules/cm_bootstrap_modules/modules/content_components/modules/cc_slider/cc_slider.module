@@ -114,12 +114,30 @@ function cc_slider_preprocess_entity(&$variables) {
             $thumbnail = image_style_url('cc_slider_image_thumbnail', $img_uri);
           }
 
+          // Display mode
+          $display_mode = 'full_width';
+          if (isset($s_item->field_cc_s_item_display_mode[LANGUAGE_NONE])) {
+            $display_mode = $s_item->field_cc_s_item_display_mode[LANGUAGE_NONE][0]['value'];
+          }
+
           // Text
           $text = FALSE;
           if (isset($s_item->field_cc_s_item_text[LANGUAGE_NONE])) {
             $text = $s_item->field_cc_s_item_text[LANGUAGE_NONE][0]['value'];
-            $grid_classes_1 = 'col-sm-12 col-md-5';
-            $grid_classes_2 = 'col-sm-12 col-md-7';
+            //$grid_classes_1 = 'col-sm-12 col-md-5';
+            //$grid_classes_2 = 'col-sm-12 col-md-7';
+          }
+
+          switch($display_mode) {
+            case 'full_width':
+              $grid_classes_1 = 'col-md-12';
+              $grid_classes_2 = 'col-md-12';
+              break;
+
+            case 'text_and_media':
+              $grid_classes_1 = 'col-sm-12 col-md-5';
+              $grid_classes_2 = 'col-sm-12 col-md-7';
+              break;
           }
 
           $s_items[] = array(
@@ -128,6 +146,7 @@ function cc_slider_preprocess_entity(&$variables) {
             'thumbnail' => $thumbnail,
             'video' => $video,
             'text' => $text,
+            'display_mode' => $display_mode,
             'grid_classes_1' => $grid_classes_1,
             'grid_classes_2' => $grid_classes_2,
           );

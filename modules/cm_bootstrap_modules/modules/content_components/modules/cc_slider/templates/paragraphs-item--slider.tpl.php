@@ -24,7 +24,7 @@
                 <?php endif; ?>
               </div>
 
-              <?php if ($item['text']): ?>
+              <?php if ($item['display_mode'] == 'text_and_media'): ?>
                 <div class="<?php print $item['grid_classes_1']; ?> text-column">
                   <div class="text-wrapper">
                     <?php print $item['text']; ?>

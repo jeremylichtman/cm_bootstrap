@@ -252,21 +252,24 @@ ul.video-grid-shows li span.overlay {
 <?php if (isset($colors['vs_arrow_bg_color'])): ?>
 .c-flexslider-video-carousel .flexslider .flex-direction-nav a,
 .cc--custom-video-list .flexslider .flex-direction-nav a,
-.cc--custom-video-list-context .flexslider .flex-direction-nav a {
+.cc--custom-video-list-context .flexslider .flex-direction-nav a,
+.cc-cmb-producers-carousel .flexslider .flex-direction-nav a {
   background-color:<?php print $colors['vs_arrow_bg_color']; ?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['vs_arrow_color'])): ?>
 .c-flexslider-video-carousel .flex-direction-nav a:before,
 .cc--custom-video-list .flexslider .flex-direction-nav a:before,
-.cc--custom-video-list-context .flexslider .flex-direction-nav a:before {
+.cc--custom-video-list-context .flexslider .flex-direction-nav a:before,
+.cc-cmb-producers-carousel .flexslider .flex-direction-nav a:before {
   color:<?php print $colors['vs_arrow_color']; ?>;
 }
 <?php endif; ?>
 <?php if (isset($colors['vs_arrow_bg_hover_color'])): ?>
 .c-flexslider-video-carousel .flex-direction-nav a:hover,
 .cc--custom-video-list .flexslider .flex-direction-nav a:hover,
-.cc--custom-video-list-context .flexslider .flex-direction-nav a:hover {
+.cc--custom-video-list-context .flexslider .flex-direction-nav a:hover,
+.cc-cmb-producers-carousel .flexslider .flex-direction-nav a:hover {
   background-color:<?php print $colors['vs_arrow_bg_hover_color']; ?>;
 }
 <?php endif; ?>

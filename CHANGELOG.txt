@@ -1,3 +1,7 @@
+Tag: tags/2017-04-19-0
+---------------------
+p-164: Jumbotron not automatically advancing
+
 Tag: tags/2017-04-19
 ---------------------
 - p-139: Deleted page--front.tpl.php for new homepage using paragraphs

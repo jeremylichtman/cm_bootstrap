@@ -1,4 +1,4 @@
-<section class="content-component cc--image">
+<section class="content-component cc--image <?php print $image['fw_class']; ?>">
   <div class="row">
     <div class="col-md-12">
       <?php if ($image['img_src']): ?>

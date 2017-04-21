@@ -1,3 +1,7 @@
+Tag: tags/2017-04-20
+---------------------
+p-169: Full Width edge to edge mode on Image paragraph type
+
 Tag: tags/2017-04-19-0
 ---------------------
 p-164: Jumbotron not automatically advancing

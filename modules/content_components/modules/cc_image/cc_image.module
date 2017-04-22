@@ -1,5 +1,7 @@
 <?php
 
+require_once(drupal_get_path('module', 'cc_helper') . '/lib/LinkHelper.php');
+
 /**
  * Implements hook_theme($existing, $type, $theme, $path).
  */
@@ -63,6 +65,7 @@ function cc_image_preprocess_entity(&$variables) {
           'id' => $paragraph->item_id,
           'img_src' => $img_src,
           'fw_class' => $fw_class,
+          'link' => \ContentComponents\Helper\LinkHelper::getUrl($paragraph, 'field_cc_image_link'),
         );
         break;
   	}

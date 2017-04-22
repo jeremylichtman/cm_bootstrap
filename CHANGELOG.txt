@@ -1,3 +1,7 @@
+Tag: tags/2017-04-22
+---------------------
+p-160: Add link option to “Image” Paragraph and “Text and Image” Paragraph
+
 Tag: tags/2017-04-20
 ---------------------
 p-169: Full Width edge to edge mode on Image paragraph type

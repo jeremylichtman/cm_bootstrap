@@ -10,7 +10,7 @@
 function cc_text_and_image_features_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_cc_tai_image'
+  // Exported field_base: 'field_cc_tai_image'.
   $field_bases['field_cc_tai_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -19,14 +19,6 @@ function cc_text_and_image_features_field_default_field_bases() {
     'field_name' => 'field_cc_tai_image',
     'field_permissions' => array(
       'type' => 0,
-    ),
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
     ),
     'indexes' => array(
       'fid' => array(
@@ -43,7 +35,7 @@ function cc_text_and_image_features_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_cc_tai_image_align'
+  // Exported field_base: 'field_cc_tai_image_align'.
   $field_bases['field_cc_tai_image_align'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -53,7 +45,6 @@ function cc_text_and_image_features_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
-    'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -72,7 +63,39 @@ function cc_text_and_image_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_cc_tai_text'
+  // Exported field_base: 'field_cc_tai_link'.
+  $field_bases['field_cc_tai_link'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_tai_link',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_cc_tai_text'.
   $field_bases['field_cc_tai_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -81,14 +104,6 @@ function cc_text_and_image_features_field_default_field_bases() {
     'field_name' => 'field_cc_tai_text',
     'field_permissions' => array(
       'type' => 0,
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
     ),
     'indexes' => array(
       'format' => array(

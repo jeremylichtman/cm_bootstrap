@@ -7,7 +7,7 @@
         $('.cc-cmb-jumbotron .flexslider').flexslider({
           animation: "slide",
           controlNav: false,
-          slideshow: true,
+          slideshow: false,
           start: function(slider) {
             $.flexloader(slider);
           },

@@ -40,7 +40,7 @@ $account = $elements['#account'];
   <div class="row">
     <div class="col-lg-3 col-md-3 col-xs-12 user-profile-left-col no-padding">
       <?php //dpm($account); ?>
-      <?php 
+      <?php
         if (isset($account->picture->uri)) {
           $user_img_src = image_style_url('user_avatar_large', $account->picture->uri);
         }
@@ -50,13 +50,15 @@ $account = $elements['#account'];
       ?>
       <img class="user-avatar-large" src="<?php print $user_img_src; ?>"/>
       <div class="user-details">
-        <div class="btn btn-default">        
+        <div class="btn btn-default">
           <?php
           if ($account->uid === $user->uid) {
             echo "<a href='/user/{$user->uid}/edit'>Edit Profile</a>";
           }
-          echo flag_create_link('cf_follow_user', $account->uid);
           ?>
+          <?php if (module_exists('flag')): ?>
+            <?php print flag_create_link('cf_follow_user', $account->uid); ?>
+          <?php endif; ?>
         </div>
         <?php if (!empty($account->field_user_bio)): ?>
           <p style="padding: 10px 2px;">
@@ -70,7 +72,7 @@ $account = $elements['#account'];
       <?php //dpm($cf_user_statistics_blocks); ?>
       <?php print render($cf_user_statistics_blocks['content']); ?>
       <div class="clearfix"></div>
-      
+
       <?php if ($featured_video) { ?>
         <h2>Featured Video</h2>
         <?php echo render($featured_video); ?>

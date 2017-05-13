@@ -163,7 +163,7 @@ function partner_featured_video_order_by_timestamp($a, $b) {
         <?php //dpm($node); ?>
         <?php if (isset($feature_video->field_description['und'][0]['value'])): ?>
           <p>
-            <?php print cm_bootstrap_truncate(strip_tags($feature_video->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
+            <?php print cmb_helper_truncate(strip_tags($feature_video->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
           </p>
         <?php endif; ?>
       </div>

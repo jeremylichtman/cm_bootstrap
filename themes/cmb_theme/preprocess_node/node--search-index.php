@@ -62,7 +62,7 @@ function _node__search_index(&$variables) {
       if (isset($node->field_description['und'][0]['value'])) {
         $description = $node->field_description['und'][0]['value'];
         $description = strip_tags($description);
-        $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+        $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
       }
 
       $search_result = array(
@@ -104,7 +104,7 @@ function _node__search_index(&$variables) {
       if (isset($node->field_description['und'][0]['value'])) {
         $description = $node->field_description['und'][0]['value'];
         $description = strip_tags($description);
-        $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+        $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
       }
 
       $search_result = array(
@@ -137,7 +137,7 @@ function _node__search_index(&$variables) {
         if (isset($node->field_teaser[LANGUAGE_NONE])) {
           $description = $node->field_teaser[LANGUAGE_NONE][0]['value'];
           $description = strip_tags($description);
-          $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+          $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
         }
         // Try to get text from first paragraph that has a 'text' field
         else {
@@ -174,7 +174,7 @@ function _node__search_index(&$variables) {
                 }
 
                 $description = strip_tags($description);
-                $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+                $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
               }
               else {
                 continue;
@@ -190,7 +190,7 @@ function _node__search_index(&$variables) {
         if (isset($node->body['und'][0]['value'])) {
           $description = $node->body['und'][0]['value'];
           $description = strip_tags($description);
-          $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+          $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
         }
       }
 
@@ -209,7 +209,7 @@ function _node__search_index(&$variables) {
       if (isset($node->body['und'][0]['value'])) {
         $description = $node->body['und'][0]['value'];
         $description = strip_tags($description);
-        $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+        $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
       }
 
       $search_result = array(
@@ -262,7 +262,7 @@ function _node__search_index(&$variables) {
         if (isset($node->field_cmbs_event_descr[LANGUAGE_NONE][0]['value'])) {
           $description = $node->field_cmbs_event_descr[LANGUAGE_NONE][0]['value'];
           $description = strip_tags($description);
-          $description = cm_bootstrap_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
+          $description = cmb_helper_truncate($description, $length = 250, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE));
         }
         // Start Date
         $start_date = FALSE;

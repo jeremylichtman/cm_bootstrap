@@ -5,3 +5,4 @@ core = 7.x
 
 dependencies[] = paragraphs
 dependencies[] = content_components
+dependencies[] = cc_twb_features

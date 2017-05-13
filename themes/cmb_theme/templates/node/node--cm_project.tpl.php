@@ -93,7 +93,7 @@
         <?php //dpm($node); ?>
         <?php if (isset($cm_show_node->field_description['und'][0]['value'])): ?>
           <p>
-            <?php print cm_bootstrap_truncate(strip_tags($cm_show_node->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
+            <?php print cmb_helper_truncate(strip_tags($cm_show_node->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
           </p>
         <?php endif; ?>
       </div>
@@ -123,7 +123,7 @@
         <?php //dpm($node); ?>
         <?php if (isset($cm_show_node->field_description['und'][0]['value'])): ?>
           <p>
-            <?php print cm_bootstrap_truncate(strip_tags($cm_show_node->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
+            <?php print cmb_helper_truncate(strip_tags($cm_show_node->field_description['und'][0]['value']), $length = 200, $options = array('exact' => FALSE, 'ending' => ' . . .')); ?>
           </p>
         <?php endif; ?>
       </div>

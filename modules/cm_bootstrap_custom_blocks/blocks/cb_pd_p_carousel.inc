@@ -15,17 +15,17 @@ function _cb_pd_p_carousel() {
       $query->entityCondition('entity_type', 'node');
       $query->entityCondition('bundle', $content_types);
       $query->propertyCondition('status', 1);
-      $query->range(0, 25);
+      //$query->range(0, 25);
       $query->propertyOrderBy('created', 'ASC');
       $query->fieldCondition('field_partner', 'target_id', $nid, '=');
       $query->fieldCondition('field_show_vod', 'fid', 'NULL', '!=');
-    $result = $query->execute();    
+    $result = $query->execute();
     if (isset($result['node'])) {
       $nids = array_keys($result['node']);
       $nodes = entity_load('node', $nids);
       foreach($nodes as $node) {
         if ($node->type == 'cm_show') {
-          $show_assoc_partner_array[] = $node;     
+          $show_assoc_partner_array[] = $node;
         }
         // Series
         if ($node->type == 'cm_project') {
@@ -38,7 +38,7 @@ function _cb_pd_p_carousel() {
             $cm_s_query->range(0, 25);
             $cm_s_query->propertyOrderBy('created', 'ASC');
             $cm_s_query->fieldCondition('og_group_ref', 'target_id', $node->nid, '=');
-          $cm_s_result = $cm_s_query->execute();    
+          $cm_s_result = $cm_s_query->execute();
           if (isset($cm_s_result['node'])) {
             $cm_s_nids = array_keys($cm_s_result['node']);
             $cm_s_nodes = entity_load('node', $cm_s_nids);
@@ -93,8 +93,8 @@ function _cb_pd_p_carousel() {
     }
     //
     foreach($show_nodes as $show_node) {
-      // Switch to account for cloudcast, vimeo, youtube, etc.     
-      if (isset($show_node->field_show_vod['und'])) {        
+      // Switch to account for cloudcast, vimeo, youtube, etc.
+      if (isset($show_node->field_show_vod['und'])) {
         switch($show_node->field_show_vod['und'][0]['filemime']) {
           case 'video/cloudcast':
             $image_uri = 'media-cloudcast/' . $show_node->field_show_vod['und'][0]['filename']  . '.jpg';
@@ -103,7 +103,7 @@ function _cb_pd_p_carousel() {
             $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $show_node->field_show_vod['und'][0]['uri']);
             $image_uri = $image_uri . '.jpg';
             break;
-          case 'video/youtube':  
+          case 'video/youtube':
             $image_uri = str_replace('youtube://v/', 'media-youtube/', $show_node->field_show_vod['und'][0]['uri']);
             $image_uri = $image_uri . '.jpg';
             break;
@@ -132,7 +132,7 @@ function _cb_pd_p_carousel() {
       }
       else {
         $field_topic_term_name = '';
-      }    
+      }
       // Series
       if (isset($show_node->og_group_ref['und'][0]['target_id'])) {
         $nid = $show_node->og_group_ref['und'][0]['target_id'];
@@ -149,14 +149,14 @@ function _cb_pd_p_carousel() {
       else {
         $timestamp = $show_node->created;
         $date_type = 'nc';
-      }      
+      }
       // Build items data array
       $items[$show_node->nid] = array(
         'nid' => $show_node->nid,
-        'title' => $show_node->title,      
-        'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),  
-        'series' => $field_topic_term_name,  
-        'series_title' => $series_title,  
+        'title' => $show_node->title,
+        'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
+        'series' => $field_topic_term_name,
+        'series_title' => $series_title,
         'img' => image_style_url('500x281', $image_uri),
         'timestamp' => $timestamp,
         'date_type' => $date_type,
@@ -164,7 +164,7 @@ function _cb_pd_p_carousel() {
     }
     if (CUSTOM_BLOCK_DEBUG_MODE === TRUE) {
       dpm('---before sorting----');
-      dpm($items);  
+      dpm($items);
     }
     uasort($items, 'custom_block_order_by_timestamp');
     if (CUSTOM_BLOCK_DEBUG_MODE === TRUE) {
@@ -172,11 +172,11 @@ function _cb_pd_p_carousel() {
       dpm($items);
       dpm('---first item/featured video');
       $feature_video = reset($items);
-      dpm($feature_video);  
+      dpm($feature_video);
     }
   }
-  // Send to TPL  
-  return theme('cb_pd_p_carousel', 
+  // Send to TPL
+  return theme('cb_pd_p_carousel',
     array (
       'content' => $items,
     )
@@ -185,7 +185,7 @@ function _cb_pd_p_carousel() {
 
 /**
  * Custom sort function, sorts by timestamp (production date or node created)
- */ 
+ */
 function custom_block_order_by_timestamp($a, $b) {
   //dpm($a);
   return $a['timestamp'] < $b['timestamp'];

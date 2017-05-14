@@ -1,3 +1,9 @@
+Tag: tags/2017-05-13
+--------------------
+- p-169: Full Width edge to edge mode on Image paragraph type
+- p-160: Add link option to “Image” Paragraph and “Text and Image” Paragraph
+- p-164: Jumbotron not automatically advancing
+
 Tag: tags/2017-03-30
 ---------------------
 - p-86: Producers carousel

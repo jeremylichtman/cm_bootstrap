@@ -32,13 +32,14 @@ ul.menu.nav#jPanelMenu-menu .dropdown-menu li a {
 }
 
 @media all and (max-width: 600px) {
-  .region-navigation ul.menu li a {
+  /*.region-navigation ul.menu li a {
     font-size:.75em;
     -webkit-transition: 250ms ease-out;
     -moz-transition: 250ms ease-out;
     -o-transition: 250ms ease-out;
     transition: 250ms ease-out;
   }
+  */
   
   #block-site-wrapper-site-wrapper-logo a img {
     -webkit-transition: 250ms ease-out;

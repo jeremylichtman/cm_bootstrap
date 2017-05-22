@@ -1,3 +1,7 @@
+Tag: tags/2017-05-21
+--------------------
+- p-176: Increase point size for Log In and Menu on mobile
+
 Tag: tags/2017-05-14
 --------------------
 - p-153: Partner Page Block Videos not Updating

@@ -1125,11 +1125,12 @@ h1.page-header {
 .node-type-page .main-container .col-sm-3 {
   padding-top:40px;
 }
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
   .region-navigation ul.menu li a {
     font-size: .65em !important;
   }
 }
+*/
 .page-node-edit .tab-content>.tab-pane,
 .page-node-add .tab-content>.tab-pane {
   display:block !important;

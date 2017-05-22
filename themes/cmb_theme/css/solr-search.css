@@ -63,7 +63,7 @@
   padding: 0 5px;
   font-size: 2em;
   color: red;
-} 
+}
 */
 
 /*.view-solr-search .views-row {
@@ -90,7 +90,7 @@
 }
 
 .view-solr-search ul li .left-column {
-  
+
 }
 
 .view-solr-search ul li .right-column {
@@ -115,12 +115,14 @@
 */
 
 @media all and (max-width: 600px) {
-  .search-overlay-icon-wrapper i {
+  /*.search-overlay-icon-wrapper i {
     font-size:1em;
   }
-  .search-overlay-icon-wrapper {
+  */
+  /*.search-overlay-icon-wrapper {
     position: absolute;
     top: 10px;
     padding-left: 15px;
   }
+  */
 }

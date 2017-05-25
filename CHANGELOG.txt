@@ -1,3 +1,7 @@
+Tag: tags/2017-05-24
+--------------------
+- p-155: Extra white space on sidebar
+
 Tag: tags/2017-05-21
 --------------------
 - p-176: Increase point size for Log In and Menu on mobile

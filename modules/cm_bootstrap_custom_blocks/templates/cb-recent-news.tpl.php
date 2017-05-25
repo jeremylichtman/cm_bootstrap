@@ -25,9 +25,9 @@ ul.cb-recent-news li a .right {
   padding:10px !important;
   background:#000;
   color:#FFF;
-  height:96px;
+  /*height:96px;
   max-height: 96px;
-  min-height: 96px !important;
+  min-height: 96px !important;*/
   display: block;
 }
 ul.cb-recent-news li a:hover .right {
@@ -64,8 +64,8 @@ ul.cb-recent-news li .watch-now-link {
       <li class="row">
         <a href="<?php print url('node/' . $node['nid']); ?>">
           <span class="left col-md-6 col-sm-12 no-padding">
-            <img src="<?php print $node['img']; ?>" />   
-          </span>         
+            <img src="<?php print $node['img']; ?>" />
+          </span>
           <span class="right col-md-6 col-sm-12 no-padding">
             <p class="title">
               <?php print $node['title']; ?>
@@ -83,9 +83,9 @@ ul.cb-recent-news li .watch-now-link {
       </li>
     <?php endforeach; ?>
   </ul>
-  
+
   <a href="<?php print url('taxonomy/term/' . $blog_category_term_data['tid']); ?>">
     <h4>See all <?php print $blog_category_term_data['term_name']; ?> Blogs</h4>
   </a>
-  
+
 </div>

@@ -65,7 +65,7 @@ function _cmb_cb_shows_in_series() {
         $items[$node->nid] = array(
           'nid' => $node->nid,
           'title' => $node->title,
-          'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),  
+          'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
           'img' => image_style_url('500x281', $image_uri),
         );
       }

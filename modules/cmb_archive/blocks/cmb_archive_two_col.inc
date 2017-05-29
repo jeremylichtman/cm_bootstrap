@@ -65,7 +65,9 @@ function _cmb_archive_two_col() {
                 $img_src = $img_src = image_style_url('500x281', $node->field_blog_image['und'][0]['uri']);
               }
               else {
-                if (module_exists('cm_bootstrap_cp_default_images')) {
+                $img_src = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
+              }
+                /*if (module_exists('cm_bootstrap_cp_default_images')) {
                   $file = cm_bootstrap_cp_default_images_load_image($node->type);
                   $image_uri = $file->uri;
                   $img_src = image_style_url('500x281', $image_uri);
@@ -73,7 +75,7 @@ function _cmb_archive_two_col() {
                 else {
                   $img_src = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
                 }
-              }
+              }*/
               // Description/Body
               if (isset($node->body['und'][0]['summary'])) {
                 $allowable_tags = '<img><p><strong><em><ol><ul><li><u>';

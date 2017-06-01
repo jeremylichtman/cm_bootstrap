@@ -55,4 +55,7 @@
 .icon-left-dir:before { content: '\e835'; } /* '' */
 .icon-right-dir:before { content: '\e836'; } /* '' */
 .icon-search:before { content: '\e837'; } /* '' */
+.icon-chat:before { content: '\e838'; } /* '' */
+.icon-gplus:before { content: '\f0d5'; } /* '' */
+.icon-skype:before { content: '\f17e'; } /* '' */
 .icon-meetup:before { content: '\f2e0'; } /* '' */

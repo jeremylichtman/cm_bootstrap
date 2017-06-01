@@ -347,6 +347,24 @@
       "css": "meetup",
       "code": 62176,
       "src": "fontawesome"
+    },
+    {
+      "uid": "58a16628dcbd6456c61218f3d27591be",
+      "css": "skype",
+      "code": 61822,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "b8d0c7d76e87b94882329a88e8e43d3d",
+      "css": "gplus",
+      "code": 61653,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7idv5s1f3qkgmbwbat6xukumwqxkrook",
+      "css": "chat",
+      "code": 59448,
+      "src": "modernpics"
     }
   ]
 }

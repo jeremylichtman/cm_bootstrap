@@ -1,3 +1,9 @@
+Tag: tags/2017-05-31
+--------------------
+- updated cmb_cb_shows_in_series to use proper wrapper code for getting show thumbnail
+- added new font icons for skype and google plus
+- moved image style for cmb_blog_jumbotron to cmb_blog module
+
 Tag: tags/2017-05-24
 --------------------
 - p-155: Extra white space on sidebar

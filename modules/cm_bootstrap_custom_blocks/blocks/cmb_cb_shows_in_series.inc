@@ -26,26 +26,10 @@ function _cmb_cb_shows_in_series() {
       $nids = array_keys($result['node']);
       $nodes = entity_load('node', $nids);
       foreach($nodes as $node) {
-        // Switch to account for cloudcast, vimeo, youtube, etc.
+        // Get field_show_vod thumbnail
         if (isset($node->field_show_vod['und'])) {
-          //dpm($node);
-          switch($node->field_show_vod['und'][0]['filemime']) {
-            case 'video/cloudcast':
-              $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-              break;
-            case 'video/vimeo':
-              $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-              $image_uri = $image_uri . '.jpg';
-              break;
-            case 'video/youtube':
-              $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-              $image_uri = $image_uri . '.jpg';
-              break;
-            case 'video/bliptv':
-              $image_uri = str_replace('bliptv://i/BiCities-AubreyThornvoldReconcilingWorksFilmed201502703.png/v/', 'media-bliptv/', $node->field_show_vod['und'][0]['uri']);
-              $image_uri = $image_uri . '.jpg';
-              break;
-          }
+          $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
+          $image_uri = $wrapper->getLocalThumbnailPath();
         }
         else {
           if (module_exists('cm_bootstrap_cp_default_images')) {
@@ -65,7 +49,7 @@ function _cmb_cb_shows_in_series() {
         $items[$node->nid] = array(
           'nid' => $node->nid,
           'title' => $node->title,
-          'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),  
+          'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
           'img' => image_style_url('500x281', $image_uri),
         );
       }

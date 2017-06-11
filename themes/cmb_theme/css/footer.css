@@ -222,6 +222,18 @@ ul.social li a.meetup:before {
   font-family: "fontello";
   content: '\f2e0';
 }
+ul.social li a.skype:before {
+  font-family: "fontello";
+  content: '\f17e';
+}
+ul.social li a.google-plus:before {
+  font-family: "fontello";
+  content: '\f0d5';
+}
+ul.social li a.chat:before {
+  font-family: "fontello";
+  content: '\e838';
+}
 /* END: Social Media Menu */
 
 .region-footer-bottom section.block {

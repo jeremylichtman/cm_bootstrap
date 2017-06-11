@@ -283,6 +283,50 @@ function cmb_jumbotron_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_cta_toggle'.
+  $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_cta_toggle'] = array(
+    'bundle' => 'cmb_jumbotron_item',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Uncheck this box to not display the "Call to Action" Button.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbji_cta_toggle',
+    'label' => 'Call to Action Button Display',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_image'.
   $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_image'] = array(
     'bundle' => 'cmb_jumbotron_item',
@@ -687,12 +731,14 @@ function cmb_jumbotron_features_field_default_field_instances() {
   t('Button Background Color');
   t('Button Color');
   t('Call To Action');
+  t('Call to Action Button Display');
   t('Image');
   t('Items');
   t('Overlay Color');
   t('Overlay Opacity');
   t('Short Description');
   t('Title');
+  t('Uncheck this box to not display the "Call to Action" Button.');
 
   return $field_instances;
 }

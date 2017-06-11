@@ -13,13 +13,16 @@
                   <?php print $item['short_description']; ?>
                 </div>
 
-                <?php if ($item['link']['title']): ?>
-                  <div class="button-wrapper">
-                    <button style="background-color:<?php print $cmb_jumbotron['cta_bg_color']; ?>; color:<?php print $cmb_jumbotron['cta_color']; ?>;">
-                      <?php print $item['link']['title']; ?>
-                    </button>
-                  </div>
+                <?php if ($item['cta_toggle']): ?>
+                  <?php if ($item['link']['title']): ?>
+                    <div class="button-wrapper">
+                      <button style="background-color:<?php print $cmb_jumbotron['cta_bg_color']; ?>; color:<?php print $cmb_jumbotron['cta_color']; ?>;">
+                        <?php print $item['link']['title']; ?>
+                      </button>
+                    </div>
+                  <?php endif; ?>
                 <?php endif; ?>
+
               </div>
             </div>
             <img src="<?php print $item['placeholder_img']; ?>" data-original="<?php print $item['image']['src']; ?>"/>

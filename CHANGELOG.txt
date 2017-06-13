@@ -1,3 +1,7 @@
+Tag: tags/2017-06-12
+--------------------
+- p-188: ReUsing Jumbotron Items, added published field to jumbotron items
+
 Tag: tags/2017-06-11-0
 --------------------
 - p-186: Homepage Paragraphs—Any Paragraph

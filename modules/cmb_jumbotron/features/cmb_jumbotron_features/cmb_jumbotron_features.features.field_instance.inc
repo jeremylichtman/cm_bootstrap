@@ -249,6 +249,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
     'label' => 'Call To Action',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -262,6 +263,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -278,7 +280,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'urls_search' => 'contains',
       ),
       'type' => 'advanced_link',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -322,7 +324,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -430,7 +432,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -497,7 +499,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'module' => 'jquery_colorpicker',
       'settings' => array(),
       'type' => 'jquery_colorpicker',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -564,7 +566,51 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_published'.
+  $field_instances['paragraphs_item-cmb_jumbotron_item-field_cc_cmbji_published'] = array(
+    'bundle' => 'cmb_jumbotron_item',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cmbji_published',
+    'label' => 'Published',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 0,
     ),
   );
 
@@ -643,7 +689,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -722,7 +768,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -736,6 +782,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
   t('Items');
   t('Overlay Color');
   t('Overlay Opacity');
+  t('Published');
   t('Short Description');
   t('Title');
   t('Uncheck this box to not display the "Call to Action" Button.');

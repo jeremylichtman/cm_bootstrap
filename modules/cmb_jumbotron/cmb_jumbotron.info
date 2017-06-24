@@ -5,4 +5,5 @@ core = 7.x
 dependencies[] = paragraphs
 dependencies[] = cmb_jumbotron_features
 dependencies[] = cc_helper
-dependencies[] = flexloader
+
+version = "7.x-1.x-dev"

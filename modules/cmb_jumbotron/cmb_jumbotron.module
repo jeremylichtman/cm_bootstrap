@@ -60,12 +60,18 @@ function cmb_jumbotron_preprocess_entity(&$variables) {
 
         if ($items = \ContentComponents\Helper\ParagraphHelper::getChildren($paragraph, 'field_cc_cmbj_items')) {
           foreach($items as $p_item) {
-            // Opacity
-            /*$overlay_opacity = '.3';
-            if (isset($p_item->field_cc_tiles_item_overlay_opac[LANGUAGE_NONE])) {
-              $overlay_opacity = $p_item->field_cc_tiles_item_overlay_opac[LANGUAGE_NONE][0]['value'];
+            // CTA Toggle
+            $cta_toggle = TRUE;
+            if (isset($p_item->field_cc_cmbji_cta_toggle[LANGUAGE_NONE])) {
+              $cta_toggle = $p_item->field_cc_cmbji_cta_toggle[LANGUAGE_NONE][0]['value'];
             }
-            */
+
+            // Published
+            $published = TRUE;
+            if (isset($p_item->field_cc_cmbji_published[LANGUAGE_NONE])) {
+              $published = $p_item->field_cc_cmbji_published[LANGUAGE_NONE][0]['value'];
+            }
+
 
             $field_cc_cmbj_items[] = [
               'id' => $p_item->item_id,
@@ -76,6 +82,8 @@ function cmb_jumbotron_preprocess_entity(&$variables) {
               'overlay_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($p_item, 'field_cc_cmbji_overlay_color', 1),
               'overlay_opacity' => \ContentComponents\Helper\FieldHelper::getValue($p_item, 'field_cc_cmbji_overlay_opacity'),
               'link' => \ContentComponents\Helper\LinkHelper::getUrl($p_item, 'field_cc_cmbji_cta_button'),
+              'cta_toggle' => $cta_toggle,
+              'published' => $published,
             ];
           }
         }

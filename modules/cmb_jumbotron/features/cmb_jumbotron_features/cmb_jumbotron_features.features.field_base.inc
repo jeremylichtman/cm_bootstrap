@@ -96,6 +96,38 @@ function cmb_jumbotron_features_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_cc_cmbji_cta_toggle'.
+  $field_bases['field_cc_cmbji_cta_toggle'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cmbji_cta_toggle',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+      'field_permissions' => array(
+        'create' => 0,
+        'edit' => 0,
+        'edit own' => 0,
+        'view' => 0,
+        'view own' => 0,
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_cc_cmbji_image'.
   $field_bases['field_cc_cmbji_image'] = array(
     'active' => 1,
@@ -174,6 +206,34 @@ function cmb_jumbotron_features_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_cc_cmbji_published'.
+  $field_bases['field_cc_cmbji_published'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cmbji_published',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_cc_cmbji_short_description'.

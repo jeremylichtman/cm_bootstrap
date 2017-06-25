@@ -1,7 +1,7 @@
 name = CMB Blog Features
 description = CMB Blog Features
 core = 7.x
-package = CM Bootstrap
+package = CM Bootstrap Config: Content Types
 version = 7.x-1.0
 dependencies[] = cmb_field_bases
 dependencies[] = content_components_features

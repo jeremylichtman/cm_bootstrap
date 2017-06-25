@@ -11,6 +11,16 @@ function cmb_show_entity_info_alter(&$entity_info) {
       'label' => t('Show Meta Data'),
       'custom settings' => FALSE,
     ),
+    // Show Meta Left
+    'cmb_show_meta_left' => array(
+      'label' => t('CMB Show Meta Left'),
+      'custom settings' => FALSE,
+    ),
+    // Show Meta Right
+    'cmb_show_meta_right' => array(
+      'label' => t('CMB Show Meta Right'),
+      'custom settings' => FALSE,
+    ),
   );
 }
 
@@ -51,6 +61,20 @@ function cmb_show_block_info() {
     'weight' => '0',
   );
 
+  // CMB Show Meta Left
+  $blocks['cmb_show_meta_left'] = array(
+    'info' => t('cmb_show: Meta Left'),
+    'cache' => DRUPAL_NO_CACHE,
+    'weight' => '0',
+  );
+
+  // CMB Show Meta Right
+  $blocks['cmb_show_meta_right'] = array(
+    'info' => t('cmb_show: Meta Right'),
+    'cache' => DRUPAL_NO_CACHE,
+    'weight' => '0',
+  );
+
   return $blocks;
 }
 
@@ -79,6 +103,14 @@ function cmb_show_block_view($delta = '') {
     case 'cmb_show_chapters':
       module_load_include('inc', 'cmb_show', 'blocks/cmb_show_chapters');
       $block['content'] = _cmb_show_chapters();
+      break;
+
+    case 'cmb_show_meta_left':
+      if ($node = menu_get_object()) {
+        $node_view = node_view($node, 'cmb_show_meta_left');
+        $node_render = drupal_render($node_view);
+        $block['content'] = 'cmb_show_meta_left block!';
+      }
       break;
   }
 

@@ -135,17 +135,6 @@ function cm_bootstrap_custom_blocks_block_info() {
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => "node/9663\nnode/9689\nnode/9828",
   );
-  // Node type visibility set in cm_bootstrap_custom_blocks_install()
-  $blocks['cb_show_node_meta'] = array(
-    'info' => t('cm_bootstrap_custom_blocks: Show Node Meta Data'),
-    'cache' => DRUPAL_NO_CACHE,
-    'weight' => '1',
-    'title' => '<none>',
-    'region' => 'below_content_fwidth',
-    'status' => TRUE,
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'pages' => "node/*/edit",
-  );
   // Not set through blocks UI
   $blocks['cb_taxonomy_term'] = array(
     'info' => t('cm_bootstrap_custom_blocks: Taxonomy Term Pg'),
@@ -275,10 +264,6 @@ function cm_bootstrap_custom_blocks_block_view($delta = '') {
     case 'cb_genres_show_series_carousels':
       module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cb_genres_show_series_carousels');
       $block['content'] = _cb_genres_show_series_carousels();
-      break;
-    case 'cb_show_node_meta':
-      module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cb_show_node_meta');
-      $block['content'] = _cb_show_node_meta();
       break;
     case 'cb_recent_news':
       module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cb_recent_news');

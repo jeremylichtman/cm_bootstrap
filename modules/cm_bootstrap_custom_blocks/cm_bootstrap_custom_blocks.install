@@ -47,18 +47,6 @@ function cm_bootstrap_custom_blocks_install() {
     )
     ->execute();
 
-  // cb_show_node_meta
-  $query = db_insert('block_node_type')
-    ->fields(array('type', 'module', 'delta'))
-    ->values(
-      array(
-        'type' => 'cm_show',
-        'module' => 'cm_bootstrap_custom_blocks',
-        'delta' => 'cb_show_node_meta',
-      )
-    )
-    ->execute();
-
   // cb_show_right_sidebar
   /*$query = db_insert('block_node_type')
     ->fields(array('type', 'module', 'delta'))

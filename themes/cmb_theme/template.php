@@ -91,7 +91,15 @@ function cmb_theme_preprocess_page(&$variables) {
     }
   }
 
-  //dpm($variables);
+  // Preprocess page by node type
+  $node = $variables['node'];
+
+  $file = dirname(__FILE__) . '/preprocess/page/page__' . $node->type . '.php';
+  if (file_exists($file)) {
+    include_once $file;
+    $function = '_page__' . $node->type;
+    $function($variables);
+  }
 }
 
 /**

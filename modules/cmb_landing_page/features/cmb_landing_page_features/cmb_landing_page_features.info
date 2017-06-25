@@ -1,7 +1,7 @@
 name = CMB Landing Page Features
 description = CMB Landing Page Features
 core = 7.x
-package = CM Bootstrap: Content Types
+package = CM Bootstrap Config: Content Types
 version = 7.x-1.0
 dependencies[] = content_components_features
 dependencies[] = ctools

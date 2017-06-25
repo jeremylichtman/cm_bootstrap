@@ -33,11 +33,7 @@
       <?php if (!empty($page['navigation'])): ?>
         <?php print render($page['navigation']); ?>
       <?php endif; ?>
-      <!--<div class="col-md-2">
-        <a class="jpanel-trigger">
-          <span>MENU</span>
-        </a>
-      </div>-->
+
     </div>
   </div>
 
@@ -50,7 +46,6 @@
   <div class="container below-navigation">
     <div class="row">
       <?php print render($page['below_navigation']); ?>
-
     </div>
   </div>
 
@@ -109,13 +104,41 @@
   </div>
   <!-- END -->
 
-  <?php if ($page['below_content_fwidth']): ?>
-    <div class="main-container-below-content container">
-      <div class="row">
-        <?php print render($page['below_content_fwidth']); ?>
-      </div>
+  <div class="main-container-below-content container">
+    <div class="row">
+      <section class="col-md-12 no-padding top-section">
+        <h1 class="page-header">
+          <?php print $page__cm_show['title']; ?>
+        </h1>
+      </section>
     </div>
-  <?php endif; ?>
+
+    <div class="row">
+      <section class="col-sm-12">
+        <?php if ($page__cm_show['social_media_block']): ?>
+          <?php print render($page__cm_show['social_media_block']); ?>
+        <?php endif; ?>
+      </section>
+    </div>
+
+    <div class="row">
+      <section class="col-sm-8">
+        <?php print $page__cm_show['cmb_show_meta_left']; ?>
+      </section>
+
+      <aside class="col-sm-4" role="complementary">
+        <?php print $page__cm_show['cmb_show_meta_right']; ?>
+      </aside>
+    </div>
+
+    <?php if ($page['below_content_fwidth']): ?>
+      <div class="row">
+        <section class="col-md-12 no-padding">
+          <?php print render($page['below_content_fwidth']); ?>
+        </section>
+      </div>
+    <?php endif; ?>
+  </div>
 
   <?php if ($page['below_content']): ?>
     <div class="main-container-below-content container-fluid">

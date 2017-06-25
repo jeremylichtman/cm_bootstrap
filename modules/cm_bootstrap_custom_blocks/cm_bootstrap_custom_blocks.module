@@ -1,6 +1,25 @@
 <?php
 
 /**
+ * Implements hook_menu().
+ */
+function cm_bootstrap_custom_blocks_menu() {
+  $items = array();
+
+  $items['cp/cvl-settings'] = array(
+    'title' => 'Custom Video List Settings',
+    'description' => 'Custom Video List Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cm_bootstrap_custom_blocks_config'),
+    'access arguments' => array('administer content'),
+    'file' => 'cm_bootstrap_custom_blocks.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function cm_bootstrap_custom_blocks_block_info() {

@@ -65,13 +65,6 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
         if ($node = node_load($nid)) {
           // Placeholder image
           $placeholder_img = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
-          /*if (module_exists('cm_bootstrap_cp_default_images')) {
-            $p_file = cm_bootstrap_cp_default_images_load_image('cm_show');
-            if ($p_file) {
-              $p_image_uri = $p_file->uri;
-              $placeholder_img = image_style_url('500x281', $p_image_uri);
-            }
-          }*/
 
           // Get shows and series nodes.
           if (isset($node->field_videos_to_highlight[LANGUAGE_NONE])) {
@@ -97,8 +90,14 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
                   else {
                     if (module_exists('cm_bootstrap_cp_default_images')) {
                       $file = cm_bootstrap_cp_default_images_load_image($ref_node->type);
-                      $image_uri = $file->uri;
-                      $img_src = image_style_url('500x281', $image_uri);
+
+                      if ($file) {
+                        $image_uri = $file->uri;
+                        $img_src = image_style_url('500x281', $image_uri);
+                      }
+                      else {
+                        $img_src = $placeholder_img;
+                      }
                     }
                   }
 
@@ -144,18 +143,16 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
                   if (isset($ref_node->field_series_image[LANGUAGE_NONE][0]['uri'])) {
                     $img_src = image_style_url('500x281', $ref_node->field_series_image[LANGUAGE_NONE][0]['uri']);
                   }
-                  // @todo Temp hack for ECAT, need to change field_project_image -> field_series_image
                   else {
-                    if (isset($ref_node->field_project_image[LANGUAGE_NONE][0]['uri'])) {
-                      $img_src = image_style_url('500x281', $ref_node->field_project_image[LANGUAGE_NONE][0]['uri']);
-                    }
-                    else {
-                      if (module_exists('cm_bootstrap_cp_default_images')) {
-                        $file = cm_bootstrap_cp_default_images_load_image('cm_project');
-                        if ($file) {
-                          $image_uri = $file->uri;
-                          $img_src = image_style_url('500x281', $image_uri);
-                        }
+                    if (module_exists('cm_bootstrap_cp_default_images')) {
+                      $file = cm_bootstrap_cp_default_images_load_image('cm_project');
+
+                      if ($file) {
+                        $image_uri = $file->uri;
+                        $img_src = image_style_url('500x281', $image_uri);
+                      }
+                      else {
+                        $img_src = $placeholder_img;
                       }
                     }
                   }
@@ -187,7 +184,6 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
         break;
     }
 
-    //dpm($data);
     $variables['custom_video_list'] = $data;
   }
 }

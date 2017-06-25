@@ -1,3 +1,7 @@
+Tag: tags/2017-06-25
+--------------------
+- updates for show content type code and features
+
 Tag: tags/2017-06-12
 --------------------
 - p-188: ReUsing Jumbotron Items, added published field to jumbotron items

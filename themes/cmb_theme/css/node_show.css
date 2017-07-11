@@ -403,3 +403,10 @@ ul.cb-show-recent-videos li .watch-now-link {
   outline: none;
   position: initial;
 }
+
+.node-type-cm-show .col-sm-4 .field-label-above {
+  display: block;
+  float: left;
+  margin: 1em 0;
+  width:100%;
+}

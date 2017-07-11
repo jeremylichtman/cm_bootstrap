@@ -174,12 +174,20 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
           }
         }
 
+        // Title Alignment
+        $title_align_class = 'text-align-center';
+
+        if (isset($paragraph->field_cc_cvl_title_align[LANGUAGE_NONE])) {
+          $title_align_class = 'text-align-' . $paragraph->field_cc_cvl_title_align[LANGUAGE_NONE][0]['value'];
+        }
+
         $data = array(
           'id' => $paragraph->item_id,
           'title' => $node->title,
           'bg_color' => $vs_heading_bg_color_1,
           'text_color' => $vs_heading_text_color,
           'ref_node_data' => $ref_node_data,
+          'title_align' => $title_align_class,
         );
         break;
     }

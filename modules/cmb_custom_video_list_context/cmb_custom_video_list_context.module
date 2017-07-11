@@ -161,12 +161,19 @@ function cmb_custom_video_list_context_preprocess_entity(&$variables) {
           }
         }
 
+        $title_align_class = 'text-align-center';
+
+        if (isset($paragraph->field_cc_cvlc_title_align[LANGUAGE_NONE])) {
+          $title_align_class = 'text-align-' . $paragraph->field_cc_cvlc_title_align[LANGUAGE_NONE][0]['value'];
+        }
+
         $data = array(
           'id' => $paragraph->item_id,
           'title' => $title,
           'bg_color' => $vs_heading_bg_color_1,
           'text_color' => $vs_heading_text_color,
           'items' => $items,
+          'title_align' => $title_align_class,
         );
         break;
     }

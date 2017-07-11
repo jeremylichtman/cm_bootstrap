@@ -81,6 +81,48 @@ function cmb_custom_video_list_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-custom_video_list-field_cc_cvl_title_align'.
+  $field_instances['paragraphs_item-custom_video_list-field_cc_cvl_title_align'] = array(
+    'bundle' => 'custom_video_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 'left',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cvl_title_align',
+    'label' => 'Title Alignment',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
       'weight' => 0,
     ),
   );
@@ -89,6 +131,7 @@ function cmb_custom_video_list_features_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Custom Video List Reference');
   t('Select the custom video list to embed in this component.');
+  t('Title Alignment');
 
   return $field_instances;
 }

@@ -71,5 +71,33 @@ function cmb_custom_video_list_context_features_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_cc_cvlc_title_align'.
+  $field_bases['field_cc_cvlc_title_align'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cvlc_title_align',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'left' => 'Left',
+        'center' => 'Center',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   return $field_bases;
 }

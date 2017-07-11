@@ -81,7 +81,7 @@ function cmb_custom_video_list_context_features_field_default_field_instances() 
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -142,11 +142,54 @@ function cmb_custom_video_list_context_features_field_default_field_instances() 
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-custom_video_list_context-field_cc_cvlc_title_align'.
+  $field_instances['paragraphs_item-custom_video_list_context-field_cc_cvlc_title_align'] = array(
+    'bundle' => 'custom_video_list_context',
+    'default_value' => array(
+      0 => array(
+        'value' => 'center',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cvlc_title_align',
+    'label' => 'Title Alignment',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Context Node');
   t('Set a "Series" or "Genre" as the context Node to build the Video List. You can search by Node ID, Node Title, or Node/Content Type');
   t('Title');
+  t('Title Alignment');
 
   return $field_instances;
 }

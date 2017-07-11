@@ -2,7 +2,9 @@
 
   <?php if ($custom_video_list['title']): ?>
     <h2 class="title" style="background-color:<?php print $custom_video_list['bg_color']; ?>; color:<?php print $custom_video_list['text_color']; ?>;">
-      <?php print $custom_video_list['title']; ?>
+      <span class="<?php print $custom_video_list['title_align']; ?>">
+        <?php print $custom_video_list['title']; ?>
+      </span>
     </h2>
   <?php endif; ?>
 

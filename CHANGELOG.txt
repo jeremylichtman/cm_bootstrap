@@ -1,3 +1,7 @@
+Tag: tags/2017-07-11-01
+--------------------
+- Updated css for show and new view modes
+
 Tag: tags/2017-07-11
 --------------------
 - Commented out show field bases from cmb_field_bases for now. Conflicts need to be resolved first.

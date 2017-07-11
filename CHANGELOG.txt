@@ -1,3 +1,7 @@
+Tag: tags/2017-07-11-02
+--------------------
+- p-209: Added title alignment fields to cvl and cvl context
+
 Tag: tags/2017-07-11-01
 --------------------
 - Updated css for show and new view modes

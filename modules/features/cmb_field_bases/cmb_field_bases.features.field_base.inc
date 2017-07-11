@@ -98,7 +98,7 @@ function cmb_field_bases_field_default_field_bases() {
   );
 
   // Exported field_base: 'field_description'.
-  $field_bases['field_description'] = array(
+  /*$field_bases['field_description'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
@@ -118,6 +118,7 @@ function cmb_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'text_with_summary',
   );
+  */
 
   // Exported field_base: 'field_full_width'.
   $field_bases['field_full_width'] = array(
@@ -148,7 +149,7 @@ function cmb_field_bases_field_default_field_bases() {
   );
 
   // Exported field_base: 'field_genres'.
-  $field_bases['field_genres'] = array(
+  /*$field_bases['field_genres'] = array(
     'active' => 1,
     'cardinality' => 6,
     'deleted' => 0,
@@ -184,6 +185,7 @@ function cmb_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'entityreference',
   );
+  */
 
   // Exported field_base: 'field_legacy_toggle'.
   $field_bases['field_legacy_toggle'] = array(
@@ -214,7 +216,7 @@ function cmb_field_bases_field_default_field_bases() {
   );
 
   // Exported field_base: 'field_partner'.
-  $field_bases['field_partner'] = array(
+  /*$field_bases['field_partner'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
@@ -250,9 +252,10 @@ function cmb_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'entityreference',
   );
+  */
 
   // Exported field_base: 'field_show_production_date'.
-  $field_bases['field_show_production_date'] = array(
+  /*$field_bases['field_show_production_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
@@ -282,9 +285,10 @@ function cmb_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'datetime',
   );
+  */
 
   // Exported field_base: 'field_show_vod'.
-  $field_bases['field_show_vod'] = array(
+  /*$field_bases['field_show_vod'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
@@ -308,6 +312,7 @@ function cmb_field_bases_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'file',
   );
+  */
 
   // Exported field_base: 'field_video_grid'.
   $field_bases['field_video_grid'] = array(

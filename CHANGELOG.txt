@@ -1,3 +1,7 @@
+Tag: tags/2017-07-11
+--------------------
+- Commented out show field bases from cmb_field_bases for now. Conflicts need to be resolved first.
+
 Tag: tags/2017-06-25
 --------------------
 - updates for show content type code and features

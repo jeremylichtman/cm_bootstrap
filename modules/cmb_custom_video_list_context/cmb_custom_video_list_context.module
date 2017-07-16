@@ -1,5 +1,7 @@
 <?php
 
+define("CMB_CVLC_PLACEHOLDER_IMG", "data:image/gif;base64,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");
+
 /**
  * Implements hook_theme($existing, $type, $theme, $path).
  */
@@ -132,7 +134,7 @@ function cmb_custom_video_list_context_preprocess_entity(&$variables) {
               }
 
               // Placeholder image
-              $placeholder_img = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
+              $placeholder_img = CMB_CVLC_PLACEHOLDER_IMG;
 
               // Series title
               $series_title = FALSE;

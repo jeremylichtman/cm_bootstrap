@@ -1,9 +1,9 @@
 (function($) {
 
   Drupal.behaviors.cmb_jumbotron__slider = {
-    attach: function (context, settings) {
+    attach: function(context, settings) {
 
-      $(window).load(function() {
+      $(document).ready(function() {
         $('.cc-cmb-jumbotron .flexslider').flexslider({
           animation: "slide",
           controlNav: false,

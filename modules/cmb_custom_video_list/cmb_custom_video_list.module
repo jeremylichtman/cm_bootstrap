@@ -37,7 +37,9 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
         // Attach CSS
         drupal_add_css(drupal_get_path('module', 'cmb_custom_video_list') . '/css/cmb_custom_video_list.css');
         // Attach JS
-        drupal_add_js(drupal_get_path('module', 'cmb_custom_video_list') . '/js/cmb_custom_video_list.js');
+        drupal_add_js(drupal_get_path('module', 'cmb_custom_video_list') . '/js/cmb_custom_video_list.js',
+          array('scope' => 'footer', 'weight' => -5)
+        );
         // Attach Flexloader
         libraries_load('flexloader');
 

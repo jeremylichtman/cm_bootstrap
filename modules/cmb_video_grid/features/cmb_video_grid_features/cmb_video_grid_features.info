@@ -1,0 +1,13 @@
+name = CMB Video Grid Features
+description = CMB Video Grid Features
+core = 7.x
+package = CM Bootstrap: Content Components
+version = 7.x-1.0
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = options
+dependencies[] = paragraphs
+features[features_api][] = api:2
+features[field_base][] = field_cc_cmbvg_items
+features[field_instance][] = paragraphs_item-cmb_video_grid-field_cc_cmbvg_items
+features[paragraphs][] = cmb_video_grid

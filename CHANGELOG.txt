@@ -1,3 +1,7 @@
+Tag: tags/2017-07-16
+--------------------
+- Added "Video Grid" Component + updated "Landing Page" content type
+
 Tag: tags/2017-07-11-02
 --------------------
 - p-209: Added title alignment fields to cvl and cvl context

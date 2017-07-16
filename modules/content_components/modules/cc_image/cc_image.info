@@ -1,7 +1,8 @@
 name = Content Component: Image
-description = Image content component
+description = Image Content Component
 package = Content Components
 core = 7.x
 
 dependencies[] = paragraphs
 dependencies[] = content_components
+dependencies[] = cc_image_features

@@ -1,3 +1,7 @@
+Tag: tags/2017-07-16-0
+--------------------
+- ch-205/p-162: Site Not Rendering Properly in Explorer 11
+
 Tag: tags/2017-07-16
 --------------------
 - Added "Video Grid" Component + updated "Landing Page" content type

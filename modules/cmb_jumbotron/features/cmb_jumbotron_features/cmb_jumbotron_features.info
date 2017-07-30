@@ -9,6 +9,7 @@ dependencies[] = image
 dependencies[] = jquery_colorpicker
 dependencies[] = link
 dependencies[] = list
+dependencies[] = media
 dependencies[] = options
 dependencies[] = paragraphs
 dependencies[] = smart_trim

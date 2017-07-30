@@ -156,6 +156,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
     'settings' => array(
       'add_mode' => 'select',
       'allowed_bundles' => array(
+        'cmb_block_reference' => -1,
         'cmb_jumbotron' => -1,
         'cmb_jumbotron_item' => 'cmb_jumbotron_item',
         'content_list' => -1,
@@ -170,6 +171,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'text_with_background' => -1,
       ),
       'bundle_weights' => array(
+        'cmb_block_reference' => 15,
         'cmb_jumbotron' => 2,
         'cmb_jumbotron_item' => 3,
         'content_list' => 4,
@@ -183,7 +185,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'text_and_image' => 12,
         'text_with_background' => 13,
       ),
-      'default_edit_mode' => 'preview',
+      'default_edit_mode' => 'closed',
       'title' => 'Jumbotron Item',
       'title_multiple' => 'Jumbotron Items',
       'user_register_form' => FALSE,
@@ -227,21 +229,9 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'paragraphs_editor_preview' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
-        ),
+        'settings' => array(),
         'type' => 'link_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -305,9 +295,10 @@ function cmb_jumbotron_features_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'list_key',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -362,20 +353,9 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'settings' => array(
           'image_link' => '',
           'image_style' => 'thumbnail',
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
         ),
         'type' => 'image',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -395,7 +375,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'cloudcast' => 0,
@@ -431,7 +411,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'image_image',
+      'type' => 'media_generic',
       'weight' => 3,
     ),
   );
@@ -470,21 +450,9 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'paragraphs_editor_preview' => array(
         'label' => 'above',
         'module' => 'jquery_colorpicker',
-        'settings' => array(
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
-        ),
+        'settings' => array(),
         'type' => 'jquery_colorpicker_color_display',
-        'weight' => 5,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -537,21 +505,9 @@ function cmb_jumbotron_features_field_default_field_instances() {
       'paragraphs_editor_preview' => array(
         'label' => 'above',
         'module' => 'list',
-        'settings' => array(
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
-        ),
+        'settings' => array(),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -591,8 +547,9 @@ function cmb_jumbotron_features_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'list_key',
         'weight' => 0,
       ),
     ),
@@ -645,17 +602,6 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'label' => 'above',
         'module' => 'smart_trim',
         'settings' => array(
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
           'more_link' => FALSE,
           'more_text' => 'Read more',
           'summary_handler' => 'full',
@@ -667,7 +613,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
           'trim_type' => 'chars',
         ),
         'type' => 'smart_trim_format',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -724,17 +670,6 @@ function cmb_jumbotron_features_field_default_field_instances() {
         'label' => 'above',
         'module' => 'smart_trim',
         'settings' => array(
-          'linked_field' => array(
-            'advanced' => array(
-              'class' => '',
-              'rel' => '',
-              'target' => '',
-              'text' => '',
-              'title' => '',
-            ),
-            'destination' => '',
-            'linked' => 0,
-          ),
           'more_link' => FALSE,
           'more_text' => 'Read more',
           'summary_handler' => 'full',
@@ -746,7 +681,7 @@ function cmb_jumbotron_features_field_default_field_instances() {
           'trim_type' => 'chars',
         ),
         'type' => 'smart_trim_format',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'paragraphs_item',

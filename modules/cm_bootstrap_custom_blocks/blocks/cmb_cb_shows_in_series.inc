@@ -1,6 +1,8 @@
 <?php
 
 function _cmb_cb_shows_in_series() {
+  $sort = variable_get('cmb_latest_shows_production_date', FALSE);
+
   if ($current_node = menu_get_object()) {
     switch($current_node->type) {
       case 'cm_show':
@@ -18,7 +20,12 @@ function _cmb_cb_shows_in_series() {
       $query->entityCondition('bundle', 'cm_show');
       $query->propertyCondition('status', 1);
       $query->range(0, 100);
-      $query->propertyOrderBy('created', 'DESC');
+      if ($sort) {
+        $query->fieldOrderBy('field_show_production_date', 'value', 'DESC');
+      }
+      else {
+        $query->propertyOrderBy('created', 'DESC');
+      }
       $query->fieldCondition('og_group_ref', 'target_id', $nid, '=');
     $result = $query->execute();
     //

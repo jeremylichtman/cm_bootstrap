@@ -1,0 +1,44 @@
+<section class="jumbotron-events" style="background:url( {{ jumbotron_events.img.src }} );">
+  <div class="jumbotron-events__overlay" style="background:rgba({{ jumbotron_events.overlay_color }}, {{ jumbotron_events.overlay_opacity }});">
+    <div class="jumbotron-events__overlay-content">
+
+      <div class="jumbotron-events__overlay-left sm-100 md-60">
+        <h1 class="jumbotron-events__title text-3 white">{{ jumbotron_events.title }}</h1>
+        <div class="jumbotron-events__sub-title text-2 white">
+          {{ jumbotron_events.sub_title }}
+        </div>
+        <div class="jumbotron-events__button">
+          <a href="#">More Info</a>
+        </div>
+      </div>
+
+      <div class="jumbotron-events__overlay-right sm-100 md-40 bg-white">
+        <h2 class="center">This Week @ PhillyCAM</h2>
+        <ul class="jumbotron-events__items">
+          {% for item in jumbotron_events.items %}
+            <li class="jumbotron-events__item">
+              <span class="jumbotron-events__item-icon vertical-center">
+                <i class="icon icon-calendar"></i>
+              </span>
+              <div class="jumbotron-events__item-right">
+                <h3 class="jumbotron-events__item-title">
+                  {{ item.title }}
+                </h3>
+                <div class="jumbotron-events__item-label">
+                  {{ item.label }}
+                </div>
+                <div class="jumbotron-events__item-datetime">
+                  {{ item.datetime }}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="jumbotron-events__items-button">
+          <a href="#">Show All Events</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+@media screen {
+  .sm-100 {
+    width:100%;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .md-20 {
+    float:left;
+    width:20%;
+  }
+  .md-30 {
+    float:left;
+    width:30%;
+  }
+  .md-40 {
+    float:left;
+    width:40%;
+  }
+  .md-50 {
+    float:left;
+    width:50%;
+  }
+  .md-60 {
+    float:left;
+    width:60%;
+  }
+}

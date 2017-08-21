@@ -1,0 +1,43 @@
+{
+  "jumbotron_events": {
+    "title": "First Annual Cammy Recognition Awards.",
+    "sub_title": "Lorem ipsum dolor sit amet, simul quaestio ad per, velit nostro dissentiunt mel te, ei nonumy intellegebat sea.",
+    "img": {
+      "src": "../../images/jumbotron.jpg",
+      "alt": "nothing"
+    },
+    "view_height": "788px",
+    "overlay_opacity": ".55",
+    "overlay_color": "35,35,35",
+    "items": [
+      {
+        "title": "Access 103:Basic Editing",
+        "description": "Learn cool stuff like how to edit.",
+        "label": "Editing Class",
+        "datetime": "Mar 9 - 10:00am"
+      },
+      {
+        "title": "Access 103:Basic Editing",
+        "description": "Learn cool stuff like how to edit.",
+        "label": "Editing Class",
+        "datetime": "Aug 15 - 12:00am"
+      },
+      {
+        "title": "Access 103:Basic Editing",
+        "description": "Learn cool stuff like how to edit.",
+        "label": "Editing Class",
+        "datetime": "Aug 29 - 3:00pm"
+      },
+      {
+        "title": "Access 103:Basic Editing",
+        "description": "Learn cool stuff like how to edit.",
+        "label": "Editing Class"
+      },
+      {
+        "title": "Access: Studio Practicum - August 2017",
+        "description": "Learn cool stuff like how to edit.",
+        "label": "HD Studio Class"
+      }
+    ]
+  }
+}

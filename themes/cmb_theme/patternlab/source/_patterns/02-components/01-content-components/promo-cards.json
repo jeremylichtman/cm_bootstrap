@@ -1,0 +1,27 @@
+{
+  "promo_cards": {
+    "title": "Our Work",
+    "items": [
+      {
+        "title": "RETN",
+        "description": "Our long-standing partnership with RETN led to the creation, expansion and collaborative development of CM Bootstrap, a Drupal 7 theme tailored specifically to community media with easy-to-customize features that give your media center a unique look."
+      },
+      {
+        "title": "VCAM",
+        "description": "VCAM Description"
+      },
+      {
+        "title": "SPNN",
+        "description": "SPNN description"
+      },
+      {
+        "title": "NYU Wagner",
+        "description": "NYU Wagner description",
+        "img": {
+          "src": "../../images/nyu-wagner-jumbotron.jpg",
+          "alt": "Puck Building, NYC"
+        }
+      }
+    ]
+  }
+}

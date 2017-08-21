@@ -1,0 +1,28 @@
+@media screen {
+  .jumbotron {
+    position: relative;
+    overflow:hidden;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    width: 100%;
+    height: 100vh;
+    min-height:100vh;
+    -webkit-transition: 250ms ease-out;
+    -moz-transition: 250ms ease-out;
+    -o-transition: 250ms ease-out;
+    transition: 250ms ease-out;
+
+    .jumbotron__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .jumbotron__overlay-content {
+      padding: 0 1em;
+    }
+  }
+}

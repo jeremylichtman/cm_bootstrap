@@ -260,7 +260,7 @@ header.header {
   text-align: center; }
 
 @media screen {
-  .jumbotron-events {
+  .jumbotron-featured {
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: cover !important;
@@ -270,13 +270,13 @@ header.header {
     -o-transition: 250ms ease-out;
     transition: 250ms ease-out; } }
   @media screen and (min-width: 767px) {
-    .jumbotron-events {
+    .jumbotron-featured {
       position: relative;
       overflow: hidden;
       height: 788px;
       min-height: 788px; } }
   @media screen and (min-width: 767px) {
-    .jumbotron-events .jumbotron-events__overlay {
+    .jumbotron-featured .jumbotron-featured__overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -284,12 +284,12 @@ header.header {
       height: 788px; } }
 
 @media screen {
-    .jumbotron-events .jumbotron-events__overlay-content {
+    .jumbotron-featured .jumbotron-featured__overlay-content {
       padding: 0 1em;
       max-width: 1600px;
       margin: 0 auto; } }
     @media screen and (min-width: 767px) {
-      .jumbotron-events .jumbotron-events__overlay-content .jumbotron-events__overlay-left {
+      .jumbotron-featured .jumbotron-featured__overlay-content .jumbotron-featured__overlay-left {
         position: absolute;
         top: 40%;
         -webkit-transform: translate(0, -50%);
@@ -297,10 +297,10 @@ header.header {
         transform: translate(0, -50%); } }
 
 @media screen {
-      .jumbotron-events .jumbotron-events__overlay-content .jumbotron-events__overlay-right {
+      .jumbotron-featured .jumbotron-featured__overlay-content .jumbotron-featured__overlay-right {
         padding: 1em 0; } }
       @media screen and (min-width: 767px) {
-        .jumbotron-events .jumbotron-events__overlay-content .jumbotron-events__overlay-right {
+        .jumbotron-featured .jumbotron-featured__overlay-content .jumbotron-featured__overlay-right {
           padding: 0;
           float: right;
           max-width: 400px;
@@ -312,16 +312,16 @@ header.header {
           transform: translate(0, -50%); } }
 
 @media screen {
-        .jumbotron-events .jumbotron-events__overlay-content .jumbotron-events__overlay-right h2 {
+        .jumbotron-featured .jumbotron-featured__overlay-content .jumbotron-featured__overlay-right h2 {
           padding: 1em 0;
           margin: 0; }
-    .jumbotron-events .jumbotron-events__title {
+    .jumbotron-featured .jumbotron-featured__title {
       margin: 0;
       padding: 1em 0; }
-    .jumbotron-events .jumbotron-events__button {
+    .jumbotron-featured .jumbotron-featured__button {
       margin: 3em 0;
       width: 200px; }
-      .jumbotron-events .jumbotron-events__button a {
+      .jumbotron-featured .jumbotron-featured__button a {
         background: #F2E632;
         padding: 1.5em;
         width: 100%;
@@ -332,9 +332,9 @@ header.header {
         font-weight: 700;
         text-decoration: none;
         color: black; }
-    .jumbotron-events .jumbotron-events__items-button {
+    .jumbotron-featured .jumbotron-featured__items-button {
       margin: 2em; }
-      .jumbotron-events .jumbotron-events__items-button a {
+      .jumbotron-featured .jumbotron-featured__items-button a {
         background: #F2E632;
         padding: 2em;
         width: 100%;
@@ -345,29 +345,29 @@ header.header {
         font-weight: 700;
         text-decoration: none;
         color: black; }
-    .jumbotron-events .jumbotron-events__item-icon {
+    .jumbotron-featured .jumbotron-featured__item-icon {
       float: left; }
-      .jumbotron-events .jumbotron-events__item-icon i {
+      .jumbotron-featured .jumbotron-featured__item-icon i {
         font-size: 30px;
         color: darkgray; }
-    .jumbotron-events .jumbotron-events__item-title {
+    .jumbotron-featured .jumbotron-featured__item-title {
       font-size: 1em;
       margin: 0;
       padding: 0em; }
-    .jumbotron-events .jumbotron-events__item-description {
+    .jumbotron-featured .jumbotron-featured__item-description {
       font-size: 14px;
       padding-left: 30px; }
-    .jumbotron-events .jumbotron-events__items {
+    .jumbotron-featured .jumbotron-featured__items {
       padding: 0 2em; }
-      .jumbotron-events .jumbotron-events__items li {
+      .jumbotron-featured .jumbotron-featured__items li {
         padding: 1.5em 0;
         position: relative; }
-    .jumbotron-events .jumbotron-events__item-right {
+    .jumbotron-featured .jumbotron-featured__item-right {
       padding-left: 4em; }
-    .jumbotron-events ul {
+    .jumbotron-featured ul {
       margin: 0;
       padding: 0; }
-      .jumbotron-events ul li {
+      .jumbotron-featured ul li {
         list-style-type: none; } }
 
 @media screen {

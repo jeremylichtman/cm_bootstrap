@@ -1,12 +1,11 @@
 {
-  "jumbotron_events": {
+  "jumbotron_featured": {
     "title": "First Annual Cammy Recognition Awards.",
     "sub_title": "Lorem ipsum dolor sit amet, simul quaestio ad per, velit nostro dissentiunt mel te, ei nonumy intellegebat sea.",
     "img": {
       "src": "../../images/jumbotron.jpg",
       "alt": "nothing"
     },
-    "view_height": "788px",
     "overlay_opacity": ".55",
     "overlay_color": "35,35,35",
     "items": [

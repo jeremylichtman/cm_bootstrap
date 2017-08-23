@@ -1,5 +1,5 @@
 @media screen {
-  .jumbotron-events {
+  .jumbotron-featured {
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: cover !important;
@@ -15,7 +15,7 @@
       min-height:788px
     }
 
-    .jumbotron-events__overlay {
+    .jumbotron-featured__overlay {
       @media screen and (min-width: 767px) {
         position: absolute;
         top: 0;
@@ -25,12 +25,12 @@
       }
     }
 
-    .jumbotron-events__overlay-content {
+    .jumbotron-featured__overlay-content {
       padding: 0 1em;
       max-width:1600px;
       margin:0 auto;
 
-      .jumbotron-events__overlay-left {
+      .jumbotron-featured__overlay-left {
         @media screen and (min-width: 767px) {
           position: absolute;
           top: 40%;
@@ -40,7 +40,7 @@
         }
       }
 
-      .jumbotron-events__overlay-right {
+      .jumbotron-featured__overlay-right {
         padding: 1em 0;
         @media screen and (min-width: 767px) {
           padding:0;
@@ -60,12 +60,12 @@
       }
     }
 
-    .jumbotron-events__title {
+    .jumbotron-featured__title {
       margin: 0;
       padding:1em 0;
     }
 
-    .jumbotron-events__button {
+    .jumbotron-featured__button {
       margin: 3em 0;
       width: 200px;
       a {
@@ -82,7 +82,7 @@
       }
     }
 
-    .jumbotron-events__items-button {
+    .jumbotron-featured__items-button {
       margin:2em;
       a {
         background:#F2E632;
@@ -98,7 +98,7 @@
       }
     }
 
-    .jumbotron-events__item-icon {
+    .jumbotron-featured__item-icon {
       float:left;
       i {
         font-size:30px;
@@ -106,18 +106,18 @@
       }
     }
 
-    .jumbotron-events__item-title {
+    .jumbotron-featured__item-title {
       font-size: 1em;
       margin: 0;
       padding: 0em;
     }
 
-    .jumbotron-events__item-description {
+    .jumbotron-featured__item-description {
       font-size: 14px;
       padding-left: 30px;
     }
 
-    .jumbotron-events__items {
+    .jumbotron-featured__items {
       padding:0 2em;
       li {
         padding:1.5em 0;
@@ -125,7 +125,7 @@
       }
     }
 
-    .jumbotron-events__item-right {
+    .jumbotron-featured__item-right {
       padding-left: 4em;
     }
 

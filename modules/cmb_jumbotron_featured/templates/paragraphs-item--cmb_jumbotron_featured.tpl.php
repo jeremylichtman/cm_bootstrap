@@ -1,5 +1,5 @@
 <section class="jumbotron-featured" style="background:url( <?php print $cmb_jumbotron_featured['image']['src']; ?> );">
-  <div class="jumbotron-featured__overlay" style="background:rgba({{ jumbotron_featured.overlay_color }}, {{ jumbotron_featured.overlay_opacity }});">
+  <div class="jumbotron-featured__overlay" style="background:rgba(<?php print $cmb_jumbotron_featured['overlay_color']; ?>, <?php print $cmb_jumbotron_featured['overlay_opacity']; ?>);">
     <div class="jumbotron-featured__overlay-content">
 
       <div class="jumbotron-featured__overlay-left sm-100 md-60">
@@ -10,7 +10,7 @@
           <?php print $cmb_jumbotron_featured['sub_title']; ?>
         </div>
         <div class="jumbotron-featured__button">
-          <a href="#">More Info</a>
+          <a style="background:<?php print $cmb_jumbotron_featured['button_bg_color']; ?>; color:<?php print $cmb_jumbotron_featured['button_txt_color']; ?>;" href="#">More Info</a>
         </div>
       </div>
 
@@ -99,7 +99,7 @@
             </li>
           </ul>
         <div class="jumbotron-featured__items-button">
-          <a href="#">Show All Events</a>
+          <a style="background: <?php print $cmb_jumbotron_featured['button_bg_color']; ?>; color:<?php print $cmb_jumbotron_featured['button_txt_color']; ?>;" href="#">Show All Events</a>
         </div>
       </div>
 

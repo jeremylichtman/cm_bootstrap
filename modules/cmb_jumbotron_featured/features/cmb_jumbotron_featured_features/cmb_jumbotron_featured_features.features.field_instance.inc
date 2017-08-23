@@ -11,6 +11,90 @@ function cmb_jumbotron_featured_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_bg_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_bg_color'] = array(
+    'bundle' => 'cmb_jumbotron_featured',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => '000000',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cmb_jf_button_bg_color',
+    'label' => 'Button Background Color',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_txt_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_txt_color'] = array(
+    'bundle' => 'cmb_jumbotron_featured',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => 'ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cmb_jf_button_txt_color',
+    'label' => 'Button Text Color',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_image'.
   $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_image'] = array(
     'bundle' => 'cmb_jumbotron_featured',
@@ -58,6 +142,90 @@ function cmb_jumbotron_featured_features_field_default_field_instances() {
       ),
       'type' => 'image_image',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_overlay_color'.
+  $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_overlay_color'] = array(
+    'bundle' => 'cmb_jumbotron_featured',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => '050505',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cmb_jf_overlay_color',
+    'label' => 'Overlay Color',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_overlay_opacity'.
+  $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_overlay_opacity'] = array(
+    'bundle' => 'cmb_jumbotron_featured',
+    'default_value' => array(
+      0 => array(
+        'value' => '.3',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cmb_jf_overlay_opacity',
+    'label' => 'Overlay Opacity',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 4,
     ),
   );
 
@@ -156,6 +324,10 @@ function cmb_jumbotron_featured_features_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Background Image');
+  t('Button Background Color');
+  t('Button Text Color');
+  t('Overlay Color');
+  t('Overlay Opacity');
   t('Sub Title');
   t('Title');
 

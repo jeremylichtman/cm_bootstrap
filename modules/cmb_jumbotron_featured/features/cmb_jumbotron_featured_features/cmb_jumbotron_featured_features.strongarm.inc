@@ -19,7 +19,7 @@ function cmb_jumbotron_featured_features_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

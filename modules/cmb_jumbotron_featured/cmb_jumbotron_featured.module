@@ -50,6 +50,10 @@ function cmb_jumbotron_featured_preprocess_entity(&$variables) {
           'title' => \ContentComponents\Helper\FieldHelper::getValue($paragraph, 'field_cmb_jf_title'),
           'sub_title' => \ContentComponents\Helper\FieldHelper::getValue($paragraph, 'field_cmb_jf_subtitle'),
           'image' => \ContentComponents\Helper\ImageHelper::getAttributes($paragraph, 'field_cmb_jf_image', 'cmb_jumbotron_slide', 'thumbnail'),
+          'overlay_opacity' => \ContentComponents\Helper\FieldHelper::getValue($paragraph, 'field_cmb_jf_overlay_opacity'),
+          'overlay_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_overlay_color', 1),
+          'button_bg_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_button_bg_color', 0),
+          'button_txt_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_button_txt_color', 0),
         ];
         break;
   	}

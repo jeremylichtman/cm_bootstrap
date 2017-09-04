@@ -53,6 +53,69 @@ function cmb_jumbotron_featured_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_link'.
+  $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_link'] = array(
+    'bundle' => 'cmb_jumbotron_featured',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 7,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cmb_jf_button_link',
+    'label' => 'Button Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'advanced_link',
+      'settings' => array(
+        'default_titles' => '',
+        'urls_allowed' => 'both',
+        'urls_filter' => '',
+        'urls_search' => 'contains',
+      ),
+      'type' => 'advanced_link',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_txt_color'.
   $field_instances['paragraphs_item-cmb_jumbotron_featured-field_cmb_jf_button_txt_color'] = array(
     'bundle' => 'cmb_jumbotron_featured',
@@ -325,6 +388,7 @@ function cmb_jumbotron_featured_features_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Background Image');
   t('Button Background Color');
+  t('Button Link');
   t('Button Text Color');
   t('Overlay Color');
   t('Overlay Opacity');

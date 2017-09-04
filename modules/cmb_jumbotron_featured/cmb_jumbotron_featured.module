@@ -54,6 +54,7 @@ function cmb_jumbotron_featured_preprocess_entity(&$variables) {
           'overlay_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_overlay_color', 1),
           'button_bg_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_button_bg_color', 0),
           'button_txt_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cmb_jf_button_txt_color', 0),
+          'button_link' => \ContentComponents\Helper\LinkHelper::getUrl($paragraph, 'field_cmb_jf_button_link'),
         ];
         break;
   	}

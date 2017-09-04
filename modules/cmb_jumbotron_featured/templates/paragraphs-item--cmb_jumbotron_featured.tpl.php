@@ -10,7 +10,9 @@
           <?php print $cmb_jumbotron_featured['sub_title']; ?>
         </div>
         <div class="jumbotron-featured__button">
-          <a style="background:<?php print $cmb_jumbotron_featured['button_bg_color']; ?>; color:<?php print $cmb_jumbotron_featured['button_txt_color']; ?>;" href="#">More Info</a>
+          <a style="background:<?php print $cmb_jumbotron_featured['button_bg_color']; ?>; color:<?php print $cmb_jumbotron_featured['button_txt_color']; ?>;" href="<?php print $cmb_jumbotron_featured['button_link']['href']; ?>">
+            <?php print $cmb_jumbotron_featured['button_link']['title']; ?>
+          </a>
         </div>
       </div>
 

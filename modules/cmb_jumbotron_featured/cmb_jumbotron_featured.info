@@ -1,0 +1,6 @@
+name = CMB Jumbotron Featured
+description = CMB Jumbotron Featured
+package = CM Bootstrap: Content Components
+core = 7.x
+dependencies[] = paragraphs
+dependencies[] = cc_helper

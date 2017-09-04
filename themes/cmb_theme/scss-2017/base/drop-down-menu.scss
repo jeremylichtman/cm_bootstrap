@@ -1,0 +1,147 @@
+@media screen {
+  // General SCSS that would be needed for any design.
+  #cmb-dropdown-menu {
+    // Reset Bootstrap styles.
+    .nav > li > a:focus,
+    .nav > li > a:hover {
+      background-color: transparent;
+    }
+    margin-top: 15px;
+    z-index: 300;
+    position: relative;
+
+    ul {
+      list-style: none;
+      position: relative;
+      float: right;
+      margin: 0;
+      padding: 0;
+
+      a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        text-transform: none;
+      }
+
+      li a {
+        //text-transform: lowercase;
+        padding: 1em 0;
+        font-weight: 900;
+      }
+
+      li a .cmb-dropdown-menu__icon {
+        i {
+          display:inline-block;
+          -webkit-transition: 250ms ease-out;
+          -moz-transition: 250ms ease-out;
+          -o-transition: 250ms ease-out;
+          transition: 250ms ease-out;
+        }
+      }
+
+      li a:hover .cmb-dropdown-menu__icon {
+        i {
+          -webkit-transform: rotate(180deg);
+          -moz-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+          -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
+      }
+
+      li > a {
+        //padding: 1.7em;
+        font-size: 1.25em;
+      }
+
+      /*
+      li a:after {
+        font-family: "fontello";
+        content: '\e813';
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      li:hover a:after {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      */
+
+      li {
+        position: relative;
+        display: inline-block;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        margin-right: 0.5em;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        &:hover {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+
+          ul li {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+
+            a {
+              text-align: left;
+              text-transform: capitalize;
+            }
+
+            &.last {
+              border-bottom-left-radius: 4px;
+              border-bottom-right-radius: 4px;
+            }
+          }
+        }
+      }
+
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        // background: #fff;
+        padding: 0;
+        width: 200px;
+        background:white;
+
+        li {
+          float: none;
+          width: 100%;
+        }
+
+        a {
+          //line-height: 120%;
+          //padding: 10px 15px;
+          font-size: 1em;
+        }
+
+        ul {
+          top: 0;
+          right: 100%;
+        }
+      }
+
+      li:hover {
+        & > a {}
+
+        & > ul {
+          display: block;
+        }
+      }
+    }
+  }
+  // CM Bootstrap specific SCSS for this weird clunky menu
+}

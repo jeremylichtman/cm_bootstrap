@@ -1,7 +1,7 @@
-.node-type-cmb-landing-page h1 {
+.node-type-cmb-landing-page h1:not(.jumbotron-featured__title) {
   display:none;
 }
-.paragraphs-items-field-content-components section {
+.paragraphs-items-field-content-components section:not(.jumbotron-featured) {
   padding:1em 0;
   max-width: 1170px;
   margin: 0 auto;

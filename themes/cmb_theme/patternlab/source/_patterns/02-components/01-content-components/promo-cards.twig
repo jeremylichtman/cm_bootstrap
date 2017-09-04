@@ -1,0 +1,18 @@
+<section class="promo-cards">
+  <header>
+    <h2 class="promo-cards__title">{{ promo_cards.title }}</h2>
+  </header>
+  <ul class="promo-cards__items">
+    {% for item in promo_cards.items %}
+      <li>
+        <h3 class="promo-cards__item-title">
+          {{ item.title }}
+        </h3>
+        <div class="promo-cards__item-description">
+          {{ item.description }}
+        </div>
+        <img src="{{ item.img.src }}" alt="{{ item.img.alt }}"/>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

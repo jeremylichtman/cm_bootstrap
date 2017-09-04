@@ -1,0 +1,13 @@
+{
+  "global": {
+    "title": "Hello, We're First Turn Media.",
+    "sub_title": "We specialize in custom Drupal development, support, and community media.",
+    "img": {
+      "src": "../../images/jumbotron.jpg",
+      "alt": "nothing"
+    },
+    "view_height": "70vh",
+    "overlay_opacity": ".55",
+    "overlay_color": "35,35,35"
+  }
+}

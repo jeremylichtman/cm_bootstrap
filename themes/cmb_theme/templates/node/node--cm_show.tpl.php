@@ -69,7 +69,7 @@
     </div>
     <div class="col-md-2 col-xs-2 no-padding">
       <div class="flag-container pull-right">
-        <?php if (module_exists('flag')): ?>
+        <?php if ($cm_show['flag_module']): ?>
           <?php print flag_create_link('cf_like_show', $node->nid); ?>
           <?php $flag = flag_get_flag('cf_like_show'); ?>
           <?php if ($flag->get_count($nid) > 0 && user_is_logged_in()): ?>

@@ -4,13 +4,26 @@
 module_load_include('inc', 'cm_bootstrap_community', 'cm_bootstrap_community_menus');
 
 /**
+ * Implements hook_install().
+ */
+// This doesnt work, wtf 
+/*function cm_bootstrap_community_install() {
+  drupal_flush_all_caches();
+
+  // Set basic permissions for cm_show flags
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('flag cf_like_show'));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('unflag cf_like_show'));
+}
+*/
+
+/**
  * Implements hook_enable().
  */
-function cm_bootstrap_community_enable() {  
+function cm_bootstrap_community_enable() {
   // User Add Content Menu
   cm_bootstrap_community_install_user_add_content_menu();
   // User Profile Menu
-  cm_bootstrap_community_install_user_profile_menu();  
+  cm_bootstrap_community_install_user_profile_menu();
   // Clear menu cache
   cache_clear_all('*', 'cache_menu', TRUE);
 }
@@ -18,10 +31,9 @@ function cm_bootstrap_community_enable() {
 /**
  * Implements hook_uninstall().
  */
-function cm_bootstrap_community_uninstall() {      
+function cm_bootstrap_community_uninstall() {
   // User Add Content Menu
   cm_bootstrap_community_uninstall_user_add_content_menu();
   // User Profile Menu
   cm_bootstrap_community_uninstall_user_profile_menu();
 }
-

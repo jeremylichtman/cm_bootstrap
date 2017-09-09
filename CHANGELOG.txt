@@ -1,3 +1,7 @@
+Tag: tags/2017-09-09
+--------------------
+- zd-64: HTTP ERROR 500 for a highly used series (SPNN critical bug)
+
 Tag: tags/2017-08-06
 --------------------
 - zd-28: Add Global Config For Sorting Custom Video Lists by Production Date

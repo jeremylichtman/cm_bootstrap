@@ -34,9 +34,27 @@ function _cmb_cb_shows_in_series() {
       $nodes = entity_load('node', $nids);
       foreach($nodes as $node) {
         // Get field_show_vod thumbnail
-        if (isset($node->field_show_vod['und'])) {
+        /*if (isset($node->field_show_vod['und'])) {
           $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
           $image_uri = $wrapper->getLocalThumbnailPath();
+        }
+        */
+        // @todo clean this up later, temp fix by wluisi 8/31 to fix critical bug on spnn
+        // Switch to account for cloudcast, vimeo, youtube, etc.
+        if (isset($node->field_show_vod['und'])) {
+          switch($node->field_show_vod['und'][0]['filemime']) {
+            case 'video/cloudcast':
+              $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
+              break;
+            case 'video/vimeo':
+              $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
+              $image_uri = $image_uri . '.jpg';
+              break;
+            case 'video/youtube':
+              $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
+              $image_uri = $image_uri . '.jpg';
+              break;
+          }
         }
         else {
           if (module_exists('cm_bootstrap_cp_default_images')) {

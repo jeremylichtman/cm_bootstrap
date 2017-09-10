@@ -21,6 +21,7 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+    -webkit-backface-visibility: hidden;
   }
   /* line 24, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content {

@@ -104,26 +104,14 @@ function cmb_custom_video_list_context_preprocess_entity(&$variables) {
             }
 
             foreach($nodes as $node) {
-              // Image, switch to account for cloudcast, vimeo, youtube, etc.
-              if (isset($node->field_show_vod[LANGUAGE_NONE])) {
-                switch($node->field_show_vod[LANGUAGE_NONE][0]['filemime']) {
-                  case 'video/cloudcast':
-                    $image_uri = 'media-cloudcast/' . $node->field_show_vod[LANGUAGE_NONE][0]['filename']  . '.jpg';
-                    break;
-                  case 'video/vimeo':
-                    $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                  case 'video/youtube':
-                    $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                  case 'video/bliptv':
-                    $image_uri = str_replace('bliptv://i/BiCities-AubreyThornvoldReconcilingWorksFilmed201502703.png/v/', 'media-bliptv/', $node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                }
-                $img_src = image_style_url('500x281', $image_uri);
+              // Use show custom thumbnail field if avail
+              if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+                $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+              }
+              // Use field_show_vod image
+              else if (isset($node->field_show_vod[LANGUAGE_NONE])) {
+                $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
+                $image_uri = $wrapper->getLocalThumbnailPath();
               }
               else {
                 if (module_exists('cm_bootstrap_cp_default_images')) {
@@ -132,6 +120,8 @@ function cmb_custom_video_list_context_preprocess_entity(&$variables) {
                   $img_src = image_style_url('500x281', $image_uri);
                 }
               }
+              // Image style
+              $img_src = image_style_url('500x281', $image_uri);
 
               // Placeholder image
               $placeholder_img = CMB_CVLC_PLACEHOLDER_IMG;

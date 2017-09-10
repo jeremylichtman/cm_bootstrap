@@ -1,12 +1,16 @@
 <ul class="user-shows-likes">
 <?php foreach($content as $node): ?>
-  <?php 
+  <?php
+    // Use show custom thumbnail field if avail
+    if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+      $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+    }
     // Get show images, accounting for variations.
-    if (isset($node->field_show_vod['und'])) {        
+    else if (isset($node->field_show_vod['und'])) {
       switch($node->field_show_vod['und'][0]['filemime']) {
         // Cloudcast
         case 'video/cloudcast':
-          $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';								
+          $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
           break;
         // Vimeo
         case 'video/vimeo':
@@ -14,16 +18,19 @@
           $image_uri = $image_uri . '.jpg';
           break;
         // Youtube
-        case 'video/youtube':  
+        case 'video/youtube':
           $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
           $image_uri = $image_uri . '.jpg';
           break;
       }
       $img_src = image_style_url('250x150', $image_uri);
     }
-    else {
+
+    $img_src = image_style_url('250x150', $image_uri);
+    /*else {
       $img_src = '';
     }
+    */
     // Description
     if (isset($node->field_description['und'][0]['value'])) {
       $show_description = $node->field_description['und'][0]['value'];

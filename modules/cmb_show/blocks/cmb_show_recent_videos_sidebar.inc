@@ -32,7 +32,12 @@ function _cmb_show_recent_videos_sidebar() {
 
   if ($nodes) {
     foreach ($nodes as $node) {
-      if (isset($node->field_show_vod[LANGUAGE_NONE])) {
+      // Use show custom thumbnail field if avail
+      if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+        $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+      }
+
+      else if (isset($node->field_show_vod[LANGUAGE_NONE])) {
         // Get media thumbnail image
         // @todo confirm that this actually works for all video providers.
         // Seems to work for Cloudcast and Youtube

@@ -29,10 +29,13 @@ function _front_pg_latest_shows_carousel_data() {
     $nodes = entity_load('node', $nids);
 
     foreach ($nodes as $node) {
-      //dpm($node);
+      // Use show custom thumbnail field if avail
+      if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+        $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+      }
 
       // Switch to account for cloudcast, vimeo, youtube, etc.
-      if (isset($node->field_show_vod['und'])) {
+      else if (isset($node->field_show_vod['und'])) {
         switch($node->field_show_vod['und'][0]['filemime']) {
           case 'video/cloudcast':
             $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';

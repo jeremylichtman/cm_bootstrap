@@ -5,32 +5,26 @@ function _node__search_index(&$variables) {
 
   switch ($node->type) {
     case 'cm_show':
-      $show_image = '';
-
-      // Get show image
-      if (isset($node->field_show_vod['und'])) {
-        switch($node->field_show_vod['und'][0]['filemime']) {
-          case 'video/cloudcast':
-            $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-            break;
-          case 'video/vimeo':
-            $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-          case 'video/youtube':
-            $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-        }
-        $show_image = image_style_url('medium', $image_uri);
+      $img_src = FALSE;
+            
+      // Use show custom thumbnail field if avail
+      if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+        $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+      }
+      // Use field_show_vod image
+      else if (isset($node->field_show_vod[LANGUAGE_NONE])) {
+        $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
+        $image_uri = $wrapper->getLocalThumbnailPath();
       }
       else {
         if (module_exists('cm_bootstrap_cp_default_images')) {
           $file = cm_bootstrap_cp_default_images_load_image($node->type);
           $image_uri = $file->uri;
-          $show_image = image_style_url('medium', $image_uri);
+          $img_src = image_style_url('500x281', $image_uri);
         }
       }
+      // Image style
+      $img_src = image_style_url('500x281', $image_uri);
 
       // Series title
       if (isset($node->og_group_ref['und'][0]['target_id'])) {
@@ -70,7 +64,7 @@ function _node__search_index(&$variables) {
         'title' => $node->title,
         'type' => 'Show',
         'series_title' => $series_title,
-        'show_image' => $show_image,
+        'show_image' => $img_src,
         'producer' => $producer,
         'production_date' => $production_date,
         'description' => $description,

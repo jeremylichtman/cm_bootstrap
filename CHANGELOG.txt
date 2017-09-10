@@ -1,3 +1,7 @@
+Tag: tags/2017-09-10
+--------------------
+- zd-72: Homepage Jumbotron Data Loading
+
 Tag: tags/2017-09-09-02
 --------------------
 - zd-48: Add blog Thumbnails to search results

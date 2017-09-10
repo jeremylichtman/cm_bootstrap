@@ -1,3 +1,7 @@
+Tag: tags/2017-09-09-02
+--------------------
+- zd-48: Add blog Thumbnails to search results
+
 Tag: tags/2017-09-09-01
 --------------------
 - zd-22: various updates to wire up field_show_custom_thumbnail (BCTV critical bug)

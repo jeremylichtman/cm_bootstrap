@@ -6,7 +6,7 @@ function _node__search_index(&$variables) {
   switch ($node->type) {
     case 'cm_show':
       $img_src = FALSE;
-            
+
       // Use show custom thumbnail field if avail
       if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
         $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
@@ -113,14 +113,20 @@ function _node__search_index(&$variables) {
       break;
 
     case 'blog':
+      $img_src = FALSE;
+
+      if ($node->field_blog_image[LANGUAGE_NONE]) {
+        $img_src = image_style_url('medium', $node->field_blog_image[LANGUAGE_NONE][0]['uri']);
+      }
+
       $search_result = array(
         'nid' => $node->nid,
         'title' => $node->title,
         'type' => 'Blog',
         'description' => $node->body['und'][0]['summary'],
         'post_date' => date('F d, Y', $node->created),
+        'img_src' => $img_src,
       );
-
       break;
 
     case 'page':

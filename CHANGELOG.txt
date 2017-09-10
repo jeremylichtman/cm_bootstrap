@@ -1,3 +1,7 @@
+Tag: tags/2017-09-09-01
+--------------------
+- zd-22: various updates to wire up field_show_custom_thumbnail (BCTV critical bug)
+
 Tag: tags/2017-09-09
 --------------------
 - zd-64: HTTP ERROR 500 for a highly used series (SPNN critical bug)

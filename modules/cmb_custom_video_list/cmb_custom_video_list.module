@@ -156,6 +156,10 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
                   if (isset($ref_node->field_series_image[LANGUAGE_NONE][0]['uri'])) {
                     $img_src = image_style_url('500x281', $ref_node->field_series_image[LANGUAGE_NONE][0]['uri']);
                   }
+                  // Account for sites that user field_project_image
+                  else if (isset($ref_node->field_project_image[LANGUAGE_NONE])) {
+                    $img_src = image_style_url('500x281', $ref_node->field_project_image[LANGUAGE_NONE][0]['uri']);
+                  }
                   else {
                     if (module_exists('cm_bootstrap_cp_default_images')) {
                       $file = cm_bootstrap_cp_default_images_load_image('cm_project');

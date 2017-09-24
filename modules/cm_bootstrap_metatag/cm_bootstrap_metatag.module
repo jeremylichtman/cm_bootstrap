@@ -4,6 +4,9 @@ function cm_bootstrap_metatag_metatag_metatags_view_alter(&$output, $instance) {
   switch ($instance) {
     case 'node:page':
     case 'node:blog':
+      module_load_include('inc', 'cm_bootstrap_metatag', 'inc/og_image');
+      cm_bootstrap_metatag_page_image();
+
       if (empty($output['description']) && empty($output['og:description'])) {
         module_load_include('inc', 'cm_bootstrap_metatag', 'inc/description');
         cm_bootstrap_metatag_description();

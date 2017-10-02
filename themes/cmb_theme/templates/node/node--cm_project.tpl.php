@@ -41,7 +41,7 @@
           $string_pieces = explode('/', $uri);
           $iframe_src_param_id = $string_pieces[3];
           // Build iframe src.
-          $iframe_src = 'http://vp.telvue.com/player?wmode=opaque&modestbranding=1
+          $iframe_src = 'https://vp.telvue.com/player?wmode=opaque&modestbranding=1
 &HTML5=true&id=' . $iframe_src_param_id . '&video=' . $iframe_src_param_video . '&noplaylistskin=1&width=400&height=300';
           break;
         case 'video/vimeo':
@@ -54,7 +54,7 @@
           $string_pieces = explode('/', $uri);
           $iframe_src_param_id = $string_pieces[3];
           // Build iframe src.
-          $iframe_src = 'http://player.vimeo.com/video/' . $iframe_src_param_id . '?color=" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""';
+          $iframe_src = 'https://player.vimeo.com/video/' . $iframe_src_param_id . '?color=" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""';
           break;
         case 'video/youtube':
           $video_container_class = 'video-container';

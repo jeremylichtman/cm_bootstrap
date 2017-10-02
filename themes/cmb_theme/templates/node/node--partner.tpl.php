@@ -112,7 +112,7 @@ if (isset($feature_video->field_show_vod['und'])) {
       $string_pieces = explode('/', $uri);
       $iframe_src_param_id = $string_pieces[3];
       // Build iframe src.
-      $iframe_src = 'http://vp.telvue.com/player?wmode=opaque&amp;id=' . $iframe_src_param_id . '&amp;video=' . $iframe_src_param_video . '&amp;noplaylistskin=1&amp;width=400&amp;height=300';
+      $iframe_src = 'https://vp.telvue.com/player?wmode=opaque&amp;id=' . $iframe_src_param_id . '&amp;video=' . $iframe_src_param_video . '&amp;noplaylistskin=1&amp;width=400&amp;height=300';
       break;
     case 'video/vimeo':
       $iframe_class = 'media-vimeo-player';
@@ -123,7 +123,7 @@ if (isset($feature_video->field_show_vod['und'])) {
       $string_pieces = explode('/', $uri);
       $iframe_src_param_id = $string_pieces[3];
       // Build iframe src.
-      $iframe_src = 'http://player.vimeo.com/video/' . $iframe_src_param_id . '?color=" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""';
+      $iframe_src = 'https://player.vimeo.com/video/' . $iframe_src_param_id . '?color=" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""';
       break;
     case 'video/youtube':
       $iframe_class = 'media-youtube-player';
@@ -134,7 +134,7 @@ if (isset($feature_video->field_show_vod['und'])) {
       $iframe_src_param_id = $string_pieces[3];
       //dpm($iframe_src_param_id);
       // Build iframe src.
-      $iframe_src = 'http://www.youtube.com/embed/' . $iframe_src_param_id . '?controls=1&amp;wmode=opaque&amp;autoplay=0&amp;enablejsapi=0&amp;loop=0&amp;modestbranding=0&amp;rel=1&amp;showinfo=1"';
+      $iframe_src = 'https://www.youtube.com/embed/' . $iframe_src_param_id . '?controls=1&amp;wmode=opaque&amp;autoplay=0&amp;enablejsapi=0&amp;loop=0&amp;modestbranding=0&amp;rel=1&amp;showinfo=1"';
       break;
   }
 }

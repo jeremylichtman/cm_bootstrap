@@ -96,7 +96,16 @@ function cm_bootstrap_cp_colors_form($form, &$form_state) {
     '#size' => 90,
     '#default_value' => cm_bootstrap_cp_colors_form_default_value('partner_main_content_bg_color'),
   );
+
+  $form['global_colors']['global_body_bg_color'] = array(
+    '#type' => 'spectrum_field',
+    '#title' => t('Global: Body Background Color'),
+    '#size' => 90,
+    '#default_value' => cm_bootstrap_cp_colors_form_default_value('global_body_bg_color'),
+  );
+
   // END: Global Colors
+
   // START: Primary Colors
   $form['primary_colors'] = array(
     '#type' => 'fieldset',

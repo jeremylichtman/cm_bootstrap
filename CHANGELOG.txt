@@ -1,3 +1,7 @@
+Tag: tags/2017-10-09
+--------------------
+- zd-66: Blog Image Placement
+
 Tag: tags/2017-10-03-01
 --------------------
 - zd-51: fix for cc_text_with_background css conflict with body background color

@@ -98,6 +98,21 @@ function cc_content_list_preprocess_entity(&$variables) {
           $title_display_overlay = TRUE;
         }
 
+        $meta_display_overlay = 'none';
+        if ($paragraph->field_cc_cl_show_metadata[LANGUAGE_NONE][0]['value']) {
+          $meta_display_overlay = $paragraph->field_cc_cl_show_metadata[LANGUAGE_NONE][0]['value'];
+        }
+
+        $overlay_color = 'transparent';
+        if ($paragraph->field_cc_cl_overlay_color[LANGUAGE_NONE][0]['jquery_colorpicker']) {
+          $overlay_color = '#' . $paragraph->field_cc_cl_overlay_color[LANGUAGE_NONE][0]['jquery_colorpicker'];
+        }
+
+        $overlay_text_color = '#ffffff';
+        if ($paragraph->field_cc_cl_overlay_text_color[LANGUAGE_NONE][0]['jquery_colorpicker']) {
+          $overlay_text_color = '#' . $paragraph->field_cc_cl_overlay_text_color[LANGUAGE_NONE][0]['jquery_colorpicker'];
+        }
+
         $description = FALSE;
         if (isset($paragraph->field_cc_cl_description[LANGUAGE_NONE])) {
           $description = $paragraph->field_cc_cl_description[LANGUAGE_NONE][0]['value'];
@@ -108,10 +123,67 @@ function cc_content_list_preprocess_entity(&$variables) {
           'description' => $description,
           'cl_items' => $cl_item,
           'title_display_overlay' => $title_display_overlay,
+          'meta_display_overlay' => $meta_display_overlay,
+          'overlay_color' => hex2rgba($overlay_color, 0.3),
+          'overlay_text_color' => hex2rgba($overlay_text_color, FALSE),
         );
         break;
     }
+    
+    // Add js for overlay.
+    drupal_add_js(drupal_get_path('module', 'cc_content_list') . '/js/cc_content_list.js');
 
     $variables['content_list'] = $data;
   }
+}
+
+/**
+ * We have to convert Jquery Colorpicker's HEX output to RGBA to handle opacity.
+ * @See: https://mekshq.com/how-to-convert-hexadecimal-color-code-to-rgb-or-rgba-using-php/
+ */
+function hex2rgba($color, $opacity = FALSE) {
+	$default = 'rgb(0,0,0)';
+
+	// Return default if no color provided.
+	if(empty($color)) {
+    return $default; 
+  }
+
+	// Sanitize $color if "#" is provided.
+  if ($color[0] == '#' ) {
+    $color = substr($color, 1);
+  }
+
+  // Check if color has 6 or 3 characters and get values.
+  if (strlen($color) == 6) {
+    $hex = array(
+      $color[0] . $color[1],
+      $color[2] . $color[3],
+      $color[4] . $color[5],
+    );
+  } elseif (strlen($color) == 3) {
+    $hex = array(
+      $color[0] . $color[0],
+      $color[1] . $color[1],
+      $color[2] . $color[2],
+    );
+  } else {
+    return $default;
+  }
+ 
+  // Convert hexadec to rgb.
+  $rgb = array_map('hexdec', $hex);
+
+  // Check if opacity is set(rgba or rgb).
+  if($opacity){
+    if(abs($opacity) > 1) {
+      $opacity = 1.0;
+    }
+    $output = 'rgba(' . implode(",", $rgb) . ',' . $opacity . ')';
+  } else {
+    $output = 'rgb(' . implode(",", $rgb) . ')';
+  }
+
+  // Return rgb(a) color string.
+  return $output;
 }

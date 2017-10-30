@@ -10,7 +10,7 @@
 function cc_content_list_features_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_cc_cl_description'
+  // Exported field_base: 'field_cc_cl_description'.
   $field_bases['field_cc_cl_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -40,7 +40,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_cc_cl_item_abstract'
+  // Exported field_base: 'field_cc_cl_item_abstract'.
   $field_bases['field_cc_cl_item_abstract'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -70,7 +70,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_cc_cl_item_image'
+  // Exported field_base: 'field_cc_cl_item_image'.
   $field_bases['field_cc_cl_item_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -103,7 +103,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_cc_cl_item_link'
+  // Exported field_base: 'field_cc_cl_item_link'.
   $field_bases['field_cc_cl_item_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -136,7 +136,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_cc_cl_item_title'
+  // Exported field_base: 'field_cc_cl_item_title'.
   $field_bases['field_cc_cl_item_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -168,7 +168,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_cc_cl_items'
+  // Exported field_base: 'field_cc_cl_items'.
   $field_bases['field_cc_cl_items'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -187,7 +187,72 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
-  // Exported field_base: 'field_cc_cl_title'
+  // Exported field_base: 'field_cc_cl_overlay_color'.
+  $field_bases['field_cc_cl_overlay_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cl_overlay_color',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'jquery_colorpicker',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'jquery_colorpicker',
+  );
+
+  // Exported field_base: 'field_cc_cl_overlay_text_color'.
+  $field_bases['field_cc_cl_overlay_text_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cl_overlay_text_color',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'jquery_colorpicker',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'jquery_colorpicker',
+  );
+
+  // Exported field_base: 'field_cc_cl_show_metadata'.
+  $field_bases['field_cc_cl_show_metadata'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cl_show_metadata',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'none' => 'Do not show metadata',
+        'beneath' => 'Beneath the image',
+        'overlay' => 'Overlay on the image',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_cc_cl_title'.
   $field_bases['field_cc_cl_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -196,14 +261,6 @@ function cc_content_list_features_field_default_field_bases() {
     'field_name' => 'field_cc_cl_title',
     'field_permissions' => array(
       'type' => 0,
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
     ),
     'indexes' => array(
       'format' => array(
@@ -219,7 +276,7 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_cc_cl_titles_display'
+  // Exported field_base: 'field_cc_cl_titles_display'.
   $field_bases['field_cc_cl_titles_display'] = array(
     'active' => 1,
     'cardinality' => 1,

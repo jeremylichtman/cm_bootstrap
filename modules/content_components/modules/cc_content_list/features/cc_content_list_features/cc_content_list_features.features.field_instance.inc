@@ -10,7 +10,8 @@
 function cc_content_list_features_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_description'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_description'.
   $field_instances['paragraphs_item-content_list-field_cc_cl_description'] = array(
     'bundle' => 'content_list',
     'default_value' => NULL,
@@ -55,7 +56,7 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_items'
+  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_items'.
   $field_instances['paragraphs_item-content_list-field_cc_cl_items'] = array(
     'bundle' => 'content_list',
     'default_value' => NULL,
@@ -106,11 +107,137 @@ function cc_content_list_features_field_default_field_instances() {
       'module' => 'paragraphs',
       'settings' => array(),
       'type' => 'paragraphs_embed',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_overlay_color'.
+  $field_instances['paragraphs_item-content_list-field_cc_cl_overlay_color'] = array(
+    'bundle' => 'content_list',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => '0088cc',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cl_overlay_color',
+    'label' => 'Overlay color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_overlay_text_color'.
+  $field_instances['paragraphs_item-content_list-field_cc_cl_overlay_text_color'] = array(
+    'bundle' => 'content_list',
+    'default_value' => array(
+      0 => array(
+        'jquery_colorpicker' => 'ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'jquery_colorpicker',
+        'settings' => array(),
+        'type' => 'jquery_colorpicker_color_display',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cl_overlay_text_color',
+    'label' => 'Overlay text color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'jquery_colorpicker',
+      'settings' => array(),
+      'type' => 'jquery_colorpicker',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_show_metadata'.
+  $field_instances['paragraphs_item-content_list-field_cc_cl_show_metadata'] = array(
+    'bundle' => 'content_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 'none',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cl_show_metadata',
+    'label' => 'Show metadata',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
       'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_title'
+  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_title'.
   $field_instances['paragraphs_item-content_list-field_cc_cl_title'] = array(
     'bundle' => 'content_list',
     'default_value' => NULL,
@@ -156,7 +283,8 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list-field_cc_cl_titles_display'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_titles_display'.
   $field_instances['paragraphs_item-content_list-field_cc_cl_titles_display'] = array(
     'bundle' => 'content_list',
     'default_value' => array(
@@ -199,7 +327,8 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list_item-field_cc_cl_item_abstract'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list_item-field_cc_cl_item_abstract'.
   $field_instances['paragraphs_item-content_list_item-field_cc_cl_item_abstract'] = array(
     'bundle' => 'content_list_item',
     'default_value' => NULL,
@@ -244,7 +373,8 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list_item-field_cc_cl_item_image'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list_item-field_cc_cl_item_image'.
   $field_instances['paragraphs_item-content_list_item-field_cc_cl_item_image'] = array(
     'bundle' => 'content_list_item',
     'deleted' => 0,
@@ -298,7 +428,8 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list_item-field_cc_cl_item_link'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list_item-field_cc_cl_item_link'.
   $field_instances['paragraphs_item-content_list_item-field_cc_cl_item_link'] = array(
     'bundle' => 'content_list_item',
     'default_value' => NULL,
@@ -360,7 +491,8 @@ function cc_content_list_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list_item-field_cc_cl_item_title'
+  // Exported field_instance:
+  // 'paragraphs_item-content_list_item-field_cc_cl_item_title'.
   $field_instances['paragraphs_item-content_list_item-field_cc_cl_item_title'] = array(
     'bundle' => 'content_list_item',
     'default_value' => NULL,
@@ -415,6 +547,9 @@ function cc_content_list_features_field_default_field_instances() {
   t('If checked, Item Titles will be displayed over the Images in the bottom left corner');
   t('Image');
   t('Link');
+  t('Overlay color');
+  t('Overlay text color');
+  t('Show metadata');
   t('Title');
 
   return $field_instances;

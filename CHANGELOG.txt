@@ -1,3 +1,20 @@
+Tag: tags/2017-10-09
+--------------------
+- zd-66: Blog Image Placement
+
+Tag: tags/2017-10-03-01
+--------------------
+- zd-51: fix for cc_text_with_background css conflict with body background color
+
+Tag: tags/2017-10-03
+--------------------
+- zd-51: Max Width Desired for CM Bootstrap Sites
+
+Tag: tags/2017-09-27
+--------------------
+- zd-43: Images not displaying in Facebook
+- zd-69: Content list description styling
+
 Tag: tags/2017-09-23
 --------------------
 - Testing switch to firstturnmedia github org

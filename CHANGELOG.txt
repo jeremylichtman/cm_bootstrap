@@ -1,3 +1,7 @@
+Tag: tags/2017-11-12-01
+--------------------
+- re-tagging last release to trigger cmb deploy
+
 Tag: tags/2017-11-12
 --------------------
 - Changed iframe video urls in project and partner TPLs to use SSL

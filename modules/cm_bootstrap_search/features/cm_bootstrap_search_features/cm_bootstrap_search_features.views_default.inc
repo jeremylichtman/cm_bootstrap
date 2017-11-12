@@ -70,19 +70,18 @@ function cm_bootstrap_search_features_views_default_views() {
     1 => 0,
     6 => 0,
     4 => 0,
-    7 => 0,
     5 => 0,
     3 => 0,
+    7 => 0,
   );
-  $handler->display->display_options['filters']['search_api_views_fulltext']['min_length'] = '4';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['mode'] = 'filter';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['min_length'] = '3';
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
     'body:summary' => 'body:summary',
     'body:value' => 'body:value',
     'field_cmbs_producer_bio' => 'field_cmbs_producer_bio',
     'field_cmbs_producer_email' => 'field_cmbs_producer_email',
     'field_cmbs_producer_phone' => 'field_cmbs_producer_phone',
-    'field_content_components:field_cc_cl_description' => 'field_content_components:field_cc_cl_description',
-    'field_content_components:field_cc_cl_item_abstract' => 'field_content_components:field_cc_cl_item_abstract',
     'field_content_components:field_cc_cl_item_title' => 'field_content_components:field_cc_cl_item_title',
     'field_content_components:field_cc_s_title' => 'field_content_components:field_cc_s_title',
     'field_content_components:field_cc_tai_text:value' => 'field_content_components:field_cc_tai_text:value',

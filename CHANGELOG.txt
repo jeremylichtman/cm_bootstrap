@@ -1,3 +1,7 @@
+Tag: tags/2017-11-25-01
+--------------------
+- Deleted bill-bash-test.txt test file
+
 Tag: tags/2017-11-25
 --------------------
 - zd-142: Add Better Preview Display for Jumbotron Paragraphs

@@ -1,3 +1,7 @@
+Tag: tags/2017-11-25
+--------------------
+- zd-142: Add Better Preview Display for Jumbotron Paragraphs
+
 Tag: tags/2017-11-12-02
 --------------------
 - Updated and cleaned-up CMB Search features

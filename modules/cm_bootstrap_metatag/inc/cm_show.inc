@@ -2,8 +2,12 @@
 
 function cm_bootstrap_metatag_cm_show_image() {
   if ($node = menu_get_object()) {
+    // Use show custom thumbnail field if avail
+    if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
+      $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
+    }
     // Switch to account for cloudcast, vimeo, youtube, etc.
-    if (isset($node->field_show_vod['und'])) {
+    else if (isset($node->field_show_vod['und'])) {
       switch($node->field_show_vod['und'][0]['filemime']) {
         case 'video/cloudcast':
           $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
@@ -27,6 +31,8 @@ function cm_bootstrap_metatag_cm_show_image() {
         $img_src = '';
       }
     }
+
+    // Send uri to image style
     $img_src = image_style_url('500x281', $image_uri);
 
     $og_image = array(

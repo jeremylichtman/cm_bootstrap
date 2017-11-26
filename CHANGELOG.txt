@@ -1,3 +1,7 @@
+Tag: tags/2017-11-25-02
+--------------------
+- zd-143: Facebook OG Meta Tags for Show Content Type
+
 Tag: tags/2017-11-25-01
 --------------------
 - Deleted bill-bash-test.txt test file

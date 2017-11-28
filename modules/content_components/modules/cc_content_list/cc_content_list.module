@@ -26,6 +26,9 @@ function cc_content_list_preprocess_entity(&$variables) {
 	if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'content_list') {
     $paragraph = $variables['paragraphs_item'];
 
+    // We need an approximate per row count. Default is three items per row.
+    $row_count = 3;
+
     switch($variables['view_mode']) {
     	case 'paragraphs_editor_preview':
     	  $data = array(
@@ -35,6 +38,9 @@ function cc_content_list_preprocess_entity(&$variables) {
 
       case 'full':
         drupal_add_css(drupal_get_path('module', 'cc_content_list') . '/css/cc_content_list.css');
+
+        // Determine how many items there are.
+        $row_count = count($paragraph->field_cc_cl_items[LANGUAGE_NONE]);
 
         // Get content list items
         foreach ($paragraph->field_cc_cl_items[LANGUAGE_NONE] as $item) {
@@ -111,6 +117,45 @@ function cc_content_list_preprocess_entity(&$variables) {
         );
         break;
     }
+    
+    // Work out which row format to use.
+    if ($row_count % 4 == 0) {
+      $row_count = 4;
+    }
+    else if ($row_count % 3 == 0) {
+      $row_count = 3;
+    }
+    else if ($row_count % 2 == 0) {
+      $row_count = 2;
+    }
+    else {
+      // Default.
+      $row_count = 3;
+    }
+
+    switch($row_count) {
+      case 2:
+        // 2 across for medium and up / otherwise one per row.
+        $variables['row_styles'] = 'col-md-6 col-sm-12';
+        break;
+
+      case 3:
+        // 3 across for medium and up / otherwise one per row.
+        $variables['row_styles'] = 'col-md-4 col-sm-12';
+        break;
+
+      case 4:
+        // 4 across for large / 2 across for medium / one per row for small.
+        $variables['row_styles'] = 'col-lg-3 col-md-6 col-sm-12';
+        break;
+
+      default:
+        // For any other count, use the default ("3-across" style)
+        $variables['row_styles'] = 'col-md-4 col-sm-12';
+        break;
+    }
+    
+    $variables['row_count'] = $row_count;
 
     $variables['content_list'] = $data;
   }

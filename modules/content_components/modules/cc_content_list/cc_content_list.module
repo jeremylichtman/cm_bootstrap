@@ -117,20 +117,26 @@ function cc_content_list_preprocess_entity(&$variables) {
         );
         break;
     }
-    
+
     // Work out which row format to use.
-    if ($row_count % 4 == 0) {
-      $row_count = 4;
-    }
-    else if ($row_count % 3 == 0) {
-      $row_count = 3;
-    }
-    else if ($row_count % 2 == 0) {
-      $row_count = 2;
+    if ($paragraph->field_columns[LANGUAGE_NONE][0]['value'] &&
+      ($paragraph->field_columns[LANGUAGE_NONE][0]['value'] != 'auto')) {
+      $row_count = $paragraph->field_columns[LANGUAGE_NONE][0]['value'];
     }
     else {
-      // Default.
-      $row_count = 3;
+      if ($row_count % 4 == 0) {
+        $row_count = 4;
+      }
+      else if ($row_count % 3 == 0) {
+        $row_count = 3;
+      }
+      else if ($row_count % 2 == 0) {
+        $row_count = 2;
+      }
+      else {
+        // Default.
+        $row_count = 3;
+      }
     }
 
     switch($row_count) {

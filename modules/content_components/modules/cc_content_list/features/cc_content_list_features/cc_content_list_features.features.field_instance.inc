@@ -195,11 +195,53 @@ function cc_content_list_features_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'paragraphs_item-content_list_item-field_cc_cl_item_abstract'
+  // Exported field_instance: 'paragraphs_item-content_list-field_columns'.
+  $field_instances['paragraphs_item-content_list-field_columns'] = array(
+    'bundle' => 'content_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 3,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_columns',
+    'label' => 'Number of Columns',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-content_list_item-field_cc_cl_item_abstract'.
   $field_instances['paragraphs_item-content_list_item-field_cc_cl_item_abstract'] = array(
     'bundle' => 'content_list_item',
     'default_value' => NULL,
@@ -415,6 +457,7 @@ function cc_content_list_features_field_default_field_instances() {
   t('If checked, Item Titles will be displayed over the Images in the bottom left corner');
   t('Image');
   t('Link');
+  t('Number of Columns');
   t('Title');
 
   return $field_instances;

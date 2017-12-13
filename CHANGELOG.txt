@@ -1,3 +1,7 @@
+Tag: tags/2017-12-13
+--------------------
+- zd-158: Blog and Basic Pages Cut Off in Legacy Mode
+
 Tag: tags/2017-11-25-02
 --------------------
 - zd-143: Facebook OG Meta Tags for Show Content Type

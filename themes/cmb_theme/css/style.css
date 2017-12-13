@@ -1002,6 +1002,9 @@ h1.page-header {
   max-width: 1190px;
   padding: 0px 0px;
 }
+.page-node .not-legacy h1.page-header {
+  padding: 0px 15px;
+}
 .node-type-archive-content-type h1.page-header {
   border-bottom:0px;
   margin: 0 auto;

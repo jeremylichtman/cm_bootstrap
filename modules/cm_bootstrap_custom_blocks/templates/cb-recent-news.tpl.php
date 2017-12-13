@@ -48,8 +48,14 @@ ul.cb-recent-news li .series-title {
 ul.cb-recent-news li .watch-now-link {
   display: block;
   text-transform: uppercase;
-  position: absolute;
   bottom: 10px;
+  position:absolute;
+}
+
+@media screen and (max-width: 970px) {
+  ul.cb-recent-news li .watch-now-link {
+    position: initial;
+  }
 }
 </style>
 

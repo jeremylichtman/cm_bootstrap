@@ -1,3 +1,7 @@
+Tag: tags/2017-12-13-01
+--------------------
+- zd-150: changes to cb recent news for spnn
+
 Tag: tags/2017-12-13
 --------------------
 - zd-158: Blog and Basic Pages Cut Off in Legacy Mode

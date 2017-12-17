@@ -1,3 +1,7 @@
+Tag: tags/2017-12-17-01
+--------------------
+- removed foreign keys from features field bases
+
 Tag: tags/2017-12-17
 --------------------
 - zd-74: Two and Four-Column Content Lists

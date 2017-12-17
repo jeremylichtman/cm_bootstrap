@@ -1,3 +1,7 @@
+Tag: tags/2017-12-17
+--------------------
+- zd-74: Two and Four-Column Content Lists
+
 Tag: tags/2017-12-13-01
 --------------------
 - zd-150: changes to cb recent news for spnn

@@ -1,7 +1,7 @@
 name = Content Components Features
 description = General Config for Content Components
 core = 7.x
-package = Content Components
+package = CM Bootstrap: Paragraphs
 version = 7.x-1.0
 project = content_components_features
 dependencies[] = features

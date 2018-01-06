@@ -1,7 +1,7 @@
 name = CC Text With Background Features
 description = CC Text With Background Features
 core = 7.x
-package = Content Components
+package = CM Bootstrap: Paragraphs
 version = 7.x-1.0
 project = cc_twb_features
 dependencies[] = features

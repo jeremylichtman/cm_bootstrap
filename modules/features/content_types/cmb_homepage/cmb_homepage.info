@@ -1,7 +1,7 @@
 name = CMB Homepage
 description = CM Bootstrap Homepage Content Type
 core = 7.x
-package = CM Bootstrap Config: Content Types
+package = CM Bootstrap: Content Types
 version = 7.x-1.0
 project = cmb_homepage
 dependencies[] = cmb_field_bases

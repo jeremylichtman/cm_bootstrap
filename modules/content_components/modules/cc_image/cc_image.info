@@ -1,6 +1,6 @@
 name = Content Component: Image
 description = Image Content Component
-package = Content Components
+package = CM Bootstrap: Paragraphs
 core = 7.x
 
 dependencies[] = paragraphs

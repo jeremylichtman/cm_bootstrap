@@ -1,3 +1,7 @@
+Tag: tags/2018-01-05
+--------------------
+- Features cleanup 2018: Updated/Organized CMB Features Package Names (#9)
+
 Tag: tags/2017-12-28
 --------------------
 - zd-159: Show Custom Thumbnail Field in Custom Video Lists Doesn't Always Work

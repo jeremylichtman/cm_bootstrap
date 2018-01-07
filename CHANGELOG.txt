@@ -1,3 +1,7 @@
+Tag: tags/2018-01-07-01
+-----------------------
+- ZD-68: Option to not crop and resize the image. (#8)
+
 Tag: tags/2018-01-07
 --------------------
 - Added CMB Dropdown Menu module (Experimental)

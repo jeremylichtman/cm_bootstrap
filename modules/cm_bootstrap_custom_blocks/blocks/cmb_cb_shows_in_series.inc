@@ -37,37 +37,19 @@ function _cmb_cb_shows_in_series() {
         if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
           $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
         }
-
         // Get field_show_vod thumbnail
-        /*else if (isset($node->field_show_vod['und'])) {
-          $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-          $image_uri = $wrapper->getLocalThumbnailPath();
+        else if (module_exists('cmb_helper')) {
+          $image_uri = cmb_helper_vod_thumbnail_uri($node);
         }
-        */
-        
-        // @todo clean this up later, temp fix by wluisi 8/31 to fix critical bug on spnn
-        // Switch to account for cloudcast, vimeo, youtube, etc.
-        else if (isset($node->field_show_vod['und'])) {
-          switch($node->field_show_vod['und'][0]['filemime']) {
-            case 'video/cloudcast':
-              $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-              break;
-            case 'video/vimeo':
-              $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-              $image_uri = $image_uri . '.jpg';
-              break;
-            case 'video/youtube':
-              $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-              $image_uri = $image_uri . '.jpg';
-              break;
-          }
+
+        // Generate image style.
+        if (!is_null($image_uri) && ($image_uri !== FALSE)) {
+          $img_src = image_style_url('500x281', $image_uri);
         }
         else {
-          if (module_exists('cm_bootstrap_cp_default_images')) {
-            $file = cm_bootstrap_cp_default_images_load_image($node->type);
-            $image_uri = $file->uri;
-          }
+          $img_src = '';
         }
+
         // Strip tags
         $allowable_tags = '';
         if (isset($node->field_description['und'][0]['value'])) {
@@ -81,7 +63,7 @@ function _cmb_cb_shows_in_series() {
           'nid' => $node->nid,
           'title' => $node->title,
           'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
-          'img' => image_style_url('500x281', $image_uri),
+          'img' => $img_src,
         );
       }
       // Send $items array to TPL.

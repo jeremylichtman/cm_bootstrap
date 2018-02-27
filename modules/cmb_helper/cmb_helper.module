@@ -270,3 +270,52 @@ function cmb_helper_theme_exists($theme_name) {
   $themes = list_themes();
   return isset($themes[$theme_name]) && $themes[$theme_name]->status == 1;
 }
+
+/**
+ * Helper function to safely obtain (if possible) the VOD thumbnail image.
+ */
+function cmb_helper_vod_thumbnail_uri($node, $default_image_uri = NULL) {
+  // Default, if none of the options below can obtain a valid image uri.
+  $image_uri = FALSE;
+
+  if (@isset($node->field_show_vod[LANGUAGE_NONE])) {        
+    // Using the wrapper here allows this to work for any media compatible module,
+    // including Telvue connect.
+    $uri = $node->field_show_vod[LANGUAGE_NONE][0]['uri'];
+    $wrapper = file_stream_wrapper_get_instance_by_uri($uri);
+
+    // Try/catch to avoid exception thrown, which can break the page.
+    try {
+      // This likely means that media isn't able to obtain a wrapper for
+      // this type of uri, so we should treat as an error.
+      if ($wrapper === FALSE) {
+        throw new Exception('Unable to obtain wrapper class.');
+      }
+
+      // Grab the image from the wrapper.
+      $image_uri = $wrapper->getLocalThumbnailPath();
+    }
+    catch (Exception $e) {
+      // Log the error instead to watchdog.
+      $msg = t('Unable to obtain a thumbnail image for node nid: @nid',
+        array('@nid' => $node->nid));
+      watchdog('cmb_helper', $msg);
+    }
+  }
+
+  // Try to obtain a default image.
+  if ($image_uri === FALSE) {
+    // Use default image passed into the function, if possible.
+    if (!is_null($default_image_uri)) {
+      $image_uri = $default_image_uri;
+    }
+    // Otherwise try to obtain the global default.
+    else if (module_exists('cm_bootstrap_cp_default_images')) {
+      $file = cm_bootstrap_cp_default_images_load_image($node->type);
+      $image_uri = $file->uri;
+    }
+  }
+
+  // Return the uri.
+  return $image_uri;
+}

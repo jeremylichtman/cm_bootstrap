@@ -9,29 +9,17 @@ function _cb_taxonomy_term() {
     $nids = array_keys($result['node']);
     $nodes = entity_load('node', $nids);
     foreach ($nodes as $node) { 
-      // Get show images, accounting for variations.
-      if (isset($node->field_show_vod['und'])) {        
-        switch($node->field_show_vod['und'][0]['filemime']) {
-          // Cloudcast
-          case 'video/cloudcast':
-            $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';								
-            break;
-          // Vimeo
-          case 'video/vimeo':
-            $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-          // Youtube
-          case 'video/youtube':  
-            $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
+      // Get the VOD thumbnail uri, if possible.
+      $img_src = '';
+      if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($node);
+
+        // Generate image style.
+        if ($image_uri !== FALSE) {
+          $img_src = image_style_url('250x150', $image_uri);
         }
-        $img_src = image_style_url('250x150', $image_uri);
       }
-      else {
-        $img_src = '';
-      }
+
       // Description
       if (isset($node->field_description['und'][0]['value'])) {
         $show_description = $node->field_description['und'][0]['value'];

@@ -28,27 +28,12 @@ function _cmb_cb_genre_carousel() {
 
         foreach ($nodes as $node) {
           // Image
-          $img_src = FALSE;
-          if (isset($node->field_show_vod[LANGUAGE_NONE])) {
-            switch($node->field_show_vod[LANGUAGE_NONE][0]['filemime']) {
-              case 'video/cloudcast':
-                $image_uri = 'media-cloudcast/' . $node->field_show_vod[LANGUAGE_NONE][0]['filename']  . '.jpg';
-                break;
-              case 'video/vimeo':
-                $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-                $image_uri = $image_uri . '.jpg';
-                break;
-              case 'video/youtube':
-                $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-                $image_uri = $image_uri . '.jpg';
-                break;
-            }
-            $img_src = image_style_url('500x281', $image_uri);
-          }
-          else {
-            if (module_exists('cm_bootstrap_cp_default_images')) {
-              $file = cm_bootstrap_cp_default_images_load_image($node->type);
-              $image_uri = $file->uri;
+          $img_src = '';
+          if (module_exists('cmb_helper')) {
+            $image_uri = cmb_helper_vod_thumbnail_uri($node);
+
+            // Generate image style.
+            if ($image_uri !== FALSE) {
               $img_src = image_style_url('500x281', $image_uri);
             }
           }

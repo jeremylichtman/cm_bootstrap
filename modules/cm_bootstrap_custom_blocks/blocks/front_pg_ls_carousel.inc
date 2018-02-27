@@ -33,29 +33,17 @@ function _front_pg_latest_shows_carousel_data() {
       if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
         $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
       }
-
       // Switch to account for cloudcast, vimeo, youtube, etc.
-      else if (isset($node->field_show_vod['und'])) {
-        switch($node->field_show_vod['und'][0]['filemime']) {
-          case 'video/cloudcast':
-            $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-            break;
-          case 'video/vimeo':
-            $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-          case 'video/youtube':
-            $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-        }
+      else if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($node);
+      }
+
+      // Generate image style.
+      if (!is_null($image_uri) && ($image_uri !== FALSE)) {
+        $img_src = image_style_url('500x281', $image_uri);
       }
       else {
-        if (module_exists('site_cp_default_images')) {
-          $file = site_cp_default_images_load_image($node->type);
-          //dpm($file);
-          $image_uri = $file->uri;
-        }
+        $img_src = '';
       }
 
       // field_description
@@ -91,7 +79,7 @@ function _front_pg_latest_shows_carousel_data() {
         'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
         'series' => $field_topic_term_name,
         'series_title' => $series_title,
-        'img' => image_style_url('500x281', $image_uri),
+        'img' => $img_src,
         //'bg-color' => $node->field_background_color['und'][0]['value'],
         //'text-color' => $node->field_text_color['und'][0]['value'],
         //'accent-color' => $node->field_accent_color['und'][0]['value'],

@@ -1,3 +1,7 @@
+Tag: tags/2018-02-27
+--------------------
+- ZD-159: Show Custom Thumbnail Field in Custom Video Lists Doesn't Always Work
+
 Tag: tags/2018-01-07-01
 -----------------------
 - ZD-68: Option to not crop and resize the image. (#8)

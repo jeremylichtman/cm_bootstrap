@@ -1,3 +1,7 @@
+Tag: tags/2018-02-28
+--------------------
+- ZD-202: Responsive embedded videos. Added "CMB Embed" Paragraph bundle.
+
 Tag: tags/2018-02-27
 --------------------
 - ZD-159: Show Custom Thumbnail Field in Custom Video Lists Doesn't Always Work

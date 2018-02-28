@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implements hook_theme($existing, $type, $theme, $path).
+ */
+function cmb_paragraphs_embed_theme($existing, $type, $theme, $path) {
+  $theme = [];
+
+  $theme['paragraphs_item__cmb_embed'] = [
+    'template' => 'paragraphs-item--cmb_embed',
+    'path' => drupal_get_path('module', 'cmb_paragraphs_embed') . '/templates',
+  ];
+
+  // Paragraphs editor preview
+  $theme['paragraphs_item__cmb_embed__paragraphs_editor_preview'] = [
+    'template' => 'paragraphs-item--cmb_embed--paragraphs_editor_preview',
+    'path' => drupal_get_path('module', 'cmb_paragraphs_embed') . '/templates',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_entity(&$variables).
+ */
+function cmb_paragraphs_embed_preprocess_entity(&$variables) {
+	if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'cmb_embed') {
+  	$paragraph = $variables['paragraphs_item'];
+
+  	switch($variables['view_mode']) {
+      case 'paragraphs_editor_preview':
+        $data = [
+          'id' => $paragraph->item_id,
+        ];
+        break;
+
+      case 'full':
+        // Get embed code
+        $embed = FALSE;
+
+        if (isset($paragraph->field_cmb_p_embed_embed[LANGUAGE_NONE])) {
+          $embed = $paragraph->field_cmb_p_embed_embed[LANGUAGE_NONE][0]['value'];
+        }
+
+        $data = [
+          'id' => $paragraph->item_id,
+          'embed' => $embed
+        ];
+        break;
+  	}
+
+    $variables['cmb_embed'] = $data;
+  }
+}

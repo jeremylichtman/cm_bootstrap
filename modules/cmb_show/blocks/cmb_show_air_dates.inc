@@ -8,7 +8,7 @@ function _cmb_show_air_dates() {
     // to account for both types of fields.
     if (module_exists('cm_airing')) {
       $field_airing_show_ref = field_info_field('field_airing_show_ref');
-      //dpm($field_airing_show_ref);
+
       switch($field_airing_show_ref['type']) {
         case 'node_reference':
           $column = 'nid';
@@ -20,27 +20,36 @@ function _cmb_show_air_dates() {
           $column = 'target_id';
           break;
       }
-      $nid = arg(1);
-      //
+
+      // Get all airings related to current show
       $query = new EntityFieldQuery();
         $query->entityCondition('entity_type', 'airing');
-        $query->fieldCondition('field_airing_show_ref', $column, $nid, '=');
+        $query->fieldCondition('field_airing_show_ref', $column, $node->nid, '=');
         $query->fieldOrderBy('field_airing_date', 'value', 'DESC');
-        //$query->propertyCondition('created', strtotime('today UTC'), ">=");
         $query->fieldCondition('field_airing_date', 'value', strtotime('today'), '>=');
         $query->range(0, 5);
       $result = $query->execute();
+
       if (isset($result['airing'])) {
         $aids = array_keys($result['airing']);
         $airings = entity_load('airing', $aids);
+
         foreach ($airings as $airing) {
-          $items[$airing->airing_id] = array(
+          $tid = $airing->field_airing_channel[LANGUAGE_NONE][0]['tid'];
+
+          // Get channel name/term name
+          $term = taxonomy_term_load($tid);
+          $channel_name = $term->name;
+          $items[$tid]['channel_name'] = $channel_name;
+
+          // Build array of airings
+          $items[$tid]['airings'][] = array(
             $airing,
           );
         }
-        //dpm($items);
+
         // Send $items array to TPL.
-        return theme('cmb_show_air_dates', 
+        return theme('cmb_show_air_dates',
           array (
             'content' => $items,
           )

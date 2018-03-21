@@ -1,3 +1,7 @@
+Tag: tags/2018-03-20
+--------------------
+- ZD-214: Video Carousels Don't Show Full Series
+
 Tag: tags/2018-03-19
 --------------------
 - ZD-217: Channel listing in Upcoming Air Dates on Show page

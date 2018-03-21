@@ -292,11 +292,25 @@ function cm_bootstrap_custom_blocks_block_view($delta = '') {
       module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cb_taxonomy_term');
       $block['content'] = _cb_taxonomy_term();
       break;
+
     // From custom_video_lists
     case 'cmb_cb_shows_in_series':
       module_load_include('inc', 'cm_bootstrap_custom_blocks', 'blocks/cmb_cb_shows_in_series');
-      $block['content'] = _cmb_cb_shows_in_series();
+      // Attach Flexloader
+      libraries_load('flexloader');
+
+      //$block['content'] = _cmb_cb_shows_in_series();
+
+      $block['content'] = array(
+        '#markup' => _cmb_cb_shows_in_series(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'cm_bootstrap_custom_blocks') . '/js/cm_bootstrap_custom_blocks.js',
+          ),
+        ),
+      );
       break;
+
     case 'cmb_cb_sitename':
       $sitename = l(t(variable_get('site_name')), '<front>', array('attributes' => array('class' => array('name navbar-brand'))));
       $block['content']  = $sitename;

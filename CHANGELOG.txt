@@ -1,3 +1,7 @@
+Tag: tags/2018-03-29
+--------------------
+- ZD-206: Fix for menu gap in menu panel after fixed width change
+
 Tag: tags/2018-03-20
 --------------------
 - ZD-214: Video Carousels Don't Show Full Series

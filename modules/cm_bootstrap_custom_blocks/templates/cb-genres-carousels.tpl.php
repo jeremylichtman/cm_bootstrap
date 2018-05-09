@@ -7,40 +7,26 @@
       <?php print $item['title']; ?>
     </a>
   </h2>
-  <?php //dpm($item); ?>
   <section class="c-flexslider-video-carousel slider-cvl-partners-carousels" id ="section-id-<?php print $i++;?>">
     <div class="flexslider carousel">
       <ul class="cvlpc-carousel slides">
-        <?php foreach($item['show_nodes'] as $video_item): ?> 
-          <?php //dpm($video_item); ?>       
+        <?php foreach($item['show_nodes'] as $video_item): ?>      
           <li>
             <a href="<?php print url('node/' . $video_item->nid); ?>">               
               <?php
-                // Switch to account for cloudcast, vimeo, youtube, etc.     
-                if (isset($video_item->field_show_vod['und'])) {        
-                  switch($video_item->field_show_vod['und'][0]['filemime']) {
-                    case 'video/cloudcast':
-                      $image_uri = 'media-cloudcast/' . $video_item->field_show_vod['und'][0]['filename']  . '.jpg';
-                      break;
-                    case 'video/vimeo':
-                      $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $video_item->field_show_vod['und'][0]['uri']);
-                      $image_uri = $image_uri . '.jpg';
-                      break;
-                    case 'video/youtube':  
-                      $image_uri = str_replace('youtube://v/', 'media-youtube/', $video_item->field_show_vod['und'][0]['uri']);
-                      $image_uri = $image_uri . '.jpg';
-                      break;
-                  }
-                }
-                else {
-                  if (module_exists('cm_bootstrap_cp_default_images')) {
-                    $file = cm_bootstrap_cp_default_images_load_image($video_item->type);
-                    //dpm($file);
-                    $image_uri = $file->uri;
+                // Switch to account for cloudcast, vimeo, youtube, etc.
+                if (module_exists('cmb_helper')) {
+                  $image_uri = cmb_helper_vod_thumbnail_uri($video_item);
+
+                  // Generate image style.
+                  if ($image_uri !== FALSE) {
+                    $img_src = image_style_url('500x281', $image_uri);
                   }
                 }
               ?>
-              <img src="<?php print image_style_url('500x281', $image_uri);?>"/>
+              <?php if (isset($img_src)): ?>
+              <img src="<?php print $img_src;?>" />
+              <?php endif; ?>
               <span class="overlay">
                 <span class="play-button">
                   <i class="icon glyphicon glyphicon-play-circle" aria-hidden="true"></i>

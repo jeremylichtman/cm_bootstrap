@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CMB Paragraphs Embed Features feature.
+ */
+
+include_once 'cmb_paragraphs_embed_features.features.inc';

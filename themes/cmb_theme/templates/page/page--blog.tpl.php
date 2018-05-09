@@ -36,6 +36,9 @@
 .node-type-blog h1.page-header {
   padding: 25px 0px 10px 0px;
 }
+.node-type-blog .not-legacy h1.page-header {
+  padding: 25px 0px 10px 15px;
+}
 <?php if (isset($node->field_hero_image_color['und'])): ?>
   <?php if ($node->field_hero_image_color['und'][0]['value'] == '0'): ?>
     #block-custom-block-cb-social-media-menu-2 ul.social li a {

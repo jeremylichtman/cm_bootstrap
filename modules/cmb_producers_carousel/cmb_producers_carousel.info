@@ -1,6 +1,6 @@
 name = CMB Producers Carousel
 description = CMB Producers Carousel
-package = CM Bootstrap: Content Components
+package = CM Bootstrap: Paragraphs
 core = 7.x
 dependencies[] = paragraphs
 dependencies[] = cc_helper

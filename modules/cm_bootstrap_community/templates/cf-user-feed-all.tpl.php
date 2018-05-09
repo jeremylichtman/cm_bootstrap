@@ -8,31 +8,20 @@
 <?php else: ?>
 <ul class="user-feed">
   <?php foreach($content as $node): ?>
-    <?php //dpm($node); ?>
     <?php 
       // Get show images, accounting for variations.
-      if (isset($node['node']->field_show_vod['und'])) {        
-        switch($node['node']->field_show_vod['und'][0]['filemime']) {
-          // Cloudcast
-          case 'video/cloudcast':
-            $image_uri = 'media-cloudcast/' . $node['node']->field_show_vod['und'][0]['filename']  . '.jpg';								
-            break;
-          // Vimeo
-          case 'video/vimeo':
-            $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node['node']->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-          // Youtube
-          case 'video/youtube':  
-            $image_uri = str_replace('youtube://v/', 'media-youtube/', $node['node']->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
+      if (isset($node['node']->field_show_vod[LANGUAGE_NONE])) {        
+        // Otherwise, get the VOD thumbnail uri, if possible.
+        if (module_exists('cmb_helper')) {
+          $image_uri = cmb_helper_vod_thumbnail_uri($node['node']);
         }
-        $img_src = image_style_url('user_feed_large', $image_uri);
+
+        // Generate image style.
+        if (isset($image_uri) && ($image_uri !== FALSE)) {
+          $img_src = image_style_url('user_feed_large', $image_uri);
+        }
       }
-      else {
-        $img_src = '';
-      }
+
       // Get series title
       if (isset($node['node']->og_group_ref['und'][0]['target_id'])) {
         $nid = $node['node']->og_group_ref['und'][0]['target_id'];
@@ -47,7 +36,6 @@
         <div class="col-md-3 no-padding author-data">
           <?php
             $author = user_load($node['node']->uid); 
-            //dpm($author);
             if (isset($author->picture->uri)) {
               $user_avatar_src = $author->picture->uri;
             }
@@ -62,8 +50,10 @@
           <!--User id: <?php print $node['node']->uid; ?>-->
         </div>
          <div class="col-md-9 no-padding video-data">
-          <a class="show-link" href="<?php print url('node/' . $node['node']->nid); ?>"> 
-            <img src="<?php print $img_src; ?>" />
+          <a class="show-link" href="<?php print url('node/' . $node['node']->nid); ?>">
+            <?php if (!empty($img_src)): ?>
+              <img src="<?php print $img_src; ?>" />
+            <?php endif; ?>
             <span class="overlay">
               <p class="title">
                 <?php print $node['node']->title; ?>

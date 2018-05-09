@@ -36,22 +36,16 @@ function _cmb_show_recent_videos_sidebar() {
       if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
         $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
       }
-
-      else if (isset($node->field_show_vod[LANGUAGE_NONE])) {
-        // Get media thumbnail image
-        // @todo confirm that this actually works for all video providers.
-        // Seems to work for Cloudcast and Youtube
-        // Once this is confirmed to work, backport to replace all instances of
-        // the crappy "switch" hack you did.
-        $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-        $image_uri = $wrapper->getLocalThumbnailPath();
+      // Otherwise, get the VOD thumbnail uri, if possible.
+      else if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($node);
       }
-      // No image, so use default cp image.
+
+      if (!is_null($image_uri) && ($image_uri !== FALSE)) {
+        $image_src = image_style_url('500x281', $image_uri);
+      }
       else {
-        if (module_exists('cm_bootstrap_cp_default_images')) {
-          $file = cm_bootstrap_cp_default_images_load_image($node->type);
-          $image_uri = $file->uri;
-        }
+        $image_src = '';
       }
 
       // Description
@@ -89,7 +83,7 @@ function _cmb_show_recent_videos_sidebar() {
         'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
         'series' => $field_topic_term_name,
         'series_title' => $series_title,
-        'img' => image_style_url('500x281', $image_uri),
+        'img' => $image_src,
       );
     }
   }

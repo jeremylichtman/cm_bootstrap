@@ -1,3 +1,7 @@
+Tag: tags/2018-05-18
+--------------------
+- ZD-249: Fix flickering overlay on home page videos
+
 Tag: tags/2018-04-20
 --------------------
 - ZD-224: Use custom thumbnail if avail for fallback image when no show video

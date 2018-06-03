@@ -1,3 +1,7 @@
+Tag: tags/2018-06-03
+--------------------
+- ZD-253: Do not render the header row if no content
+
 Tag: tags/2018-05-18-01
 --------------------
 - ZD-249: Fix flickering overlay on home page videos, added a few we missed

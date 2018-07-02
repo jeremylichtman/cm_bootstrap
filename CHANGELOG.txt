@@ -1,3 +1,7 @@
+Tag: tags/2018-07-02-01
+--------------------
+- ZD-200: Fix for add search to search trigger
+
 Tag: tags/2018-07-02
 --------------------
 - ZD-200: Add search text to search opener

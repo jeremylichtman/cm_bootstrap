@@ -1,3 +1,7 @@
+Tag: tags/2018-07-02
+--------------------
+- ZD-200: Add search text to search opener
+
 Tag: tags/2018-06-03
 --------------------
 - ZD-253: Do not render the header row if no content

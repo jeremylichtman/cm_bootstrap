@@ -7,24 +7,24 @@
   padding: 0;
 }
 
-.search-text {
-  font-family: "Vaude Display Book";
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: bold;
-}
-.search-text a,
-.search-text a:hover {
+.search-overlay-open,
+.search-overlay-open:hover {
   color: #fff;
   text-decoration: none;
   position: relative;
   top: -8px;
 }
-.search-text a i {
+.search-overlay-open i {
   position: relative;
   top: 6px;
   margin-right: 8px;
+}
+.search-overlay-open .search-text {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: -1px;
+  float: right;
 }
 
 /* @file solr-search/_search-filters.scss */

@@ -149,7 +149,61 @@ function cc_content_list_features_field_default_field_instances() {
       'module' => 'jquery_colorpicker',
       'settings' => array(),
       'type' => 'jquery_colorpicker',
-      'weight' => 4,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-content_list-field_cc_cl_overlay_opacity'.
+  $field_instances['paragraphs_item-content_list-field_cc_cl_overlay_opacity'] = array(
+    'bundle' => 'content_list',
+    'default_value' => array(
+      0 => array(
+        'value' => 0.9,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_cl_overlay_opacity',
+    'label' => 'Overlay Opacity',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
     ),
   );
 
@@ -588,10 +642,11 @@ function cc_content_list_features_field_default_field_instances() {
   t('If checked, Item Titles will be displayed over the Images in the bottom left corner');
   t('Image');
   t('Link');
+  t('Number of Columns');
+  t('Overlay Opacity');
   t('Overlay color');
   t('Overlay text color');
   t('Show metadata');
-  t('Number of Columns');
   t('Title');
 
   return $field_instances;

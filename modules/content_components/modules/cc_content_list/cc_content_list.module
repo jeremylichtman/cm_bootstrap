@@ -124,13 +124,18 @@ function cc_content_list_preprocess_entity(&$variables) {
           $description = $paragraph->field_cc_cl_description[LANGUAGE_NONE][0]['value'];
         }
 
+        $overlay_opacity = 0.9;
+        if (isset($paragraph->field_cc_cl_overlay_opacity[LANGUAGE_NONE])) {
+          $overlay_opacity = $paragraph->field_cc_cl_overlay_opacity[LANGUAGE_NONE][0]['value'];
+        }
+
         $data = array(
           'title' => $paragraph->field_cc_cl_title[LANGUAGE_NONE][0]['value'],
           'description' => $description,
           'cl_items' => $cl_item,
           'title_display_overlay' => $title_display_overlay,
           'meta_display_overlay' => $meta_display_overlay,
-          'overlay_color' => hex2rgba($overlay_color, 0.3),
+          'overlay_color' => hex2rgba($overlay_color, $overlay_opacity),
           'overlay_text_color' => hex2rgba($overlay_text_color, FALSE),
         );
         break;

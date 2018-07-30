@@ -171,6 +171,42 @@ function cc_content_list_features_field_default_field_bases() {
     'type' => 'jquery_colorpicker',
   );
 
+  // Exported field_base: 'field_cc_cl_overlay_opacity'.
+  $field_bases['field_cc_cl_overlay_opacity'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cl_overlay_opacity',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '0.1' => '10%',
+        '0.2' => '20%',
+        '0.3' => '30%',
+        '0.4' => '40%',
+        '0.5' => '50%',
+        '0.6' => '60%',
+        '0.7' => '70%',
+        '0.8' => '80%',
+        '0.9' => '90%',
+        '1.0' => '100%',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_cc_cl_overlay_text_color'.
   $field_bases['field_cc_cl_overlay_text_color'] = array(
     'active' => 1,

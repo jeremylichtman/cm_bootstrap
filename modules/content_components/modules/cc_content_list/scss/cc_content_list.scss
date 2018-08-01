@@ -4,6 +4,13 @@
     .col-sm-12 {
       padding-right: 15px;
       padding-left: 15px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
     }
     h2 {
       text-transform: uppercase;

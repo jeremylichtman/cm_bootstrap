@@ -11,6 +11,12 @@
     padding-right: 15px;
     padding-left: 15px;
   }
+  .cc--cl .col-sm-12:first-child {
+    padding-left: 0;
+  }
+  .cc--cl .col-sm-12:last-child {
+    padding-right: 0;
+  }
   /* line 8, ../scss/cc_content_list.scss */
   .cc--cl h2 {
     text-transform: uppercase;

@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Code for the CMB Series Videos feature.
+ */
+
+include_once 'cmb_series_videos.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ * Add a custom display mode that we can use for the shows in our paragraph.
+ */
+function cmb_series_videos_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['series_videos'] = array(
+    'label' => t('Series Videos'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_theme($existing, $type, $theme, $path).
+ */
+function cmb_series_videos_theme($existing, $type, $theme, $path) {
+  $theme = [];
+
+  $theme['paragraphs_item__series_videos'] = [
+    'template' => 'paragraphs-item--series_videos',
+    'path' => drupal_get_path('module', 'cmb_series_videos') . '/templates',
+  ];
+
+  // Paragraphs editor preview
+  $theme['paragraphs_item__series_videos__paragraphs_editor_preview'] = [
+    'template' => 'paragraphs-item--series_videos--paragraphs_editor_preview',
+    'path' => drupal_get_path('module', 'cmb_series_videos') . '/templates',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_entity(&$variables).
+ */
+function cmb_series_videos_preprocess_entity(&$variables) {
+
+  // Preprocess the paragraph to embed the series videos view.
+	if ($variables['entity_type'] == 'paragraphs_item' &&
+    $variables['elements']['#bundle'] == 'series_videos') {
+  	$paragraph = $variables['paragraphs_item'];
+
+  	switch($variables['view_mode']) {
+      case 'paragraphs_editor_preview':
+        $data = [
+          'id' => $paragraph->item_id,
+        ];
+        break;
+
+      case 'full':
+        $items = [];
+
+        // Determine what series page this is for.
+        if ($node = menu_get_object()) {
+          // Get the nid
+          $nid = $node->nid;
+
+          // Pass the series nid to the series_videos view.
+          $items = views_embed_view('series_videos', 'block', $nid);
+        }
+        else {
+          $items = '';
+          $series_nid = 0;
+        }
+
+        $data = [
+          'id' => $paragraph->item_id,
+          'series_nid' => $nid,
+          'items' => $items,
+        ];
+        break;
+  	}
+
+    $variables['series_videos'] = $data;
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function cmb_series_videos_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'cm_project') {
+    // Check if the series has paragraphs.
+    if (isset($node->field_series_paragraphs)) {
+      // If we do not have a paragraph set already, we need a default one for this node.
+      if (empty($node->field_series_paragraphs)) {
+        // Create new paragraph item on the fly.
+        $paragraph = new ParagraphsItemEntity(array('field_name' => 'field_series_paragraphs', 'bundle' => 'series_videos'));
+        $paragraph->is_new = TRUE;
+        $paragraph->setHostEntity('node', $node);
+        $paragraph->save();
+
+        // Render the new paragraph.
+        $data = [
+          'id' => $paragraph->item_id,
+          'series_nid' => $node->nid,
+          'items' => views_embed_view('series_videos', 'block', $node->nid),
+        ];
+        $node->content['field_series_paragraphs'] = theme('paragraphs_item__series_videos', $data);
+      }
+    }
+  }
+}

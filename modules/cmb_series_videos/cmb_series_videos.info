@@ -1,0 +1,14 @@
+name = CM Bootstrap: Paragraphs: Series Videos
+description = CMB Series Videos Paragraph Bundle
+core = 7.x
+package = CM Bootstrap: Paragraphs
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = views
+dependencies[] = views_infinite_scroll
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[paragraphs][] = series_videos
+features[views_view][] = series_videos

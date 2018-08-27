@@ -1,6 +1,6 @@
 name = CMB Video Grid
 description = CMB Video Grid
-package = CM Bootstrap: Content Components
+package = CM Bootstrap: Paragraphs
 core = 7.x
 dependencies[] = paragraphs
 dependencies[] = cmb_video_grid_features

@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * CMB Dropdown Menu Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function cmb_dropdown_menu_install() {
+  // Disable existing "cm_bootstrap_dropdown_menu" block
+  cmb_dropdown_menu_disable_block($module = 'cm_bootstrap_dropdown_menu', $delta = 'cmb_dropdown_menu');
+
+  // Disable old "cm_bootstrap_dropdown_menu" module
+  $module = 'cm_bootstrap_dropdown_menu';
+
+  if (module_exists($module)) {
+    module_disable(array($module));
+    drupal_uninstall_modules(array($module));
+  }
+}
+
+/**
+ * Helper function to disable blocks.
+ */
+function cmb_dropdown_menu_disable_block($module, $delta) {
+  $query = db_update('block')
+    ->fields([
+    'status' => 0,
+  ])
+  ->condition('module', $module)
+  ->condition('delta', $delta)
+  ->execute();
+}

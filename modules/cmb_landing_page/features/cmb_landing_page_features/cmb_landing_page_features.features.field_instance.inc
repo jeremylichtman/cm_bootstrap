@@ -52,6 +52,7 @@ function cmb_landing_page_features_field_default_field_instances() {
       'add_mode' => 'select',
       'allowed_bundles' => array(
         'cmb_block_reference' => 'cmb_block_reference',
+        'cmb_embed' => 'cmb_embed',
         'cmb_jumbotron' => 'cmb_jumbotron',
         'cmb_jumbotron_item' => -1,
         'cmb_video' => 'cmb_video',
@@ -69,10 +70,11 @@ function cmb_landing_page_features_field_default_field_instances() {
       ),
       'bundle_weights' => array(
         'cmb_block_reference' => 2,
+        'cmb_embed' => 27,
         'cmb_jumbotron' => 3,
         'cmb_jumbotron_item' => 4,
-        'cmb_video' => 13,
-        'cmb_video_grid' => -12,
+        'cmb_video' => -32,
+        'cmb_video_grid' => -32,
         'content_list' => 15,
         'content_list_item' => 16,
         'custom_video_list' => 7,

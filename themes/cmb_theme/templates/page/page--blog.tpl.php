@@ -5,17 +5,12 @@
 
 <?php if(isset($blog_bg_img)): ?>
 <style>
-.node-type-blog .below-navigation {
+.node-type-blog .background-image {
   background-image: url('<?php print $blog_bg_img; ?>');
-  /*height:400px;
-  background-size: 100%;*/
   background-repeat: no-repeat;
-
   background-position: center center;
   background-size: cover;
   min-height: 40em;
-  /*position: absolute;
-  top: 0;*/
   width: 100%;
 }
 .node-type-blog .blog-date {
@@ -26,7 +21,7 @@
   color: darkgray;
 }
 @media (max-width: 760px) {
-  .node-type-blog .below-navigation  {
+  .node-type-blog .background-image {
     -webkit-transition: 250ms ease-out;
     -moz-transition: 250ms ease-out;
     -o-transition: 250ms ease-out;
@@ -40,6 +35,9 @@
 }
 .node-type-blog h1.page-header {
   padding: 25px 0px 10px 0px;
+}
+.node-type-blog .not-legacy h1.page-header {
+  padding: 25px 0px 10px 15px;
 }
 <?php if (isset($node->field_hero_image_color['und'])): ?>
   <?php if ($node->field_hero_image_color['und'][0]['value'] == '0'): ?>
@@ -79,6 +77,7 @@
       <?php endif; ?>
     </div>
   </div>
+
   <div id="menu-panel">
     <?php if (!empty($page['jpanel_region'])): ?>
       <?php print render($page['jpanel_region']); ?>
@@ -91,6 +90,13 @@
       </div>
     </div>
   </div>
+
+  <div class="container-fluid navigation">
+    <!--<div class="row">-->
+      <div class="background-image"></div>
+    <!--</div>-->
+  </div>
+
   <div class="main-container <?php print $container_class; ?> not-legacy">
     <div class="row">
       <?php print render($page['above_content']); ?>

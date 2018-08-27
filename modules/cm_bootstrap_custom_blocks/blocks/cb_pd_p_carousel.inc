@@ -93,29 +93,18 @@ function _cb_pd_p_carousel() {
     }
     //
     foreach($show_nodes as $show_node) {
-      // Switch to account for cloudcast, vimeo, youtube, etc.
-      if (isset($show_node->field_show_vod['und'])) {
-        switch($show_node->field_show_vod['und'][0]['filemime']) {
-          case 'video/cloudcast':
-            $image_uri = 'media-cloudcast/' . $show_node->field_show_vod['und'][0]['filename']  . '.jpg';
-            break;
-          case 'video/vimeo':
-            $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $show_node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-          case 'video/youtube':
-            $image_uri = str_replace('youtube://v/', 'media-youtube/', $show_node->field_show_vod['und'][0]['uri']);
-            $image_uri = $image_uri . '.jpg';
-            break;
-        }
+      if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($show_node);
+      }
+
+      // Generate image style.
+      if (isset($image_uri) && ($image_uri !== FALSE)) {
+        $image_src = image_style_url('500x281', $image_uri);
       }
       else {
-        if (module_exists('site_cp_default_images')) {
-          $file = site_cp_default_images_load_image($show_node->type);
-          //dpm($file);
-          $image_uri = $file->uri;
-        }
+        $image_src = '';
       }
+
       // field_description
       if (isset($show_node->field_description['und'][0]['value'])) {
         $allowable_tags = '<i><a>';
@@ -157,7 +146,7 @@ function _cb_pd_p_carousel() {
         'description' => cmb_helper_truncate($field_description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
         'series' => $field_topic_term_name,
         'series_title' => $series_title,
-        'img' => image_style_url('500x281', $image_uri),
+        'img' => $image_src,
         'timestamp' => $timestamp,
         'date_type' => $date_type,
       );

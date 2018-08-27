@@ -1,6 +1,6 @@
 name = CM Bootstrap: Custom Video List
 description = CM Bootstrap: Custom Video List Content Component
-package = CM Bootstrap: Content Components
+package = CM Bootstrap: Paragraphs
 core = 7.x
 
 dependencies[] = paragraphs

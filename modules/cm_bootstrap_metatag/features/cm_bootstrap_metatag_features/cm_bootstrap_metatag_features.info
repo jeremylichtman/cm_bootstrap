@@ -1,7 +1,7 @@
 name = CM Bootstrap Metatag Features
 description = Config for default metatag setup
 core = 7.x
-package = Features
+package = CM Bootstrap: General Config
 version = 7.x-1.0
 project = cm_bootstrap_metatag_features
 dependencies[] = cm_bootstrap_metatag

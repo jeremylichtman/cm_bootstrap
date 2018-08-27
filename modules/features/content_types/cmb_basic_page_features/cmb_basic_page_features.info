@@ -1,7 +1,7 @@
 name = CMB Basic Page Features
 description = CMB Basic Page Features
 core = 7.x
-package = CM Bootstrap Config: Content Types
+package = CM Bootstrap: Content Types
 version = 7.x-1.0
 dependencies[] = cmb_field_bases
 dependencies[] = content_components_features

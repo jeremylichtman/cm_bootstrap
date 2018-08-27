@@ -1,7 +1,7 @@
 name = CMB Producers Carousel Features
 description = CMB Producers Carousel Features
 core = 7.x
-package = CM Bootstrap: Content Components
+package = CM Bootstrap: Paragraphs
 version = 7.x-1.0
 dependencies[] = entityreference
 dependencies[] = features

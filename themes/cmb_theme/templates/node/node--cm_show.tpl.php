@@ -1,23 +1,17 @@
 <?php print render($content); ?>
 
 <?php if (!isset($content['field_show_vod']) && !isset($node->field_show_custom_embed['und'][0]['target_id']) ): ?>
-  <?php
-    if (module_exists('cm_bootstrap_cp_default_images')) {
-      $file = cm_bootstrap_cp_default_images_load_image($node->type);
-      //dpm($file);
-      $image_uri = $file->uri;
-      $default_image = image_style_url('cm_bootstrap_cp_default_images_cm_show_video', $image_uri);
-    }
-  ?>
-  <div class="fluid-width-video-wrapper">
-    <img class="default-image" src="<?php print $default_image; ?>"/>
-  </div>
-<?php elseif(isset($node->field_show_custom_embed['und'][0]['target_id'])): ?>
-  <?php //dpm('custom embed!'); ?>
+
+  <?php if ($cm_show['default_image']): ?>
+    <div class="fluid-width-video-wrapper">
+      <img class="default-image" src="<?php print $cm_show['default_image']; ?>"/>
+    </div>
+  <?php endif; ?>
+
+<?php elseif (isset($node->field_show_custom_embed['und'][0]['target_id'])): ?>
 
   <?php
     $embedd_node = node_load($node->field_show_custom_embed['und'][0]['target_id']);
-    //dpm($embedd_node);
   ?>
   <div class="video-container-embed">
     <?php print $embedd_node->field_iframe['und'][0]['value']; ?>

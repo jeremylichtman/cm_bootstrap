@@ -1,0 +1,5 @@
+name = CM Bootstrap Dropdown Menu 2017
+description = Generates RETN style large dropdown menu
+core = 7.x
+package = CM Bootstrap Experimental
+configure = admin/config/cmb-dropdown-menu

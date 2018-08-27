@@ -101,33 +101,26 @@ function _cmb_archive_two_col() {
           if (!empty($nids)) {
             $nodes = node_load_multiple(array_keys($nids));
             foreach($nodes as $node) {
-              // Image
-              if (isset($node->field_show_vod['und'])) {
-                switch($node->field_show_vod['und'][0]['filemime']) {
-                  case 'video/cloudcast':
-                    $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-                    break;
-                  case 'video/vimeo':
-                    $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                  case 'video/youtube':
-                    $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                }
-                $img_src = image_style_url('500x281', file_build_uri($image_uri));
-              }
-              else {
-                if (module_exists('cm_bootstrap_cp_default_images')) {
-                  $file = cm_bootstrap_cp_default_images_load_image($node->type);
-                  $image_uri = $file->uri;
+              // Get the VOD thumbnail uri, if possible.
+              $img_src = null;
+              if (module_exists('cmb_helper')) {
+                // Get a default uri.
+                $default_image_uri = null;
+                // Obtain the uri.
+                $image_uri = cmb_helper_vod_thumbnail_uri($node, $default_image_uri);
+
+                // Generate image style.
+                if ($image_uri !== FALSE) {
+                  // Generate image style.
                   $img_src = image_style_url('500x281', $image_uri);
                 }
-                else {
-                  $img_src = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
-                }
               }
+
+              // Default.
+              if (is_null($img_src) || ($img_src === FALSE)) {
+                $img_src = "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'281'><rect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'whitesmoke'%2F><%2Fsvg>";
+              }
+
               // Description/Body
               if (isset($node->field_description['und'][0]['value'])) {
                 $description = $node->field_description['und'][0]['value'];

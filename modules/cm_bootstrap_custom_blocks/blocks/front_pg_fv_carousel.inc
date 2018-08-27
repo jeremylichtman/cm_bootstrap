@@ -14,33 +14,18 @@ function _front_pg_featured_videos_carousel_data() {
     $nids = array_keys($result['node']);
     $nodes = entity_load('node', $nids);
     foreach ($nodes as $node) { 
-      //dpm($node);
-      if (isset($node->field_show_vod['und'])) {
-        switch($node->field_show_vod['und'][0]['filemime']) {
-          case 'video/cloudcast':
-            $field_cm_show_video_img_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-            //dpm($field_cm_show_video_img_uri);
-            $cm_show_image = image_style_url('500x281', $field_cm_show_video_img_uri);
-            break;
-          case 'video/vimeo':
-            $field_cm_show_video_img_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']) . '.jpg';
-            $cm_show_image = image_style_url('500x281', $field_cm_show_video_img_uri);
-            break;
-          case 'video/youtube':
-            $field_cm_show_video_img_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']) . '.jpg';
-            $cm_show_image = image_style_url('500x281', $field_cm_show_video_img_uri);
-            break;
-        }
+      if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($node);
+      }
+
+      // Generate image style.
+      if (!is_null($image_uri) && ($image_uri !== FALSE)) {
+        $cm_show_image = image_style_url('500x281', $image_uri);
       }
       else {
-        //$cm_show_image = $GLOBALS['base_url'] . '/' . path_to_theme() . '/images/500x281-placeholder.gif';
-        if (module_exists('site_cp_default_images')) {
-          $file = site_cp_default_images_load_image($node->type);
-          //dpm($file);
-          $image_uri = $file->uri;
-          $cm_show_image = image_style_url('500x281', $image_uri);
-        }
+        $cm_show_image = '';
       }
+ 
       // field_description
       //$allowable_tags = '<i><a>';
       //$field_description = strip_tags($node->field_description['und'][0]['value'], $allowable_tags);

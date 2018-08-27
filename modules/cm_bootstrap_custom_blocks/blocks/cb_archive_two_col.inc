@@ -67,38 +67,23 @@ function _cb_archive_two_col() {
           }       
           break;        
         case 'cm_show':
-          $nids = _cb_archive_two_col_query($content_type);
-          //dpm($nids);   
+          $nids = _cb_archive_two_col_query($content_type); 
           if (!empty($nids)) {
             $nodes = node_load_multiple(array_keys($nids));        
-            //dpm($nodes);
             foreach($nodes as $node) {
-              // Image
-              if (isset($node->field_show_vod['und'])) {        
-                //dpm($node);
-                switch($node->field_show_vod['und'][0]['filemime']) {
-                  case 'video/cloudcast':
-                    $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';
-                    break;
-                  case 'video/vimeo':
-                    $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                  case 'video/youtube':  
-                    $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-                    $image_uri = $image_uri . '.jpg';
-                    break;
-                }
-                //dpm($image_uri);
-                $img_src = image_style_url('500x281', file_build_uri($image_uri));
-                //dpm($img_src);
-                
-                //dpm($img_url);
-                //$img_src = image_style_url('500x281', $image_uri);
+              // Image.     
+              if (module_exists('cmb_helper')) {
+                $image_uri = cmb_helper_vod_thumbnail_uri($node);
+              }
+
+              // Generate image style.
+              if (isset($image_uri) && ($image_uri !== FALSE)) {
+                $img_src = image_style_url('500x281', $image_uri);
               }
               else {
                 $img_src = $GLOBALS['base_url'] . '/' . path_to_theme() . '/images/500x281-placeholder.gif';
               }
+
               // Description/Body
               if (isset($node->field_description['und'][0]['value'])) {
                 $description = $node->field_description['und'][0]['value'];
@@ -106,20 +91,18 @@ function _cb_archive_two_col() {
               else {
                 $description = '';
               }              
-              // Only build $item array for node if img is present.
-              //if (!empty($img_src)) {
-                // Build $items array.
-                $items[$node->nid] = array( 
-                  'nid' => $node->nid,
-                  'type' => $node->type,
-                  'title' => $node->title,
-                  'description' => custom_block_truncate($description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
-                  'img' => $img_src,
-                );
-              //}
+
+              // Build $items array.
+              $items[$node->nid] = array( 
+                'nid' => $node->nid,
+                'type' => $node->type,
+                'title' => $node->title,
+                'description' => custom_block_truncate($description, $length = 125, array('html' => true, 'ending' => ' . . .', 'exact' => FALSE)),
+                'img' => $img_src,
+              );
             }
           }
-          //dpm($nodes);
+
           break;
       }  
     }

@@ -130,36 +130,3 @@ function cm_bootstrap_search_features_default_search_api_index() {
   }');
   return $items;
 }
-
-/**
- * Implements hook_default_search_api_server().
- */
-function cm_bootstrap_search_features_default_search_api_server() {
-  $items = array();
-  $items['solr'] = entity_import('search_api_server', '{
-    "name" : "Solr",
-    "machine_name" : "solr",
-    "description" : "",
-    "class" : "search_api_solr_service",
-    "options" : {
-      "clean_ids" : true,
-      "site_hash" : true,
-      "scheme" : "http",
-      "host" : "localhost",
-      "port" : "8983",
-      "path" : "\\/solr",
-      "http_user" : "",
-      "http_pass" : "",
-      "excerpt" : 0,
-      "retrieve_data" : 0,
-      "highlight_data" : 0,
-      "skip_schema_check" : 0,
-      "solr_version" : "",
-      "http_method" : "AUTO",
-      "log_query" : 0,
-      "log_response" : 0
-    },
-    "enabled" : "1"
-  }');
-  return $items;
-}

@@ -20,14 +20,6 @@ function cmb_search_producer_features_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -49,14 +41,6 @@ function cmb_search_producer_features_field_default_field_bases() {
     'field_name' => 'field_cmbs_producer_email',
     'field_permissions' => array(
       'type' => 0,
-    ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
     ),
     'indexes' => array(
       'format' => array(
@@ -82,14 +66,6 @@ function cmb_search_producer_features_field_default_field_bases() {
     'field_permissions' => array(
       'type' => 0,
     ),
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -113,14 +89,6 @@ function cmb_search_producer_features_field_default_field_bases() {
     'field_name' => 'field_cmbs_producer_uid',
     'field_permissions' => array(
       'type' => 0,
-    ),
-    'foreign keys' => array(
-      'users' => array(
-        'columns' => array(
-          'target_id' => 'uid',
-        ),
-        'table' => 'users',
-      ),
     ),
     'indexes' => array(
       'target_id' => array(

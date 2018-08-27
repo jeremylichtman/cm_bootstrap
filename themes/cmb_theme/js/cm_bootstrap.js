@@ -518,7 +518,7 @@
   };
 
   // "Recent News" Block Set left and right col
-  Drupal.behaviors.cmb_theme__recent_news_block__normalize_height = {
+  /*Drupal.behaviors.cmb_theme__recent_news_block__normalize_height = {
     attach: function (context, settings) {
 
       var recentNewsHeight = function () {
@@ -539,6 +539,16 @@
       $(document).ready(recentNewsHeight);
       $(window).resize(recentNewsHeight);
 
+    }
+  };
+  */
+
+  // "Recent News" Block Set left and right col
+  Drupal.behaviors.cmb_theme__cb_recent_news__match_height = {
+    attach: function(context, settings) {
+      $(function() {
+        $('#block-cm-bootstrap-custom-blocks-cb-recent-news ul.cb-recent-news li a span').matchHeight();
+      });
     }
   };
 

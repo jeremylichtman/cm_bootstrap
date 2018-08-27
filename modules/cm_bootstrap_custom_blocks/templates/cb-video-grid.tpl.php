@@ -16,34 +16,15 @@
         <?php foreach($item['shows'] as $show_node): ?>        
           <?php 
             // Get show images, accounting for variations.
-            if (isset($show_node->field_show_vod['und'])) {        
-              switch($show_node->field_show_vod['und'][0]['filemime']) {
-                // Cloudcast
-                case 'video/cloudcast':
-                  $image_uri = 'media-cloudcast/' . $show_node->field_show_vod['und'][0]['filename']  . '.jpg';								
-                  break;
-                // Vimeo
-                case 'video/vimeo':
-                  $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $show_node->field_show_vod['und'][0]['uri']);
-                  $image_uri = $image_uri . '.jpg';
-                  break;
-                // Youtube
-                case 'video/youtube':  
-                  $image_uri = str_replace('youtube://v/', 'media-youtube/', $show_node->field_show_vod['und'][0]['uri']);
-                  $image_uri = $image_uri . '.jpg';
-                  break;
-              }
-              $img_src = image_style_url('500x281', $image_uri);
-            }
-            else {
-              if (module_exists('cm_bootstrap_cp_default_images')) {
-                $file = cm_bootstrap_cp_default_images_load_image($show_node->type);
-                //dpm($file);
-                $image_uri = $file->uri;
+            if (module_exists('cmb_helper')) {
+              $image_uri = cmb_helper_vod_thumbnail_uri($show_node);
+
+              // Generate image style.
+              if ($image_uri !== FALSE) {
                 $img_src = image_style_url('500x281', $image_uri);
               }
             }
-            
+
             // Description
             if (isset($show_node->field_description['und'][0]['value'])) {
               $show_description = $show_node->field_description['und'][0]['value'];
@@ -62,7 +43,7 @@
             }
           ?>  
           <?php // Don't show video grid item if no image ?> 
-          <?php if (!empty($img_src)): ?> 
+          <?php if (isset($img_src)): ?> 
             <li>
               <a href="<?php print url('node/' . $show_node->nid); ?>">
                 <?php //print drupal_render($img_src); ?>

@@ -1,0 +1,16 @@
+name = CMB Paragraphs Embed Features
+description = CMB Paragraphs Embed Features
+core = 7.x
+package = CM Bootstrap: Paragraphs
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = strongarm
+dependencies[] = text
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_cmb_p_embed_embed
+features[field_instance][] = paragraphs_item-cmb_embed-field_cmb_p_embed_embed
+features[paragraphs][] = cmb_embed
+features[variable][] = field_bundle_settings_paragraphs_item__cmb_embed

@@ -50,7 +50,7 @@
 ?>
 <div class="row">
   <section class="col-sm-3">
-    <a href="<?php print $url; ?>"><img class="default-image" src="<?php print $img_src; ?>"/></a>
+    <a href="/<?php print $url; ?>"><img class="default-image" src="<?php print $img_src; ?>"/></a>
   </section>
 
   <aside class="col-sm-9" role="complementary">

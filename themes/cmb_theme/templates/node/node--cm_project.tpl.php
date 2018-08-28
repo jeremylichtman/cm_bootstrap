@@ -44,6 +44,17 @@
           $iframe_src = 'http://vp.telvue.com/player?wmode=opaque&modestbranding=1
 &HTML5=true&id=' . $iframe_src_param_id . '&video=' . $iframe_src_param_video . '&noplaylistskin=1&width=400&height=300';
           break;
+        case 'video/connect':
+          $iframe_class = 'media-telvue-player';
+          // Get param 'video'.
+          $iframe_src_param_video = $cm_show_node->field_show_vod['und'][0]['filename'];
+          // Get param 'id'.
+          $uri = $cm_show_node->field_show_vod['und'][0]['uri'];
+          $string_pieces = explode('/', $uri);
+          $iframe_src_param_id = $string_pieces[3];
+          // Build iframe src.
+          $iframe_src = 'https://videoplayer.telvue.com/player/' .  $iframe_src_param_id . '/media/' . $iframe_src_param_video . '?fullscreen=true&amp;autostart=false';
+          break;
         case 'video/vimeo':
           $video_container_class = 'video-container-vimeo';
           $iframe_class = 'media-vimeo-player';

@@ -114,6 +114,17 @@ if (isset($feature_video->field_show_vod['und'])) {
       // Build iframe src.
       $iframe_src = 'http://vp.telvue.com/player?wmode=opaque&amp;id=' . $iframe_src_param_id . '&amp;video=' . $iframe_src_param_video . '&amp;noplaylistskin=1&amp;width=400&amp;height=300';
       break;
+    case 'video/connect':
+      $iframe_class = 'media-telvue-player';
+      // Get param 'video'.
+      $iframe_src_param_video = $feature_video->field_show_vod['und'][0]['filename'];
+      // Get param 'id'.
+      $uri = $feature_video->field_show_vod['und'][0]['uri'];
+      $string_pieces = explode('/', $uri);
+      $iframe_src_param_id = $string_pieces[3];
+      // Build iframe src.
+      $iframe_src = 'https://videoplayer.telvue.com/player/' .  $iframe_src_param_id . '/media/' . $iframe_src_param_video . '?fullscreen=true&amp;autostart=false';
+      break;
     case 'video/vimeo':
       $iframe_class = 'media-vimeo-player';
       // Get param 'video'.

@@ -55,6 +55,7 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
         // Colors
         $vs_heading_bg_color_1 = 'black';
         $vs_heading_text_color = 'white';
+        $vs_heading_overlay_text_color = 'white';
 
         if (module_exists('cm_bootstrap_cp_colors')) {
           $colors = cm_bootstrap_cp_colors_get();
@@ -65,7 +66,6 @@ function cmb_custom_video_list_preprocess_entity(&$variables) {
 
           if (isset($colors['vs_heading_text_color'])) {
             $vs_heading_text_color = $colors['vs_heading_text_color'];
-            $vs_heading_overlay_text_color = $colors['vs_heading_text_color'];
           }
         }
 

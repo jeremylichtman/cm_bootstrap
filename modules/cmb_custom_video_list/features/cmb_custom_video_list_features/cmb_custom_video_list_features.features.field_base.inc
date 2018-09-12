@@ -10,6 +10,24 @@
 function cmb_custom_video_list_features_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_cc_cvl_bg_color'.
+  $field_bases['field_cc_cvl_bg_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cvl_bg_color',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'jquery_colorpicker',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'jquery_colorpicker',
+  );
+
   // Exported field_base: 'field_cc_cvl_er'.
   $field_bases['field_cc_cvl_er'] = array(
     'active' => 1,
@@ -46,6 +64,42 @@ function cmb_custom_video_list_features_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_cc_cvl_heading_color'.
+  $field_bases['field_cc_cvl_heading_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cvl_heading_color',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'jquery_colorpicker',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'jquery_colorpicker',
+  );
+
+  // Exported field_base: 'field_cc_cvl_text_color'.
+  $field_bases['field_cc_cvl_text_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_cvl_text_color',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'jquery_colorpicker',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'jquery_colorpicker',
   );
 
   // Exported field_base: 'field_cc_cvl_title_align'.

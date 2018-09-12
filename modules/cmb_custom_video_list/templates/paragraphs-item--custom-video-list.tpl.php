@@ -1,4 +1,4 @@
-<section class="cc--custom-video-list">
+<section class="cc--custom-video-list paragraph-<?php print $custom_video_list['id'];?>">
 
   <?php if ($custom_video_list['title']): ?>
     <h2 class="title" style="background-color:<?php print $custom_video_list['bg_color']; ?>; color:<?php print $custom_video_list['text_color']; ?>;">
@@ -20,23 +20,23 @@
                 <i class="icon glyphicon glyphicon-play-circle" aria-hidden="true"></i>
               </span>
 
-              <h4 class="title">
+              <h4 class="title" style="color:<?php print $custom_video_list['overlay_text_color']; ?> !important;">
                 <?php print $item['title']; ?>
               </h4>
 
               <?php if ($item['series_title']): ?>
-                <p class="series-title">
+                <p class="series-title" style="color:<?php print $custom_video_list['overlay_text_color']; ?>;">
                   <?php print $item['series_title']; ?>
                 </p>
               <?php endif; ?>
 
               <?php if ($item['description']): ?>
-                <p class="description">
+                <p class="description" style="color:<?php print $custom_video_list['overlay_text_color']; ?>;">
                   <?php print $item['description']; ?>
                 </p>
               <?php endif; ?>
 
-              <span class="watch-now">Watch Now &raquo;</span>
+              <span class="watch-now" style="color:<?php print $custom_video_list['overlay_text_color']; ?>;">Watch Now &raquo;</span>
             </span>
           </a>
         </li>

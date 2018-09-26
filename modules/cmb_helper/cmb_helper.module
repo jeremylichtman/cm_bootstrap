@@ -82,8 +82,6 @@ function cmb_helper_save_and_add($form, &$form_state){
     drupal_set_message(t('The post could not be saved.'), 'error');
     $form_state['rebuild'] = TRUE;
   }
-  // Clear the page and block caches.
-  cache_clear_all();
 }
 
 /**

@@ -26,7 +26,7 @@ h3.video-car-title,
   text-transform: normal;
   font-size:28px;
   margin:0;
-  
+
   padding: 36px 10px;
   max-height: 105px;
   margin-top:0px !important;
@@ -144,7 +144,7 @@ h2.block-title p {
 }
 
 .c-flexslider-video-carousel ul li a .overlay {
-  box-sizing: border-box;  
+  box-sizing: border-box;
   width:400px;
   opacity: 0;
   height: 100%;
@@ -187,19 +187,19 @@ h2.block-title p {
     opacity: 1;
     padding: 20px;
     display: block;
-  }  
-  
+  }
+
   .overlay .title {
     font-size:1em;
   }
-  
+
   .series-title {
     /*bottom: 60px;*/
     font-size: .75em;
     font-weight: 100;
   }
-  
-  .c-flexslider-video-carousel ul.slides li a .watch-now-mobile, 
+
+  .c-flexslider-video-carousel ul.slides li a .watch-now-mobile,
   .c-flexslider-video-carousel ul.slides li a span.watch-now {
     display:block;
     position:absolute;
@@ -208,11 +208,11 @@ h2.block-title p {
     letter-spacing: 1px;
     font-size:.75em;
   }
-  
+
   .play-button, p.description {
     display:none;
   }
-  
+
   /*.flex-direction-nav a {
     top:35%;
   }*/
@@ -240,7 +240,7 @@ h2.block-title p {
   transition: 250ms ease-out;
 }
 
-.c-flexslider-video-carousel ul.slides li a span.overlay, 
+.c-flexslider-video-carousel ul.slides li a span.overlay,
 .c-flexslider-video-carousel ul.slides li a span.play-button {
   width:100%;
 }
@@ -252,7 +252,7 @@ h3.video-car-title {
 @media all and (max-width: 768px) {
   .c-flexslider-video-carousel .flex-direction-nav a {
     top:32% !important;
-  }  
+  }
 }
 
 /* breakpoint_1 */
@@ -272,4 +272,24 @@ body:after { display: none; content: 'breakpoint_1'; }
 /* breakpoint_4 */
 @media all and (min-width: 1200px) {
   body:after { display: none; content: 'breakpoint_4'; }
+}
+
+/* ZD-249: Fix flickering overlay on home page videos */
+.c-flexslider-video-carousel ul.slides li a {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display:block;
+}
+
+.c-flexslider-video-carousel ul.slides li a .overlay {
+  z-index:1;
+}
+
+.c-flexslider-video-carousel ul.slides li a:hover {
+  z-index:1;
+}
+
+.c-flexslider-video-carousel ul.slides li a .overlay .play-button {
+  z-index:0;
 }

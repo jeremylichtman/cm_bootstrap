@@ -42,7 +42,7 @@ function cm_bootstrap_cp_default_images_form($form, &$form_state) {
     );
     $fid = cm_bootstrap_cp_default_images_default_value($content_type);
     // Add logic to account for different versions of media module
-    // For Media 2.x it simply is '#default_value => $my_fid,, no array anymore.
+    // For Media 2.x it simply is '#default_value => $my_fid, no array anymore.
     if (!is_array($form_state['values']['cm_show']['default_image'])) {
       $form[$content_type]['default_image']['#default_value'] = $fid;
     }
@@ -63,7 +63,6 @@ function cm_bootstrap_cp_default_images_form($form, &$form_state) {
  * Form submit
  */
 function cm_bootstrap_cp_default_images_form_submit($form, &$form_state) {
-  //dpm($form_state);
   // @todo do this as a foreach loop so you can easily add content types
   $content_types = array(
     'cm_show',

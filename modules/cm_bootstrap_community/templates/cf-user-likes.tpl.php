@@ -50,36 +50,21 @@
   <h2><?php echo $account['user']->name ?> Likes</h2>
   <div class="user-shows-likes-container">
     <?php $flags = flag_get_user_flags('node', null, $account['user']->uid); ?>
-    <?php //dpm($flags); ?>
     <?php if (!empty($flags)): ?>
       <ul class="user-shows-likes">
         <?php foreach ($flags['cf_like_show'] as $flag): ?>
-          <?php //dpm($flag); ?>
           <?php $node = node_load($flag->entity_id); ?>
           <?php 
-            // Get show images, accounting for variations.
-            if (isset($node->field_show_vod['und'])) {        
-              switch($node->field_show_vod['und'][0]['filemime']) {
-                // Cloudcast
-                case 'video/cloudcast':
-                  $image_uri = 'media-cloudcast/' . $node->field_show_vod['und'][0]['filename']  . '.jpg';								
-                  break;
-                // Vimeo
-                case 'video/vimeo':
-                  $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $node->field_show_vod['und'][0]['uri']);
-                  $image_uri = $image_uri . '.jpg';
-                  break;
-                // Youtube
-                case 'video/youtube':  
-                  $image_uri = str_replace('youtube://v/', 'media-youtube/', $node->field_show_vod['und'][0]['uri']);
-                  $image_uri = $image_uri . '.jpg';
-                  break;
-              }
+            // Get show images, accounting for variations.     
+            if (module_exists('cmb_helper')) {
+              $image_uri = cmb_helper_vod_thumbnail_uri($node);
+            }
+
+            // Generate image style.
+            if (isset($image_uri) && ($image_uri !== FALSE)) {
               $img_src = image_style_url('250x150', $image_uri);
             }
-            else {
-              $img_src = '';
-            }
+
             // Description
             if (isset($node->field_description['und'][0]['value'])) {
               $show_description = $node->field_description['und'][0]['value'];
@@ -98,7 +83,9 @@
           ?>
           <li>
             <a href="<?php print url('node/' . $node->nid); ?>">
+              <?php if (!empty($img_src)): ?>
               <img src="<?php print $img_src; ?>" />
+              <?php endif; ?>
               <span class="overlay">
                 <p class="title">
                   <?php print $node->title; ?>

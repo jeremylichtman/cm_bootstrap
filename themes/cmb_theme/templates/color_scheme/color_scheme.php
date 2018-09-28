@@ -571,3 +571,9 @@ ul.user-statistics {
   }
 <?php endif; ?>
 <?php // END: Show Tab Colors ?>
+
+<?php if (isset($colors['global_body_bg_color'])): ?>
+body {
+  background-color:<?php print $colors['global_body_bg_color']; ?>!important;
+}
+<?php endif; ?>

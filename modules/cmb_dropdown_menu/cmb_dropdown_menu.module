@@ -1,0 +1,165 @@
+<?php
+/**
+ * @file
+ * CMB Dropdown Menu Module file.
+ *
+ * Contains module perms, menu hook for config, block info/view and function for
+ * templating/themeing dropdown menu.
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function cmb_dropdown_menu_ctools_plugin_api($owner, $api) {
+  if ($owner == 'file_entity' && $api == 'file_type') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function cmb_dropdown_menu_permission() {
+  return array(
+    'administer cmb dropdown menu' => array(
+    'title' => t('Administer CMB Dropdown Menu'),
+    'description' => t('Provides access to CMB Dropdown Menu Settings')
+  ));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function cmb_dropdown_menu_menu() {
+  $items = [];
+
+  $items['admin/config/cmb-dropdown-menu'] = [
+    'title' => 'Configure Dropdown Menu',
+    'description' => 'Color settings for CMB Dropdown Menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cmb_dropdown_menu_settings_form'),
+    'access arguments' => array('administer cmb dropdown menu'),
+    'file' => 'cmb_dropdown_menu.admin.inc',
+    'type' => MENU_CALLBACK,
+  ];
+
+  $items['admin/config/cmb-dropdown-menu/configure'] = array(
+    'title' => 'Configure Dropdown Menu',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function cmb_dropdown_menu_block_info() {
+  $blocks['cmb_dropdown_menu_block'] = [
+    'info' => t('CMB Dropdown Menu [module: cmb_dropdown_menu]'),
+    'cache' => DRUPAL_NO_CACHE,
+    'title' => '<none>',
+    'region' => 'below_navigation',
+    'status' => TRUE,
+    'weight' => '1',
+  ];
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cmb_dropdown_menu_block_view($delta = '') {
+  $block = [];
+
+  switch ($delta) {
+    case 'cmb_dropdown_menu_block':
+      // Load our inc file for the block logic
+      module_load_include('php', 'cmb_dropdown_menu', 'blocks/cmb_dropdown_menu');
+
+      // Block content.
+      $block['content'] = [
+        '#markup' => _cmb_dropdown_menu(),
+        // Add contexual link for color config.
+        '#contextual_links' => array(
+          'cmb_dropdown_menu' => array(
+            'admin/config/cmb-dropdown-menu/configure',
+            array(),
+          ),
+        ),
+        '#attached' => [
+          'js' => [
+            drupal_get_path('module', 'cmb_dropdown_menu') . '/js/cmb_dropdown_menu.js',
+            drupal_get_path('module', 'cmb_dropdown_menu') . '/js/doubletaptogo.js'
+          ],
+          'css' => [
+            drupal_get_path('module', 'cmb_dropdown_menu') . '/css/cmb_dropdown_menu.css'
+          ],
+        ],
+      ];
+
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_init().
+ *
+ * Adds the colors file to the page to give the correct colors.
+ */
+function cmb_dropdown_menu_init() {
+
+  // Get managed file from public file system using stream wrapper.
+  $color_css_file = 'public://cmb-dropdown-menu/css/cmb_dropdown_menu_colors.css';
+
+  // Add colors CSS everywhere.
+  drupal_add_css($color_css_file, array(
+    'type' => 'file',
+    // We want the color file to load after the module css file.
+    'group' => CSS_THEME,
+    'media' => 'all',
+    // We want it on every page, even if the menu isn't present there isn't much
+    // That can go wrong with add the CSS colors.
+    'every_page' => TRUE,
+    'preprocess' => FALSE,
+  ));
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cmb_dropdown_menu_theme($existing, $type, $theme, $path) {
+  $theme = [];
+
+  $theme['cmb_dropdown_menu'] = [
+    'template' => 'cmb-dropdown-menu',
+    'path' => $path . '/templates',
+  ];
+
+  return $theme;
+}
+
+/**
+ * Define CSS file type.
+ *
+ * This is just to give the CSS file a type in the file entity information.
+ *
+ */
+function cmb_dropdown_menu_file_default_types() {
+  return array(
+    'css' => (object) array(
+      'api_version' => 1,
+      'type' => 'css',
+      'label' => t('CSS'),
+      'description' => t("A <em>CSS</em> file is a file that is generated to style the site and give the 'look and feel' for the site."),
+      'mimetypes' => array(
+        'text/css',
+      ),
+    ),
+  );
+}

@@ -1,0 +1,6 @@
+name = CM Bootstrap: Paragraphs: Embed
+description = CM Bootstrap: Paragraphs: Embed
+package = CM Bootstrap: Paragraphs
+core = 7.x
+dependencies[] = paragraphs
+dependencies[] = cmb_paragraphs_embed_features

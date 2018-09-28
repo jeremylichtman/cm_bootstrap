@@ -93,17 +93,16 @@
     padding: 0 !important;
   }
 
-  /* line 86, ../scss/cc_text_with_background.scss */
-  #main {
+  /*#main {
     background: transparent !important;
   }
-
-  /* line 89, ../scss/cc_text_with_background.scss */
+  */
+  /* line 90, ../scss/cc_text_with_background.scss */
   .parallax-window {
     background: transparent;
   }
 
-  /* line 92, ../scss/cc_text_with_background.scss */
+  /* line 93, ../scss/cc_text_with_background.scss */
   .parallax-slider {
     /*min-height: 400px;*/
     /*width:1449px !important;*/
@@ -112,11 +111,11 @@
     /*max-height:842px !important;*/
   }
 
-  /* line 100, ../scss/cc_text_with_background.scss */
+  /* line 101, ../scss/cc_text_with_background.scss */
   .cc--twb--parallax .twb-text-wrapper {
     padding: 1em 2em 3em 1em;
   }
-  /* line 102, ../scss/cc_text_with_background.scss */
+  /* line 103, ../scss/cc_text_with_background.scss */
   .cc--twb--parallax .twb-text-wrapper h2, .cc--twb--parallax .twb-text-wrapper p {
     color: inherit;
   }

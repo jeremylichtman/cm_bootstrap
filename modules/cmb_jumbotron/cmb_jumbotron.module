@@ -18,9 +18,15 @@ function cmb_jumbotron_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
   );
 
-  // Paragraphs editor preview
+  // Paragraphs editor preview for "cmb_jumbotron"
   $theme['paragraphs_item__cmb_jumbotron__paragraphs_editor_preview'] = array(
     'template' => 'paragraphs-item--cmb_jumbotron--paragraphs_editor_preview',
+    'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
+  );
+
+  // Paragraphs editor preview for "cmb_jumbotron_item"
+  $theme['paragraphs_item__cmb_jumbotron_item__paragraphs_editor_preview'] = array(
+    'template' => 'paragraphs-item--cmb_jumbotron_item--paragraphs_editor_preview',
     'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
   );
 

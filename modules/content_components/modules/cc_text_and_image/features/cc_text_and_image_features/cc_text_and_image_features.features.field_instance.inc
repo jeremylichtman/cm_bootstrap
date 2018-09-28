@@ -11,6 +11,60 @@ function cc_text_and_image_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'paragraphs_item-text_and_image-field_cc_tai_crop_image'.
+  $field_instances['paragraphs_item-text_and_image-field_cc_tai_crop_image'] = array(
+    'bundle' => 'text_and_image',
+    'default_value' => array(
+      0 => array(
+        'value' => 'Yes',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Note that uncropped images will display in their original size. Ideally, the images should be sized with a maximum width of 450px, in order to not overflow the their bounds.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_cc_tai_crop_image',
+    'label' => 'Crop Image',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
   // 'paragraphs_item-text_and_image-field_cc_tai_image'.
   $field_instances['paragraphs_item-text_and_image-field_cc_tai_image'] = array(
     'bundle' => 'text_and_image',
@@ -204,7 +258,7 @@ function cc_text_and_image_features_field_default_field_instances() {
         'urls_search' => 'start',
       ),
       'type' => 'advanced_link',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -275,9 +329,11 @@ function cc_text_and_image_features_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Adding a link is optional, leave blank for no link.');
+  t('Crop Image');
   t('Image');
   t('Image Alignment');
   t('Link');
+  t('Note that uncropped images will display in their original size. Ideally, the images should be sized with a maximum width of 450px, in order to not overflow the their bounds.');
   t('Text');
 
   return $field_instances;

@@ -78,7 +78,10 @@ scripts[] = js/libraries/jpanelmenu/jquery.jpanelmenu.js
 
 ;stylesheets[all][] = color/colors.css
 
-
+;;;;;;;;;;;;;;;;;;;;;
+;; jQuery Libraries
+;;;;;;;;;;;;;;;;;;;;;
+scripts[] = js/libraries/jquery-match-height/jquery.matchHeight.js
 
 
 

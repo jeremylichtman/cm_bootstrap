@@ -1,3 +1,120 @@
+Tag: tags/2018-07-02-01
+--------------------
+- ZD-200: Fix for add search to search trigger
+
+Tag: tags/2018-07-02
+--------------------
+- ZD-200: Add search text to search opener
+
+Tag: tags/2018-06-03
+--------------------
+- ZD-253: Do not render the header row if no content
+
+Tag: tags/2018-05-18-01
+--------------------
+- ZD-249: Fix flickering overlay on home page videos, added a few we missed
+
+Tag: tags/2018-05-18
+--------------------
+- ZD-249: Fix flickering overlay on home page videos
+
+Tag: tags/2018-04-20
+--------------------
+- ZD-224: Use custom thumbnail if avail for fallback image when no show video
+
+Tag: tags/2018-03-29
+--------------------
+- ZD-206: Fix for menu gap in menu panel after fixed width change
+
+Tag: tags/2018-03-20
+--------------------
+- ZD-214: Video Carousels Don't Show Full Series
+
+Tag: tags/2018-03-19
+--------------------
+- ZD-217: Channel listing in Upcoming Air Dates on Show page
+
+Tag: tags/2018-02-28
+--------------------
+- ZD-202: Responsive embedded videos. Added "CMB Embed" Paragraph bundle.
+
+Tag: tags/2018-02-27
+--------------------
+- ZD-159: Show Custom Thumbnail Field in Custom Video Lists Doesn't Always Work
+
+Tag: tags/2018-01-07-01
+-----------------------
+- ZD-68: Option to not crop and resize the image. (#8)
+
+Tag: tags/2018-01-07
+--------------------
+- Added CMB Dropdown Menu module (Experimental)
+
+Tag: tags/2018-01-05
+--------------------
+- Features cleanup 2018: Updated/Organized CMB Features Package Names (#9)
+
+Tag: tags/2017-12-28
+--------------------
+- zd-159: Show Custom Thumbnail Field in Custom Video Lists Doesn't Always Work
+
+Tag: tags/2017-12-17-01
+--------------------
+- removed foreign keys from features field bases
+
+Tag: tags/2017-12-17
+--------------------
+- zd-74: Two and Four-Column Content Lists
+
+Tag: tags/2017-12-13-01
+--------------------
+- zd-150: changes to cb recent news for spnn
+
+Tag: tags/2017-12-13
+--------------------
+- zd-158: Blog and Basic Pages Cut Off in Legacy Mode
+
+Tag: tags/2017-11-25-02
+--------------------
+- zd-143: Facebook OG Meta Tags for Show Content Type
+
+Tag: tags/2017-11-25-01
+--------------------
+- Deleted bill-bash-test.txt test file
+
+Tag: tags/2017-11-25
+--------------------
+- zd-142: Add Better Preview Display for Jumbotron Paragraphs
+
+Tag: tags/2017-11-12-02
+--------------------
+- Updated and cleaned-up CMB Search features
+
+Tag: tags/2017-11-12-01
+--------------------
+- re-tagging last release to trigger cmb deploy
+
+Tag: tags/2017-11-12
+--------------------
+- Changed iframe video urls in project and partner TPLs to use SSL
+
+Tag: tags/2017-10-09
+--------------------
+- zd-66: Blog Image Placement
+
+Tag: tags/2017-10-03-01
+--------------------
+- zd-51: fix for cc_text_with_background css conflict with body background color
+
+Tag: tags/2017-10-03
+--------------------
+- zd-51: Max Width Desired for CM Bootstrap Sites
+
+Tag: tags/2017-09-27
+--------------------
+- zd-43: Images not displaying in Facebook
+- zd-69: Content list description styling
+
 Tag: tags/2017-09-23
 --------------------
 - Testing switch to firstturnmedia github org

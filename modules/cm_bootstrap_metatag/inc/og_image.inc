@@ -45,5 +45,30 @@ function cm_bootstrap_metatag_page_image() {
     );
     drupal_add_html_head($og_image, 'og:image');
 
+    // Get image data.
+    $img_data = image_get_info($img_src);
+
+    // If possible, add image sizing tags.
+    if ($img_data !== FALSE) {
+      $og_image_width = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image:width',
+          'content' => $img_data['width'],
+        ),
+      );
+      drupal_add_html_head($og_image_width, 'og:image:width');
+
+      $og_image_height = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'property' => 'og:image:height',
+          'content' => $img_data['height'],
+        ),
+      );
+      drupal_add_html_head($og_image_height, 'og:image:height');
+    }
   }
 }

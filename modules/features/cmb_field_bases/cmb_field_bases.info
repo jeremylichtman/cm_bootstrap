@@ -1,7 +1,7 @@
 name = CMB Field Bases
 description = CM Bootstrap Field Bases
 core = 7.x
-package = CM Bootstrap Config: General
+package = CM Bootstrap: General Config
 version = 7.x-1.0
 project = cmb_field_bases
 dependencies[] = date

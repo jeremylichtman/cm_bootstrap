@@ -2,11 +2,14 @@
   <?php // Content List: Title Display Overlay ?>
 
   <section class="content-component cc--cl cc-cl--title-display-overlay">
+    <?php if ($content_list['title'] || $content_list['description']): ?>
     <div class="row">
       <div class="col-md-12">
+        <?php if ($content_list['title']): ?>
         <h2>
           <?php print $content_list['title']; ?>
         </h2>
+        <?php endif; ?>
         <?php if ($content_list['description']): ?>
           <p>
             <?php print $content_list['description']; ?>
@@ -14,11 +17,12 @@
         <?php endif; ?>
       </div>
     </div>
+    <?php endif; ?>
 
-    <?php foreach(array_chunk($content_list['cl_items'], 3, true) as $items): ?>
+    <?php foreach(array_chunk($content_list['cl_items'], $row_count, true) as $items): ?>
       <ul class="clean-ul-list cl-items row">
         <?php foreach($items  as $cl_item): ?>
-          <li class="col-md-4 col-sm-12">
+          <li class="<?php print $row_styles; ?>">
             <span class="content-list-item overlay-wrapper">
               <?php if ($cl_item['link']): ?>
                 <a href="<?php print $cl_item['link']['href']; ?>" target="<?php print $cl_item['link']['target']; ?>" style="background:url(<?php print $cl_item['img_src']; ?>)">
@@ -50,11 +54,14 @@
   <?php // Content List ?>
 
   <section class="content-component cc--cl">
+    <?php if ($content_list['title'] || $content_list['description']): ?>
     <div class="row">
       <div class="col-md-12">
+        <?php if($content_list['title']): ?>
         <h2>
           <?php print $content_list['title']; ?>
         </h2>
+        <?php endif; ?>
         <?php if($content_list['description']): ?>
           <p>
             <?php print $content_list['description']; ?>
@@ -62,11 +69,12 @@
         <?php endif; ?>
       </div>
     </div>
+    <?php endif; ?>
 
-    <?php foreach(array_chunk($content_list['cl_items'], 3, true) as $items): ?>
+    <?php foreach(array_chunk($content_list['cl_items'], $row_count, true) as $items): ?>
       <ul class="clean-ul-list cl-items row">
         <?php foreach($items  as $cl_item): ?>
-          <li class="col-md-4 col-sm-12">
+          <li class="<?php print $row_styles; ?>">
             <?php if ($cl_item['link']): ?>
               <a href="<?php print $cl_item['link']['href']; ?>" target="<?php print $cl_item['link']['target']; ?>">
                 <img class="img-responsive" src="<?php print $cl_item['img_src']; ?>"/>

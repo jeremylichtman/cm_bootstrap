@@ -5,26 +5,23 @@ function _node__search_index(&$variables) {
 
   switch ($node->type) {
     case 'cm_show':
-      $img_src = FALSE;
 
       // Use show custom thumbnail field if avail
       if (isset($node->field_show_custom_thumbnail[LANGUAGE_NONE])) {
         $image_uri = $node->field_show_custom_thumbnail[LANGUAGE_NONE][0]['uri'];
       }
       // Use field_show_vod image
-      else if (isset($node->field_show_vod[LANGUAGE_NONE])) {
-        $wrapper = file_stream_wrapper_get_instance_by_uri($node->field_show_vod[LANGUAGE_NONE][0]['uri']);
-        $image_uri = $wrapper->getLocalThumbnailPath();
+      else if (module_exists('cmb_helper')) {
+        $image_uri = cmb_helper_vod_thumbnail_uri($node);
+      }
+
+      // Image style.
+      if (isset($image_uri) && ($image_uri !== FALSE)) {
+        $img_src = image_style_url('500x281', $image_uri);
       }
       else {
-        if (module_exists('cm_bootstrap_cp_default_images')) {
-          $file = cm_bootstrap_cp_default_images_load_image($node->type);
-          $image_uri = $file->uri;
-          $img_src = image_style_url('500x281', $image_uri);
-        }
+        $img_src = '';
       }
-      // Image style
-      $img_src = image_style_url('500x281', $image_uri);
 
       // Series title
       if (isset($node->og_group_ref['und'][0]['target_id'])) {

@@ -14,7 +14,6 @@
           <?php switch($video_item->type):
             case 'cm_show': ?>
               <?php
-                //dpm($video_item);
                 // Get series title
                 if (isset($video_item->og_group_ref['und'])) {
                   $nid = $video_item->og_group_ref['und'][0]['target_id'];
@@ -23,35 +22,24 @@
                 else {
                   $series_title = '';
                 }
-                //
-                if (isset($video_item->field_series_image['und'])) {
-                  $image_uri = $video_item->field_series_image['und'][0]['uri'];
-                }
-                if (isset($video_item->field_show_vod['und'])) {        
-                  //dpm($video_item->nid);
-                  switch($video_item->field_show_vod['und'][0]['filemime']) {
-                    case 'video/cloudcast':
-                      $image_uri = 'media-cloudcast/' . $video_item->field_show_vod['und'][0]['filename']  . '.jpg';			     					
-                      break;
-                    case 'video/vimeo':
-                      $image_uri = str_replace('vimeo://v/', 'media-vimeo/', $video_item->field_show_vod['und'][0]['uri']);
-                      $image_uri = $image_uri . '.jpg';
-                      break;
-                    case 'video/youtube':  
-                      $image_uri = str_replace('youtube://v/', 'media-youtube/', $video_item->field_show_vod['und'][0]['uri']);
-                      $image_uri = $image_uri . '.jpg';
-                      break;
+
+                // Get the VOD thumbnail uri, if possible.
+                $img_src = null;
+                if (module_exists('cmb_helper')) {
+                  // Get a default uri.
+                  $default_image_uri = null;
+                  if (isset($video_item->field_series_image[LANGUAGE_NONE])) {
+                    $default_image_uri = $video_item->field_series_image[LANGUAGE_NONE][0]['uri'];
                   }
-                  $img_src = image_style_url('500x281', $image_uri);
-                }
-                else {
-                  if (module_exists('cm_bootstrap_cp_default_images')) {
-                    $file = cm_bootstrap_cp_default_images_load_image($video_item->type);
-                    $image_uri = $file->uri;
+
+                  // Obtain the uri.
+                  $image_uri = cmb_helper_vod_thumbnail_uri($video_item, $default_image_uri);
+
+                  // Generate image style.
+                  if ($image_uri !== FALSE) {
                     $img_src = image_style_url('500x281', $image_uri);
                   }
                 }
-                //$img_src = image_style_url('500x281', $image_uri)
               ?>          
               <?php //$i++; ?>
               <li data-slide-item="<?php print $i++; ?>">

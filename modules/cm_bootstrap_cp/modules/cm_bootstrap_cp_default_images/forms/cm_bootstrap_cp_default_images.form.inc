@@ -1,18 +1,9 @@
 <?php
 
-// Get media module version
-$media_module = system_get_info($type = 'module', $name = 'media');
-
-define('CMB_MEDIA_MODULE_VER', $media_module['version']);
-
 /**
  * Form constructor
  */
 function cm_bootstrap_cp_default_images_form($form, &$form_state) {
-  // Get media module version
-  $media_module = system_get_info($type = 'module', $name = 'media');
-  $media_module_ver = $media_module['version'];
-
   $content_types = array(
     'cm_show',
     'cm_project',
@@ -52,10 +43,7 @@ function cm_bootstrap_cp_default_images_form($form, &$form_state) {
     $fid = cm_bootstrap_cp_default_images_default_value($content_type);
     // Add logic to account for different versions of media module
     // For Media 2.x it simply is '#default_value => $my_fid,, no array anymore.
-    if (CMB_MEDIA_MODULE_VER == '7.x-2.0-beta1'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-alpha4'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-beta14'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-rc5') {
+    if (!is_array($form_state['values']['cm_show']['default_image'])) {
       $form[$content_type]['default_image']['#default_value'] = $fid;
     }
     else {
@@ -84,10 +72,7 @@ function cm_bootstrap_cp_default_images_form_submit($form, &$form_state) {
   );
   foreach($content_types as $content_type) {
     // Add logic to account for different versions of media module
-    if (CMB_MEDIA_MODULE_VER == '7.x-2.0-beta1'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-alpha4'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-beta14'
-    || CMB_MEDIA_MODULE_VER == '7.x-2.0-rc5') {
+    if (!is_array($form_state['values']['cm_show']['default_image'])) {
       $data = array(
         'content_type' => $content_type,
         'fid' => $form_state['values'][$content_type]['default_image'],
@@ -115,10 +100,7 @@ function cm_bootstrap_cp_default_images_form_submit($form, &$form_state) {
   }
 
   // Add logic to account for different versions of media module
-  if (CMB_MEDIA_MODULE_VER == '7.x-2.0-beta1'
-  || CMB_MEDIA_MODULE_VER == '7.x-2.0-alpha4'
-  || CMB_MEDIA_MODULE_VER == '7.x-2.0-beta14'
-  || CMB_MEDIA_MODULE_VER == '7.x-2.0-rc5') {
+  if (!is_array($form_state['values']['cm_show']['default_image'])) {
     // Show
     $show_data = array(
       'content_type' => 'cm_show',

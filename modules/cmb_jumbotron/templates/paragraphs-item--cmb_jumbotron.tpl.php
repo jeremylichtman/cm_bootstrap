@@ -12,7 +12,6 @@
 
         <?php if ($item['published']): ?>
           <li>
-            <a target="<?php print $item['link']['target']; ?>" href="<?php print $item['link']['href']; ?>">
               <div class="overlay-wrapper" style="background:rgba(<?php print $item['overlay_color'];?>, <?php print $item['overlay_opacity'];?>);">
 
                 <?php if ($cmb_jumbotron['featured_content_display']): ?>
@@ -43,7 +42,9 @@
                       <ul class="jumbotron-featured__items">
                         <?php foreach($cmb_jumbotron['featured_items'] as $featured_item): ?>
                           <li class="jumbotron-featured__item">
+                            <?php if ($featured_item['link']): ?>
                             <a href="<?php print $featured_item['link']; ?>" target="_blank">
+                            <?php endif; ?>
                               <span class="jumbotron-featured__item-icon vertical-center">
                                 <i class="icon icon-calendar"></i>
                               </span>
@@ -55,16 +56,20 @@
                                   <?php print $featured_item['date']; ?>
                                 </div>
                               </div>
+                            <?php if ($featured_item['link']): ?>
                             </a>
+                            <?php endif; ?>
                           </li>
                         <?php endforeach; ?>
                       </ul>
 
+                      <?php if ($cmb_jumbotron['featured_content_btn_link']['href']): ?>
                       <div class="jumbotron-featured__items-button">
                         <a style="background: <?php print $cmb_jumbotron['cta_bg_color']; ?>; color:#FFF;" href="<?php print $cmb_jumbotron['featured_content_btn_link']['href']; ?>" target="_blank">
                           <?php print $cmb_jumbotron['featured_content_btn_link']['title']; ?>
                         </a>
                       </div>
+                      <?php endif; ?>
                     </div>
 
                   </div>
@@ -92,7 +97,6 @@
 
               </div>
               <img src="<?php print $item['placeholder_img']; ?>" data-original="<?php print $item['image']['src']; ?>"/>
-            </a>
           </li>
         <?php endif; ?>
 

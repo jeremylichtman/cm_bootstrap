@@ -141,10 +141,7 @@ function cmb_jumbotron_schedule_get_schedule($no_cache = FALSE) {
             if (!is_null($airing['nid'])) {
               $node = node_load($airing['nid']);
               if ($node) {
-                $term_data['link'] = [
-                  'href' => url(drupal_get_path_alias('node/' . $node->nid)),
-                  'title' => $node->title,
-                ];
+                $term_data['link'] = url(drupal_get_path_alias('node/' . $node->nid));
               }
               else {
                 $term_data['link'] = '';

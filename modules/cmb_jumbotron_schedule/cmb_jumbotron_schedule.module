@@ -1,0 +1,243 @@
+<?php
+/**
+ * @file cmb_jumbotron_schedule.module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function cmb_jumbotron_schedule_permission() {
+  return array(
+    'administer cmb jumbotron schedule' => array(
+    'title' => t('Administer CMB Jumbotron Schedule'),
+    'description' => t('Provides access to CMB Jumbotron Schedule Settings')
+  ));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function cmb_jumbotron_schedule_menu_menu() {
+  $items = [];
+
+  $items['admin/config/cmb-jumbotron-schedule'] = [
+    'title' => 'Configure Jumbotron TV Schedule',
+    'description' => 'Settings for CMB Jumbotron Schedule',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cmb_jumbotron_schedule_settings_form'),
+    'access arguments' => array('administer cmb jumbotron schedule'),
+    'file' => 'cmb_jumbotron_schedule.admin.inc',
+    'type' => MENU_CALLBACK,
+  ];
+
+  $items['admin/config/cmb-jumbotron-schedule/configure'] = array(
+    'title' => 'Configure Jumbotron TV Schedule',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_cmb_jumbotron_featured_content_alter().
+ *
+ * For each channel, adds in upcoming shows.
+ *
+ * @see cmb_jumbotron.module, around line 127.
+ */
+function cmb_jumbotron_schedule_cmb_jumbotron_featured_content_alter(&$data) {
+  $data = cmb_jumbotron_schedule_get_schedule();
+}
+
+/**
+ * Cached helper function to obtain schedule.
+ */
+function cmb_jumbotron_schedule_get_schedule($no_cache = FALSE) {
+  $data = &drupal_static(__FUNCTION__);
+
+  if (!isset($data)) {
+    // Check the cache first.
+    if (!$no_cache && ($cache = cache_get('cmb_jumbotron_schedule_data'))) {
+      $data = $cache->data;
+    }
+    // Cache is empty or expired.
+    else {
+      $data = [];
+
+      // Get list of channel tids.
+      $vocabulary_name = 'channel';
+      $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
+      $terms = taxonomy_get_tree($vocabulary->vid);
+
+      // Number of channels.
+      $channel_count = count($terms);
+
+      // Total number of items to show.
+      $schedule_count = variable_get('cmb_jumbotron_schedule_count', 6);
+
+      // Theoretical count of items to show per channel.
+      $theoretical_channel_count = floor($schedule_count / $channel_count);
+
+      // Accumulate a list of upcoming items (we'll sort out which ones to
+      // display later on).
+      $upcoming_items = [];
+
+      if (!empty($terms)) {
+        // Get data for each channel.
+        foreach ($terms as $term) {
+          $tid = $term->tid;
+
+          // We always grab $schedule_count items per channel, in case there's not
+          // enough items in the other channels.
+          $airing_data = cmb_jumbotron_schedule_find_next_airing($tid, $schedule_count);
+
+          if (!empty($airing_data)) {
+            $upcoming_items[$tid] = $airing_data;
+          }
+          // Nothing found for this channel, so we need to do some recalculation!
+          else {
+            $channel_count--;
+            $theoretical_channel_count = floor($schedule_count / $channel_count);
+          }
+        }
+
+        // Work out the (minimum) items available per channel.
+        $upcoming_item_count = 0;
+        foreach ($upcoming_items as $channel_items) {
+          // Work out roughly how many items will be available.
+            $items_found = count($channel_items);
+            if ($items_found >= $theoretical_channel_count) {
+              $upcoming_item_count += $theoretical_channel_count;
+            }
+            else {
+              $upcoming_item_count += $items_found;
+            }
+        }
+
+        // Loop through our airing data, and put together the data to return.
+        $data_count = 0;
+        foreach ($terms as $term) {
+          $tid = $term->tid;
+          $term_name = $term->name;
+
+          $airing_data = $upcoming_items[$tid];
+
+          $inner_data_count = 0;
+          foreach ($airing_data as $airing) {
+            $term_data = [];
+
+            // Date.
+            $start_date = strtotime($airing['start_date']);
+            $start_date = date('g:ia', $start_date);
+            $end_date = strtotime($airing['end_date']);
+            $end_date = date('g:ia', $end_date);
+            $term_data['date'] = $term_name . ': ' . $start_date;
+
+            // Title.
+            $term_data['title'] = $airing['title'];
+
+            // If there's an nid, get the link from that.
+            if (!is_null($airing['nid'])) {
+              $node = node_load($airing['nid']);
+              if ($node) {
+                $term_data['link'] = [
+                  'href' => url(drupal_get_path_alias('node/' . $node->nid)),
+                  'title' => $node->title,
+                ];
+              }
+              else {
+                $term_data['link'] = '';
+              }
+            }
+            // Otherwise, no link.
+            else {
+              $term_data['link'] = '';
+            }
+
+            // Increment counters.
+            $data_count++;
+            $inner_data_count++;
+
+            // Add this airing to the output data set.
+            $data[] = $term_data;
+
+            // Okay, now we have some upcoming items, let's work out how many to show
+            // per channel!
+            if ($upcoming_item_count < $schedule_count) {
+              // Just take whatever we can get, because we're short!
+              if ($data_count >= $schedule_count) {
+                // i.e. only exit once we're actually over the total limit,
+                // and then break out of the outer loop as well.
+                break(2); 
+              }
+            }
+            else {
+              // We theoretically have enough items to stick with the schedule.
+              if ($inner_data_count >= $theoretical_channel_count) {
+                // Break out of inner loop and go onto next term.
+                break;
+              }
+            }
+
+            // In all cases, if we're over the total limit, exit.
+            if ($data_count >= $schedule_count) {
+              break(2);
+            }
+          }
+        }
+      }
+
+      // Cache the data for 15 minutes.
+      cache_set('cmb_jumbotron_schedule_data', $data, 'cache', time() + 60*15);
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Helper function to find the "Next" airing for a given channel tid.
+ */
+function cmb_jumbotron_schedule_find_next_airing($tid, $count = 1) {
+  $current = date('Y-m-d H:i:s', time());
+  
+  $query = "SELECT
+    cm_airing.airing_id AS airing_id,
+    cm_airing.*,
+    field_data_field_airing_title.*,
+    field_data_field_airing_channel.field_airing_channel_tid AS field_data_field_airing_channel_field_airing_channel_tid, 
+    field_data_field_airing_date.field_airing_date_value AS field_data_field_airing_date_field_airing_date_value,
+    field_data_field_airing_date.field_airing_date_value2  AS field_data_field_airing_date_field_airing_date_value2,
+    field_data_field_airing_show_ref.field_airing_show_ref_target_id AS nid
+  FROM 
+    {cm_airing} cm_airing
+  LEFT JOIN 
+    {field_data_field_airing_date} field_data_field_airing_date ON cm_airing.airing_id = field_data_field_airing_date.entity_id AND (field_data_field_airing_date.entity_type = 'airing' AND field_data_field_airing_date.deleted = '0')
+  LEFT JOIN
+    {field_data_field_airing_channel} field_data_field_airing_channel ON cm_airing.airing_id = field_data_field_airing_channel.entity_id AND (field_data_field_airing_channel.entity_type = 'airing' AND field_data_field_airing_channel.deleted = '0')
+  LEFT JOIN
+    {field_data_field_airing_title} field_data_field_airing_title ON cm_airing.airing_id = field_data_field_airing_title.entity_id AND (field_data_field_airing_title.entity_type = 'airing' AND field_data_field_airing_title.deleted = '0')
+  LEFT JOIN
+    {field_data_field_airing_show_ref} field_data_field_airing_show_ref ON cm_airing.airing_id = field_data_field_airing_show_ref.entity_id AND (field_data_field_airing_show_ref.entity_type = 'airing' AND field_data_field_airing_show_ref.deleted = '0')
+  WHERE 
+    (DATE_FORMAT(field_data_field_airing_date.field_airing_date_value, '%Y-%m-%d %H:%i:%s') >= '" . $current . "') AND 
+    ( field_data_field_airing_channel.field_airing_channel_tid = " . $tid . ")
+  ORDER BY 
+    field_data_field_airing_channel_field_airing_channel_tid ASC, field_data_field_airing_date_field_airing_date_value ASC
+  LIMIT " . $count;
+
+  $result = db_query($query);
+  $data = [];
+
+  foreach ($result as $record) {
+    $data[] = [
+      'title' => $record->field_airing_title_value,
+      'start_date' => $record->field_data_field_airing_date_field_airing_date_value,
+      'end_date' => $record->field_data_field_airing_date_field_airing_date_value2,
+      'nid' => $record->nid,
+    ];
+  }
+
+  return $data;
+}

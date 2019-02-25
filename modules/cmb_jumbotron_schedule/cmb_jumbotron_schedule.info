@@ -1,0 +1,6 @@
+name = CMB Jumbotron Schedule
+description = Adds upcoming TV schedule to jumbotron
+package = CM Bootstrap: Paragraphs
+core = 7.x
+configure = admin/config/cmb-jumbotron-schedule
+dependencies[] = cmb_jumbotron

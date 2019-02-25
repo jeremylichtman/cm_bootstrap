@@ -23,32 +23,32 @@
     width: 100%;
     -webkit-backface-visibility: hidden;
   }
-  /* line 24, ../scss/cmb_jumbotron.scss */
+  /* line 25, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content {
     max-width: 1170px;
     padding: 10px;
     margin: 0 auto;
   }
-  /* line 29, ../scss/cmb_jumbotron.scss */
+  /* line 30, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content h2 {
     font-size: 2em;
     text-align: center;
   }
-  /* line 34, ../scss/cmb_jumbotron.scss */
+  /* line 35, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .short-description {
     font-size: 1em;
     text-align: center;
     display: none;
   }
-  /* line 40, ../scss/cmb_jumbotron.scss */
+  /* line 41, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content h2, .cc-cmb-jumbotron ul.slides li .overlay-content .short-description {
     color: #FFFFFF;
   }
-  /* line 44, ../scss/cmb_jumbotron.scss */
+  /* line 45, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .button-wrapper {
     text-align: center;
   }
-  /* line 46, ../scss/cmb_jumbotron.scss */
+  /* line 47, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .button-wrapper button {
     padding: 1em;
     text-transform: uppercase;
@@ -57,90 +57,194 @@
     margin: 2em 0;
     font-weight: bold;
   }
-  /* line 61, ../scss/cmb_jumbotron.scss */
+  /* line 62, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron .flexslider .flex-direction-nav a {
     padding: 2px 8px;
     right: 0px;
   }
-  /* line 65, ../scss/cmb_jumbotron.scss */
+  /* line 66, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron .flexslider .flex-direction-nav a.flex-prev {
     left: 0px;
     opacity: 1 !important;
   }
-  /* line 69, ../scss/cmb_jumbotron.scss */
+  /* line 70, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron .flexslider .flex-direction-nav a.flex-next {
     right: 0px;
     opacity: 1 !important;
   }
-
-  /*.cc-cmb-jumbotron {
-    width:100% !important;
-    max-width:100% !important;
-    padding:0 !important;
-
-    .flexslider {
-      margin:0;
-    }
-    .slide {
-      min-height: 50em;
-      position: relative;
-    }
-
-    .overlay-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: rgba(0,0,0, .3);
-      min-height: 50em;
-      width: 100%;
-    }
-
-    .overlay-content {
-      padding:3em;
-      h2 {
-        color:#FFF;
-      }
-      .short-description {
-        color:#FFF;
-        font-size:1em;
-      }
-    }
-
-    .image-bg {
-      position: relative;
-      background-repeat: no-repeat !important;
-      background-position: center center !important;
-      background-size: cover !important;
-      width: 100%;
-      -webkit-transition: 250ms ease-out;
-      -moz-transition: 250ms ease-out;
-      -o-transition: 250ms ease-out;
-      transition: 250ms ease-out;
-      //height: 100vh;
-      //min-height: 100vh;
-      overflow: hidden;
-    }
-  }*/
 }
 @media screen and (min-width: 767px) {
-  /* line 131, ../scss/cmb_jumbotron.scss */
+  /* line 83, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content h2 {
     font-size: 4em;
     padding: 1em 0 .5em 0;
     text-align: left;
   }
-  /* line 136, ../scss/cmb_jumbotron.scss */
+  /* line 88, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .short-description {
     font-size: 1.5em;
     text-align: left;
     display: block;
   }
-  /* line 141, ../scss/cmb_jumbotron.scss */
+  /* line 93, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .button-wrapper {
     text-align: inherit;
   }
-  /* line 143, ../scss/cmb_jumbotron.scss */
+  /* line 95, ../scss/cmb_jumbotron.scss */
   .cc-cmb-jumbotron ul.slides li .overlay-content .button-wrapper button {
     margin: 3em 0;
   }
+}
+/* line 106, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.slides li {
+  height: auto;
+  max-height: inherit;
+}
+/* line 110, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.slides li img {
+  width: auto;
+}
+@media screen and (min-width: 767px) {
+  /* line 106, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.slides li {
+    max-height: 600px;
+  }
+  /* line 116, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.slides li img {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 767px) {
+  /* line 121, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__overlay-left {
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    max-width: 700px;
+  }
+}
+/* line 132, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__overlay-right {
+  padding: 1em 0;
+  background: #FFF;
+}
+@media screen and (min-width: 767px) {
+  /* line 132, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__overlay-right {
+    padding: 0;
+    float: right;
+    max-width: 400px;
+    max-height: 500px;
+    margin: -0.5em 0 0.5em 0;
+    width: 45%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* line 132, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__overlay-right {
+    width: 400px;
+    margin: 3.5em 0;
+  }
+}
+/* line 147, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__overlay-right h2 {
+  padding: 1em 0;
+  margin: 0;
+}
+/* line 153, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.jumbotron-featured__items {
+  margin: 0;
+  padding: 0 2em;
+}
+/* line 156, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display ul.jumbotron-featured__items li {
+  list-style-type: none;
+}
+/* line 161, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items-title {
+  font-size: 2em !important;
+  color: #000 !important;
+  text-align: center !important;
+  padding: 1em 0 0.5em 0 !important;
+}
+/* line 168, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__title {
+  margin: 0;
+  padding: 1em 0;
+}
+/* line 173, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__button {
+  margin: 3em 0;
+  width: 200px;
+}
+/* line 176, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__button a {
+  background: #F2E632;
+  padding: 1.5em;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+/* line 190, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items-button {
+  margin: 1em;
+}
+@media screen and (min-width: 1200px) {
+  /* line 190, ../scss/cmb_jumbotron.scss */
+  .cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items-button {
+    margin: 2em;
+  }
+}
+/* line 197, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items-button a {
+  background: #F2E632;
+  padding: 2em;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+/* line 211, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__item-icon {
+  float: left;
+}
+/* line 213, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__item-icon i {
+  font-size: 30px;
+  color: darkgray;
+}
+/* line 219, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__item-title {
+  font-size: 1em;
+  margin: 0;
+  padding: 0em;
+}
+/* line 225, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__item-description {
+  font-size: 14px;
+  padding-left: 30px;
+}
+/* line 230, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items {
+  padding: 0 2em;
+}
+/* line 232, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__items li {
+  padding: 0.5em 0;
+  position: relative;
+}
+/* line 238, ../scss/cmb_jumbotron.scss */
+.cc-cmb-jumbotron.cc-jumbotron-featured-items-display .jumbotron-featured__item-right {
+  padding-left: 4em;
 }

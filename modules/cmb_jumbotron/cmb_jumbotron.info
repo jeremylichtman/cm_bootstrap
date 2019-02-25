@@ -1,6 +1,6 @@
 name = CMB Jumbotron
 description = CMB Jumbotron
-package = CM Bootstrap: Content Components
+package = CM Bootstrap: Paragraphs
 core = 7.x
 dependencies[] = paragraphs
 dependencies[] = cmb_jumbotron_features

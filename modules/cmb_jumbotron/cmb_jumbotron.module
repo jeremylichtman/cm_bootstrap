@@ -18,9 +18,15 @@ function cmb_jumbotron_theme($existing, $type, $theme, $path) {
     'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
   );
 
-  // Paragraphs editor preview
+  // Paragraphs editor preview for "cmb_jumbotron"
   $theme['paragraphs_item__cmb_jumbotron__paragraphs_editor_preview'] = array(
     'template' => 'paragraphs-item--cmb_jumbotron--paragraphs_editor_preview',
+    'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
+  );
+
+  // Paragraphs editor preview for "cmb_jumbotron_item"
+  $theme['paragraphs_item__cmb_jumbotron_item__paragraphs_editor_preview'] = array(
+    'template' => 'paragraphs-item--cmb_jumbotron_item--paragraphs_editor_preview',
     'path' => drupal_get_path('module', 'cmb_jumbotron') . '/templates',
   );
 
@@ -88,17 +94,135 @@ function cmb_jumbotron_preprocess_entity(&$variables) {
           }
         }
 
+        // Get events
+        $featured_items = FALSE;
+        $extra_classes = '';
+        $featured_content_title = FALSE;
+        $featured_content_btn_link = FALSE;
+
+        $featured_content_display = FALSE;
+        if (isset($paragraph->field_cc_cmbj_featured_display[LANGUAGE_NONE])) {
+          $featured_content_display = $paragraph->field_cc_cmbj_featured_display[LANGUAGE_NONE][0]['value'];
+        }
+
+
+        if ($featured_content_display) {
+          $extra_classes = 'cc-jumbotron-featured-items-display';
+
+          // Featured Content Title
+          $featured_content_title = \ContentComponents\Helper\FieldHelper::getValue($paragraph, 'field_cc_cmbj_featured_title');
+
+          // Featured Content Button Link
+          $featured_content_btn_link = \ContentComponents\Helper\LinkHelper::getUrl($paragraph, 'field_cc_cmbj_featured_btn_link');
+
+          // Get the field_cc_cmbj_featured_content value
+          if (isset($paragraph->field_cc_cmbj_featured_content[LANGUAGE_NONE])) {
+            $featured_content_option = $paragraph->field_cc_cmbj_featured_content[LANGUAGE_NONE][0]['value'];
+
+            switch ($featured_content_option) {
+              case 'custom':
+                // Let other modules to hook in and provide the data.
+                // You should implement hook_cmb_jumbotron_featured_content_alter() in all other modules
+                // in which you want to alter $data
+                drupal_alter('cmb_jumbotron_featured_content', $custom_data);
+
+                $featured_items = $custom_data;
+                break;
+
+              case 'events':
+                // Get the featured content
+                if ($featured_nodes = _cmb_jumbotron__featured_content_query($featured_content_option)) {
+                  foreach($featured_nodes as $featured_node) {
+                    // Date
+                    if (isset($featured_node->field_date[LANGUAGE_NONE][0]['value'])) {
+                      $date = $featured_node->field_date[LANGUAGE_NONE][0]['value'];
+                      $timestamp = strtotime($date) - 14400;
+                      $date = date('M d, Y - g:ia', $timestamp);
+                    }
+
+                    $featured_items[] = [
+                      'title' => $featured_node->title,
+                      'date' => $date,
+                      'link' => url('node/' . $featured_node->nid),
+                    ];
+                  }
+                }
+                break;
+            }
+          }
+        }
+
         $data = [
           'id' => $paragraph->item_id,
           'items' => $field_cc_cmbj_items,
           'cta_bg_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cc_cmbj_button_bg_color', 0),
           'cta_color' => \ContentComponents\Helper\ColorHelper::jqueryColorPicker($paragraph, 'field_cc_cmbj_button_color', 0),
+          'featured_items' => $featured_items,
+          'featured_content_display' => $featured_content_display,
+          'featured_content_title' => $featured_content_title,
+          'featured_content_btn_link' => $featured_content_btn_link,
+          'extra_classes' => $extra_classes,
         ];
         break;
   	}
 
-    //dpm($data);
-
     $variables['cmb_jumbotron'] = $data;
   }
 }
+
+/**
+ * Featured Content Query
+ */
+function _cmb_jumbotron__featured_content_query($content_type) {
+  // Get nodes
+  $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', $content_type);
+    $query->propertyCondition('status', 1);
+    $query->range(0, 3);
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    $nodes = entity_load('node', $nids);
+  }
+  else {
+    $nodes = FALSE;
+  }
+
+  return $nodes;
+}
+
+/**
+ * Events Query
+ */
+function _cmb_jumbotron__featured_content_query_events() {
+  $current_datetime_start = date('Y-m-d H:i:s', time());
+  $current_datetime_end = date('Y-m-d H:i:s', strtotime("+30 days"));
+
+  $content_types = [
+    'event',
+    'events',
+  ];
+
+  // Get events b/w date range
+  $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', $content_types);
+    $query->propertyCondition('status', 1);
+    $query->range(0, 3);
+    $query->fieldCondition('field_date', 'value', array($current_datetime_start, $current_datetime_end), 'BETWEEN');
+    $query->fieldOrderBy('field_date', 'value', 'ASC');
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    $nids = array_keys($result['node']);
+    $nodes = entity_load('node', $nids);
+  }
+  else {
+    $nodes = FALSE;
+  }
+
+  return $nodes;
+}
+
